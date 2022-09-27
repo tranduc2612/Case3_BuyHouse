@@ -1,0 +1,35 @@
+:root{
+    --bg-nav: #fff;
+    --primary-color: #ff641e;
+    --primary-color-light:#ff9362;
+    --color-hover:rgb(254, 255, 230);
+    --blue-light: #ecf6fe;
+    --blue-deep:#0e78ce;
+    --gray-light:#b1b3b5;
+    --text-color:#333;
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+.custom-text{
+    font-weight: 700;
+    position: relative;
+}
+
+.custom-text::before{
+    content: "";
+    width:0%;
+    height:3px;
+    bottom:0;
+    left:0;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    position: absolute;
+}
+
+.custom-text::before:hover{
+    width:100%;
+}
+

@@ -1,0 +1,55 @@
+.slider{
+    display: flex;
+    margin: auto;
+}
+
+.slider__container{
+    margin:auto;
+    width:80%;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#prevBtn,#nextBtn{
+    position: absolute;
+    padding:15px;
+    top:40%;
+    border-radius: 50%;
+    border: 0.4px solid var(--gray-light);
+    opacity: 60%;
+    transform: scale(0.7);
+    background-color: #fbfbfd;
+    transition: all 0.3s ease-in-out;
+}
+
+
+#nextBtn{
+    right: 5%;
+}
+
+#nextBtn:hover{
+    transform: scale(1);
+    opacity: 100%;
+}
+
+#prevBtn:hover{
+    opacity: 100%;
+    transform: scale(1);
+}
+
+#prevBtn{
+    left: 5%;
+}
+
+#prevBtn:hover .prevBtn-icon{
+    color:var(--primary-color);
+}
+
+#nextBtn:hover .nextBtn-icon{
+    color:var(--primary-color);
+}
+
