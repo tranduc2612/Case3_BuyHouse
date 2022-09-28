@@ -5,9 +5,11 @@
     --color-hover:rgb(254, 255, 230);
     --blue-light: #ecf6fe;
     --blue-deep:#0e78ce;
+    --blue-deeper:#0671ca;
     --gray-light:#b1b3b5;
     --text-color:#333;
     --gray-lighter: #f5f7f9;
+    --gray-light-pastel: #F9F9F9;
 }
 
 *{
@@ -34,3 +36,6 @@
     width:100%;
 }
 
+a{
+    text-decoration:none;
+}

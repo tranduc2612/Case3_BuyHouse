@@ -105,10 +105,15 @@
         .connection__list{
           list-style: none;
         }
+
+        .d-none{
+          display: none;
+        }
     </style>
     <title>Buy House</title>
 </head>
 <body>
+
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
@@ -139,32 +144,77 @@
                   </ul> 
             </div>
 
+
+        <div class="navbar">
+            <ul class="navbar-nav nav-info-login">
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-solid fa-bell"></i>
+                    <span>Thông báo</span> 
+                  </a>
+                </li>
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+                    <span>Đăng nhập</span> 
+                  </a>
+                </li>
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-sharp fa-solid fa-circle-user"></i>
+                    <span> Đăng kí</span>
+                  </a>
+                </li>
+              </ul> 
+
+              <ul class="navbar-nav nav-info-user d-none">
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-solid fa-newspaper fs-5"></i>
+                    <span>Quản lí tin</span> 
+                  </a>
+                </li>
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-solid fa-bell fs-5"></i>
+                    <span>Thông báo</span> 
+                  </a>
+                </li>
+                <li class="nav-item m-3">
+                  <a class="nav-link" href="#">
+                    <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
+                    <span>0367218700</span>
+                  </a>
+                </li>
+              </ul> 
+        </div>
+
+        </div>
+    </nav>
+    
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
+            <div class="navbar-nav custom-text">
+              <a class="nav-link active" href="/home">Trang chủ</a>
             </div>
-        </nav>
-        
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-                <div class="navbar-nav custom-text">
-                  <a class="nav-link active" href="/home">Trang chủ</a>
-                </div>
-
-                <form class="d-flex position-relative" action="#" method="post">
-                    <input class="input__search" type="search" placeholder="Bạn cần tìm gì ?" >
-                    <button class="button__search position-absolute b-0" type="submit">
-                        <i class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-
-                <button class="button__post" type="">
-                    <i class="fa-sharp fa-solid fa-pen-to-square"></i>
-                    Đăng tin
+            <form class="d-flex position-relative" action="#" method="post">
+                <input class="input__search" type="search" placeholder="Bạn cần tìm gì ?" >
+                <button class="button__search position-absolute b-0" type="submit">
+                    <i class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"></i>
                 </button>
-              </div>
-            </div>
-          </nav>
-    </header>
+            </form>
+
+            <button class="button__post" type="">
+                <i class="fa-sharp fa-solid fa-pen-to-square"></i>
+                Đăng tin
+            </button>
+          </div>
+        </div>
+      </nav>
+</header>
 
     <div class="container position-relative mt-4">
         <div class="slider__container">
