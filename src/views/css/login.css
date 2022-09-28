@@ -1,0 +1,22 @@
+.img__form{
+    background-image: url('https://muaban.net/images/account/welcome.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.content{
+    width:80%;
+    margin:auto;
+}
+
+.content__form-orther-title hr{
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-top: 1px solid #dadcdf;
+    border-bottom: none;
+}
+
+.box-custom{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+}
