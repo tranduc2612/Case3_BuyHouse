@@ -12,11 +12,53 @@
 .content__form-orther-title hr{
     -webkit-box-flex: 1;
     flex-grow: 1;
-    border-top: 1px solid #dadcdf;
+    border-top: 1px solid #333;
     border-bottom: none;
 }
 
 .box-custom{
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 10px;
+}
+
+.content__box h3{
+    color: var(--primary-color);
+}
+
+.custom-input{
+    border-radius: 4px;
+    border: 1px solid var(--gray-light);
+}
+
+.custom-input:focus{
+    outline:1px solid #C1EFFF
+}
+
+.cutom-button{
+    width:100%;
+    border-radius: 20px;
+    border:transparent;
+}
+
+.btn-login.cutom-button{
+    color:#fff;
+    background-color:var(--blue-deep);
+}
+
+.btn-login.cutom-button:hover{
+    background-color:var(--blue-deeper);
+}
+
+.content__form-buttons-orther.cutom-button{
+    border: 1px solid #333;
+    color:var(--text-color);
+    background-color: #fff;
+}
+
+.content__form-buttons-orther.cutom-button:hover{
+    background-color: #F9F9F9;
+}
+
+.content__form-newregister{
+    width: 100%;
 }
