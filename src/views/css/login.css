@@ -62,7 +62,6 @@
 .content__form-newregister{
     width: 100%;
 }
-<<<<<<< HEAD
 
 .custom-input{
     border-radius: 4px;
@@ -102,3 +101,20 @@
     width: 100%;
 }
 
+/* validate */
+
+.inputWrong{
+    border: 1px solid  #e74c3c;
+}
+
+.messageWrong{
+    color: #e74c3c;
+}
+
+.inputSuccess{
+    border: 1px solid  #2ecc71;
+}
+
+.messageSuccess{
+    color: #2ecc71;
+}
