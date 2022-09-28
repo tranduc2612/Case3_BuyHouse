@@ -22,7 +22,6 @@ class DBConnection {
             })
         })
     }
-
 }
 
 module.exports = new DBConnection()
