@@ -7,7 +7,7 @@ class DBConnection {
             host: "localhost",
             user: "root",
             password: "12345678",
-            database: "",
+            database: "BuyHouse",
             charset: "utf8_general_ci",
         })
     }
