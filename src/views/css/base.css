@@ -2,6 +2,7 @@
     --bg-nav: #fff;
     --primary-color: #ff641e;
     --primary-color-light:#ff9362;
+    --primary-color-hover:#fff1eb;
     --color-hover:rgb(254, 255, 230);
     --blue-light: #ecf6fe;
     --blue-deep:#0e78ce;
@@ -10,6 +11,10 @@
     --text-color:#333;
     --gray-lighter: #f5f7f9;
     --gray-light-pastel: #F9F9F9;
+    --bg-content:#f5f7f9;
+    --bg-footer:#fbfbfd;
+    --border-gray:#e4e6e9;
+    --blue-lighter: #b2dafa;
 }
 
 *{
@@ -38,4 +43,83 @@
 
 a{
     text-decoration:none;
+}
+
+li{
+    list-style: none;
+}
+
+.bg__content{
+    background-color: var(--bg-content);
+}
+
+
+.form-cutom{
+    width: 100%;
+    background-color: #fff;
+    padding:30px;
+    border-radius: 10px;
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInDown{
+    from{
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInLeft
+{
+    from{
+        opacity: 0;
+        transform: translateX(0%);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeOut
+{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn
+{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes loader {
+    0%,100%{
+        transform: scale(0);
+    }
+    50%{
+        transform: scale(1);
+    }
 }

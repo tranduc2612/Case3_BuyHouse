@@ -9,107 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/base.css">
-    <style>
-        .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link {
-            color: var(--text-color);
-        }
-       .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-            color: var(--primary-color);
-        }
-        
-        .input__search{
-            width: 30rem;
-            padding: 10px 10px 10px 20px;
-            border-radius:40px;
-            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-            border: transparent;
-        }
-
-        .input__search:focus{
-            outline:none;
-        }
-        
-        .button__search {
-            width: 5rem;
-            padding: 10px;
-            border-radius:40px;
-            right: 0%;
-            border:transparent;
-            background-color: #fff;
-        }
-
-        .button__search-icon:hover{
-            color:var(--primary-color)
-        }
-
-        .header{
-            padding-bottom: 20px;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-        }
-
-        .button__post{
-            padding:10px;
-            width:11rem;
-            border-radius:50px;
-            position: relative;
-            left:-8%;
-            background-color:var(--primary-color);
-            color: #fff;
-            border: transparent;
-        }
-
-        .button__post:hover{
-            background-color:var(--primary-color-light);
-        }
-
-        .custom-text{
-            left: 5%;
-        }
-
-
-        /* footer */
-        .footer__phone-suporter{
-          color:var(--primary-color)
-        }
-        .footer{
-          padding: 20px;
-          width:100%;
-          height:100%;
-          background-color: var(--gray-lighter);
-        }
-
-        .footer__list{
-            font-size: 1rem;
-            list-style: none;
-        }
-        .footer__title{
-          color: var(--primary-color);
-          margin-bottom: 5px;
-        }
-        .footer__item{
-          margin-top: 5px;
-        }
-        .footer__link{
-          text-decoration: none;
-          color:var(--text-color)
-        }
-
-        .footer__link:hover{
-          color:var(--primary-color)
-        }
-
-        ul{
-          margin: 0;
-        }
-
-        .connection__list{
-          list-style: none;
-        }
-
-        .d-none{
-          display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/header.css">    
+    <link rel="stylesheet" href="./css/footer.css">    
     <title>Buy House</title>
 </head>
 <body>
@@ -122,19 +23,19 @@
 
             <div class="navbar">
                 <ul class="navbar-nav nav-info-login">
-                    <li class="nav-item m-3">
+                    <li class="nav-item me-3">
                       <a class="nav-link" href="#">
                         <i class="fa-solid fa-bell"></i>
                         <span>Thông báo</span> 
                       </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item me-3">
                       <a class="nav-link" href="#">
                         <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
                         <span>Đăng nhập</span> 
                       </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item">
                       <a class="nav-link" href="#">
                         <i class="fa-sharp fa-solid fa-circle-user"></i>
                         <span> Đăng kí</span>
@@ -143,19 +44,19 @@
                   </ul> 
 
                   <ul class="navbar-nav nav-info-user d-none">
-                    <li class="nav-item m-3">
+                    <li class="nav-item me-3">
                       <a class="nav-link" href="#">
                         <i class="fa-solid fa-newspaper fs-5"></i>
                         <span>Quản lí tin</span> 
                       </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item me-3">
                       <a class="nav-link" href="#">
                         <i class="fa-solid fa-bell fs-5"></i>
                         <span>Thông báo</span> 
                       </a>
                     </li>
-                    <li class="nav-item m-3">
+                    <li class="nav-item">
                       <a class="nav-link" href="#">
                         <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
                         <span>0367218700</span>
@@ -172,7 +73,7 @@
             <div class="container">
               <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
                 <div class="navbar-nav custom-text">
-                  <a class="nav-link active" href="/home">Trang chủ</a>
+                  <a class="nav-link" href="/home">Trang chủ</a>
                 </div>
 
                 <form class="d-flex position-relative" action="#" method="post">
