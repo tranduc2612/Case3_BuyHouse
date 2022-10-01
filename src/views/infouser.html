@@ -39,7 +39,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="#">
                         <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
-                        <span>0367218700</span>
+                        <span>{name-user}</span>
                       </a>
                     </li>
                   </ul> 
@@ -85,7 +85,7 @@
                     <div class="side__bar">
                         <div class="side__bars-interfaces d-flex flex-column align-items-center">
                             <img class="side__bar-img" src="https://muaban.net/images/account/avatar-default.png" alt="" style="width:25%;height:25%;">
-                            <span class="side__bar-name">Trần Minh Đức</span>
+                            <span class="side__bar-name">{user-name-sidebar}</span>
                             <span class="side__bar-date-part-in">Tham gia từ 09/2022</span>
                             <button class="side__bar-post button__post" type="">
                                 <i class="fa-sharp fa-solid fa-pen-to-square"></i>  
@@ -95,32 +95,47 @@
     
                         <div class="side__bars-options mt-4">
                             <ul class="side__bars-list">
+                              <a class="side__bar-link" href="/info-user">
                                 <li class="side__bar-item d-flex justify-content-between p-2 align-items-center active">
                                     <div class="wrapper fs-5">
                                         <i class="fa-solid fa-circle-user me-1"></i>
-                                        <span class="side__bar-text">Thông tin tài khoản</span>
+                                        <span class="side__bar-text">
+                                          Thông tin tài khoản
+                                        </span>
                                     </div>
                                     <i class="fa-solid fa-angle-right"></i>
                                 </li>
+                              </a> 
+                              <a class="side__bar-link" href="#">
                                 <li class="side__bar-item d-flex justify-content-between p-2 align-items-center">
                                     <div class="wrapper fs-5">
-                                        <i class="fa-solid fa-newspaper m-1"></i>
-                                        <span class="side__bar-text">Quản lí tin</span>
+                                        <i class="fa-solid fa-newspaper m-1"></i>         
+                                        <span class="side__bar-text">
+                                          Quản lí tin
+                                        </span>
                                     </div>
                                     <i class="fa-solid fa-angle-right"></i>
                                 </li>
+                              </a>
+                              <a class="side__bar-link" href="/change-password">
                                 <li class="side__bar-item d-flex justify-content-between p-2 align-items-center">
                                     <div class="wrapper fs-5">
                                         <i class="fa-sharp fa-solid fa-lock m-1"></i>
-                                        <span class="side__bar-text">Thay đổi mật khẩu</span>
+                                        <span class="side__bar-text">
+                                          Thay đổi mật khẩu
+                                        </span>
                                     </div>
                                     <i class="fa-solid fa-angle-right"></i>
                                 </li>
-
+                              </a>
+                                <a class="side__bar-link" href="/log-out">
                                 <li class="side__bar-item fs-5 d-flex p-2 align-items-center">
                                     <i class="fa-solid fa-right-from-bracket m-1"></i>
-                                    <span class="side__bar-text">Đăng xuất</span>
-                                </li>
+                                    <span class="side__bar-text">
+                                      Đăng xuất
+                                    </span>
+                                  </li>
+                                </a>
                             </ul>
                         </div>
                     </div>
