@@ -14,16 +14,23 @@
 }
 
 .input__search:focus{
-    outline:none;
+    outline: 1px solid var(--primary-color-light);
 }
 
+
+
 .button__search {
-    width: 5rem;
-    padding: 10px;
-    border-radius:40px;
-    right: 0%;
-    border:transparent;
+    width: 3rem;
+    padding: 5px 10px 5px 10px;
+    border-radius: 50%;
+    right: 2%;
+    top: 14%;
+    border: transparent;
     background-color: #fff;
+}
+
+.input__search:focus .button__search{
+    border: 1px solid var(--primary-color-light);
 }
 
 .button__search-icon:hover{
@@ -52,4 +59,11 @@
 
 .custom-text{
     left: 5%;
+}
+
+.img__user{
+    border-radius: 50%;
+    width:20px; 
+    height:20px;
+    transform:translateY(-5px);
 }
