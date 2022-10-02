@@ -22,28 +22,7 @@
               </a>
 
             <div class="navbar">
-                <ul class="navbar-nav nav-info-login">
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-solid fa-bell"></i>
-                        <span>Thông báo</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
-                        <span>Đăng nhập</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-circle-user"></i>
-                        <span> Đăng kí</span>
-                      </a>
-                    </li>
-                  </ul> 
-
-                  <ul class="navbar-nav nav-info-user d-none">
+                  <ul class="navbar-nav nav-info-user">
                     <li class="nav-item me-3">
                       <a class="nav-link" href="#">
                         <i class="fa-solid fa-newspaper fs-5"></i>
@@ -58,7 +37,7 @@
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
+                        <img src="#" alt="">
                         <span>{name-user}</span>
                       </a>
                     </li>
@@ -92,8 +71,27 @@
           </nav>
     </header>
 
+    <div class="container">
+        <form class="d-flex flex-column" action="">
+            <h3 class="">Nhập thông tin đăng bán</h3>
+            <div class="form__name-user-post">
+                <label for="name-user-post">Người đăng tin</label>       
+                <input type="" name="name-user-post" value="">       
+            </div>
 
-    <footer class="footer mt-5">
+            <div class="form__name-user-phone">
+              <label for="name-user-phone">Số điện thoại chủ nhà</label>       
+              <input type="" name="name-user-phone" value="">       
+            </div>
+
+            <div class="form__name-user-address">
+              <label for="name-user-address">Địa chỉ</label>       
+              <input type="" name="name-user-address" value="">       
+            </div>
+        </form>
+    </div>
+    
+    <footer class="footer mt-5 position-relative">
       <div class="container">
         <div class="row">
           <div class="col-4 d-flex flex-column">
