@@ -1,8 +1,5 @@
 const url = require("url");
 const fs = require("fs");
-const AuthController = require("../controller/AuthController.js")
-const siteController = require("../controller/SiteController.js");
-const authController = AuthController.AccountController;
 require("dotenv").config();
 const siteController = require("../controllers/SiteController");
 const authController = require("../controllers/AuthController");
@@ -59,29 +56,7 @@ async function router(req, res) {
       case `/${pathToken}`:
         authController.loginWithGoogle(req, res, token_google);
         break;
-      case "/login":
-        fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
-          if (err) {
-            console.log(err.message);
-          }
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.write(data);
-          return res.end();
-        });
-        // if(req.method == "GET"){
-        //   authController.showHomePage(req,res)
-        // }
-        break;
-        case "/register":
-          fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
-            if (err) {
-              console.log(err.message);
-            }
-            res.writeHead(200, { "Content-Type": "text/html" });
-            res.write(data);
-            return res.end();
-          });
-          break;  
+      
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");

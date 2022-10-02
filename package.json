@@ -21,11 +21,7 @@
     "cookie": "^0.5.0",
     "dotenv": "^16.0.2",
     "fs": "0.0.1-security",
-<<<<<<< HEAD
-=======
-    "google-auth-library": "^8.5.2",
     "jsonwebtoken": "^8.5.1",
->>>>>>> 2890c4061de6b8bd062353005a06bbe453b9f8de
     "mysql": "^2.18.1",
     "qs": "^6.11.0",
     "url": "^0.11.0"
