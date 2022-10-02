@@ -1,9 +1,12 @@
 const url = require("url");
 const fs = require("fs");
+const AuthController = require("../controller/AuthController.js")
+const siteController = require("../controller/SiteController.js");
+const authController = AuthController.AccountController;
 require("dotenv").config();
 const PATH = process.env.USER;
 
-function router(req, res) {
+async function router(req, res) {
   let parseUrl = url.parse(req.url, true);
   let path = parseUrl.pathname;
   let mimeTypes = {
@@ -32,10 +35,17 @@ function router(req, res) {
           if (err) {
             console.log(err.message);
           }
+         
           res.writeHead(200, { "Content-Type": "text/html" });
           res.write(data);
           return res.end();
         });
+         if(req.method == "GET"){
+          siteController.showHomePage(req,res)
+        }
+        if(req.method == "POST"){
+          authController.checkLogin(req,res)
+        }
         break;
       case "/login":
         fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
@@ -46,6 +56,9 @@ function router(req, res) {
           res.write(data);
           return res.end();
         });
+        // if(req.method == "GET"){
+        //   authController.showHomePage(req,res)
+        // }
         break;
         case "/register":
           fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
