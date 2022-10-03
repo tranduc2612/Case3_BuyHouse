@@ -102,6 +102,36 @@ class AuthController {
       res.end();
     }
   }
+
+  async showRegisterPage(req, res) {
+    fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
+      if (err) {
+        console.log(err.message);
+      }
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      return res.end();
+    });
+  }
+
+  async checkRegister(req, res) {
+    const inputForm = await this.loadDataInForm(req);
+    const phone = inputForm.phone;
+    const password = inputForm.password;
+    const userData =  await userDB.getListUserRent();
+    // console.log(userData)
+    for(let i = 0; i < userData.length; i++) {
+      if(userData[i].phone == phone && userData[i].passwordUR == password){
+        // console.log("Tai khoan da ton tai");
+        res.end('Tai khoan da ton tai')
+        return 
+      }
+    }
+    await userDB.insertListUserRent(phone,password);
+    res.statusCode = 302;
+    res.setHeader("Location", "/");
+    res.end();
+  }
 }
 
 module.exports = new AuthController();

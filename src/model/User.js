@@ -12,6 +12,19 @@ class Users {
         throw err;
       });
   }
+
+  async insertListUserRent(phone,password){
+    let sql = `INSERT into tUserRenter (phone, passwordUR) values('${phone}','${password}')`;
+    return await db
+          .runMySQL(sql)
+          .then((results) =>{
+            return results;
+          })
+          .catch((err) =>{
+            throw err;
+          })
+  }
+
 }
 
 module.exports = new Users();

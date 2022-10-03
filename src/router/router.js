@@ -56,7 +56,15 @@ async function router(req, res) {
       case `/${pathToken}`:
         authController.loginWithGoogle(req, res, token_google);
         break;
-      
+      case "/register":
+        if(req.method == 'GET'){
+          authController.showRegisterPage(req, res)
+        }
+        if(req.method == 'POST'){
+          authController.checkRegister(req, res)
+        }
+        
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");

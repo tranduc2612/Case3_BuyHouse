@@ -2,7 +2,7 @@ const db = require('./DBConnect');
 
 class UserRenter{
     async getListUsers(){
-        let sql = 'SELECT * FROM UserRenter'
+        let sql = 'SELECT * FROM tUserRenter'
         return await db
                 .runMySQL(sql)
                 .then((results) =>{
