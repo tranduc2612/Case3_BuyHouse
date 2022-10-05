@@ -1,5 +1,6 @@
 const phoneInput = document.querySelector(".input__phone");
 const passwordInput = document.querySelector(".input__password");
+// const inputGmail = document.querySelector(".input__gmail");
 
 phoneInput.addEventListener("focusout", (e) => {
   let input = e.target.value;
@@ -22,6 +23,17 @@ passwordInput.addEventListener("focusout", (e) => {
     setSuccessFor(e.target);
   }
 });
+
+// inputGmail.addEventListener("focusout", (e) => {
+//   let input = e.target.value;
+//   if (input == "") {
+//     setErrorFor(e.target, "Không được để trống trường này !");
+//   } else if (!isEmail(input)) {
+//     setErrorFor(e.target, "Trường này không hợp lệ !");
+//   } else {
+//     setSuccessFor(e.target);
+//   }
+// });
 
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
@@ -49,3 +61,9 @@ function isPassWord(passWord) {
 function isPhone(phone) {
   return /^[0-9]*$/.test(phone);
 }
+
+// function isEmail(email) {
+//   return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+//     email
+//   );
+// }
