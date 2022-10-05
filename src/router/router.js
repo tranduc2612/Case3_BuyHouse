@@ -30,7 +30,7 @@ function router(req, res) {
     fs.createReadStream(PATH + req.url).pipe(res);
   } else {
     let pathToken;
-    const token_google = parseUrl.pathname.replace("/", "");
+    const token_google = parseUrl.pathname.replace("/", "").split("$")[1];
     decoded = jwt.decode(token_google);
     if (decoded) {
       pathToken = token_google;
@@ -53,7 +53,7 @@ function router(req, res) {
       case "/log-out":
         authController.logOutUser(req, res);
         break;
-      case `/${pathToken}`:
+      case `/login$${pathToken}`:
         authController.loginWithGoogle(req, res, token_google);
         break;
       case "/login":
@@ -66,16 +66,17 @@ function router(req, res) {
           return res.end();
         });
         break;
-        case "/register":
-          fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
-            if (err) {
-              console.log(err.message);
-            }
-            res.writeHead(200, { "Content-Type": "text/html" });
-            res.write(data);
-            return res.end();
-          });
-          break;  
+      case "/register":
+        if (req.method == "GET") {
+          authController.showRegisterPage(req, res);
+        }
+        if (req.method == "POST") {
+          authController.checkRegister(req, res);
+        }
+        break;
+      case `/register$${pathToken}`:
+        authController.registerWithGoogle(req, res, token_google);
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");
