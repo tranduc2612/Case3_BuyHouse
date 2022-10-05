@@ -4,7 +4,7 @@ const cookie = require("cookie");
 class CookieAndSession {
   async writeCookieAndSession(req, res, data) {
     let sessionName = Date.now();
-    let dataSession = [...data];
+    let dataSession = [...data, sessionName];
     fs.writeFile(
       "src/token/" + sessionName + ".txt",
       JSON.stringify(dataSession),
@@ -49,26 +49,26 @@ class CookieAndSession {
       "navbar-nav nav-info-login d-none"
     );
 
-    if (session[session.length - 1] == true) {
+    if (session[session.length - 2] == true) {
       // neu dang nhap bang google
-      data = data.replace("{name-user}", session[2]);
-      data = data.replace("{user-name-sidebar}", session[2]);
+      data = data.replace("{name-user}", session[1]);
+      data = data.replace("{user-name-sidebar}", session[1]);
       data = data.replace(
         `<i class="fa-sharp fa-solid fa-circle-user fs-5"></i>`,
-        `<img class="img__user" src="${session[4]}" alt="user_img">`
+        `<img class="img__user" src="${session[9]}" alt="user_img">`
       );
       data = data.replace(
         `class="side__bar-img" src="https://muaban.net/images/account/avatar-default.png"`,
-        `class="side__bar-img" src="${session[4]}" style="border-radius:50%;"`
+        `class="side__bar-img" src="${session[9]}" style="border-radius:50%;"`
       );
     } else {
       // dang nhap bang tai khoan trong database
-      if (session[2] == null) {
-        data = data.replace("{name-user}", session[4]);
-        data = data.replace("{user-name-sidebar}", session[4]);
+      if (session[1] == null) {
+        data = data.replace("{name-user}", session[3]);
+        data = data.replace("{user-name-sidebar}", session[3]);
       } else {
-        data = data.replace("{name-user}", session[2]);
-        data = data.replace("{user-name-sidebar}", session[2]);
+        data = data.replace("{name-user}", session[1]);
+        data = data.replace("{user-name-sidebar}", session[1]);
       }
     }
 

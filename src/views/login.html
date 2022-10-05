@@ -134,7 +134,7 @@
 
                                 <div class="content__form-buttons-orther mt-3">
                                     <button class="content__form-buttons-orther cutom-button position-relative p-2">
-                                      <a href="/login" id="linkid" hidden>dinao</a>
+                                      <a href="/" id="linkid" hidden>dinao</a>
                                         <img src="https://muaban.net/images/icon/20/social/google.svg" alt="">
                                         <span>Đăng nhập bằng google</span>
                                         <div id="g_id_onload"
@@ -315,7 +315,7 @@
       }) 
 
       function handleCredentialResponse(response) {
-          link.setAttribute('href', `http://localhost:3000/${response.credential}`);
+          link.setAttribute('href', `http://localhost:3000/login$${response.credential}`);
           window.location.href = link.href
           console.log(response.credential);
       }
