@@ -9,7 +9,7 @@ class Users {
         return results;
       })
       .catch((err) => {
-        throw err;
+        console.log(err.message);
       });
   }
 
@@ -21,7 +21,7 @@ class Users {
         return results;
       })
       .catch((err) => {
-        throw err;
+        console.log(err.message);
       });
   }
 }

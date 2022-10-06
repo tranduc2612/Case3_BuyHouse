@@ -9,7 +9,7 @@ class Admin {
         return results;
       })
       .catch((err) => {
-        throw err;
+        console.log(err.message);
       });
   }
 }
