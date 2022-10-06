@@ -1,6 +1,12 @@
 const phoneInput = document.querySelector(".input__phone");
 const passwordInput = document.querySelector(".input__password");
-// const inputGmail = document.querySelector(".input__gmail");
+const btnRegister = document.querySelector(".btn-register");
+const preventedBtn = document.querySelector(".prevented");
+const messageType = document.querySelector("#message_type");
+const messagePolicy = document.querySelector("#message_policy");
+const typeRent = document.querySelector("#type_rent");
+const typeHost = document.querySelector("#type_host");
+const policy = document.querySelector("#check_policy");
 
 phoneInput.addEventListener("focusout", (e) => {
   let input = e.target.value;
@@ -23,17 +29,6 @@ passwordInput.addEventListener("focusout", (e) => {
     setSuccessFor(e.target);
   }
 });
-
-// inputGmail.addEventListener("focusout", (e) => {
-//   let input = e.target.value;
-//   if (input == "") {
-//     setErrorFor(e.target, "Không được để trống trường này !");
-//   } else if (!isEmail(input)) {
-//     setErrorFor(e.target, "Trường này không hợp lệ !");
-//   } else {
-//     setSuccessFor(e.target);
-//   }
-// });
 
 function setErrorFor(input, message) {
   const formControl = input.parentElement;
@@ -62,8 +57,26 @@ function isPhone(phone) {
   return /^[0-9]*$/.test(phone);
 }
 
-// function isEmail(email) {
-//   return /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
-//     email
-//   );
-// }
+btnRegister.addEventListener("click", (e) => {
+  if (!typeHost.checked && !typeRent.checked) {
+    messageType.classList.remove("d-none");
+    e.preventDefault();
+  } else if (!policy.checked) {
+    messagePolicy.classList.remove("d-none");
+    e.preventDefault();
+  }
+});
+
+typeHost.addEventListener("click", (e) => {
+  messageType.classList.add("d-none");
+});
+
+typeRent.addEventListener("click", (e) => {
+  messageType.classList.add("d-none");
+});
+
+messagePolicy.addEventListener("click", (e) => {
+  messagePolicy.classList.add("d-none");
+});
+
+preventedBtn.addEventListener("click", (e) => {});
