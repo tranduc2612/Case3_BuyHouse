@@ -39,6 +39,9 @@ async function router(req, res) {
       case "/":
         siteController.showHomePage(req, res);
         break;
+      case "/home":
+        siteController.showHomePage(req, res);
+        break;
       case "/login":
         if (req.method == "GET") {
           authController.showLoginPage(req, res);
@@ -56,16 +59,6 @@ async function router(req, res) {
       case `/login$${pathToken}`:
         authController.loginWithGoogle(req, res, token_google);
         break;
-      case "/login":
-        fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
-          if (err) {
-            console.log(err.message);
-          }
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.write(data);
-          return res.end();
-        });
-        break;
       case "/register":
         if (req.method == "GET") {
           authController.showRegisterPage(req, res);
@@ -77,29 +70,6 @@ async function router(req, res) {
       case `/register$${pathToken}`:
         authController.registerWithGoogle(req, res, token_google);
         break;
-      default:
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write("<h1>No found page !</h1>");
-        return res.end();
-    }
-  }
-}
-
-        break;
-<<<<<<< HEAD
-=======
-      case "/register":
-        if (req.method == "GET") {
-          authController.showRegisterPage(req, res);
-        }
-        if (req.method == "POST") {
-          authController.checkRegister(req, res);
-        }
-        break;
-      case `/register$${pathToken}`:
-        authController.registerWithGoogle(req, res, token_google);
-        break;
-
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");

@@ -171,13 +171,36 @@ class AuthController {
 
   async registerWithGoogle(req, res, token) {
     const decoded = jwt.decode(token);
-    const userData = await userDB.getListUser();
-    res.end("Check register bang google !");
+    const userData = await userDB.getListUsersByEmail(decoded.email);
+    console.log(decoded);
+    if(userData){
+        userWrong = true;
+        res.statusCode = 302;
+        res.setHeader("Location", "/register");
+        res.end();
+        return;
+    }
+    // else{
+    //   await userDB.insertUser()
+    // }
+  //   for(let i = 0; i < userData.length; i++) {
+  //     if(userData[i].email == decoded.email) {
+  //       userWrong = true;
+  //       res.statusCode = 302;
+  //       res.setHeader("Location", "/register");
+  //       res.end();
+  //       return;
+  //     }
+    
+  //  }
+   await 
+   res.end("Check register bang google !");
   }
 
   async checkRegister(req, res) {
     const inputForm = await this.loadDataInForm(req);
     const userData = await userDB.getListUser();
+    
     console.log(inputForm);
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
@@ -186,9 +209,14 @@ class AuthController {
         res.statusCode = 302;
         res.setHeader("Location", "/register");
         res.end();
+        return;
       }
       // còn lại thì gọi db và insert dữ liệu vào thôi !!!
     }
+    await userDB.insertUser(inputForm);
+    userWrong = false;
+    res.statusCode = 302;
+    res.setHeader("Location", "/login");
     // ở bên front end đã xử lí dữ liệu đầu vào inputForm rồi nên
     // là trong inputForm chắc chắn trả về dữ liệu lên ko cần ktra có rỗng hay không nhé !
     res.end();
