@@ -51,6 +51,18 @@ class Users {
       });
   }
 
+  async insertUserEmail(data) {
+    let sql = `insert into tUser(email,phone,passwordUR) values ('${data.email}','${data.phone}','${data.password}')`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
 
 
 }

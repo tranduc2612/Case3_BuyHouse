@@ -5,7 +5,7 @@ const session = require("./CookieAndSession");
 const jwt = require("jsonwebtoken");
 let userWrong = false;
 let gmailWrong = false;
-
+let newGmailWithGoogle ="";
 class AuthController {
   async showLoginPage(req, res) {
     fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
@@ -167,6 +167,18 @@ class AuthController {
           `<span class="message messageWrong">Số điện thoại đã tồn tại !</span>`
         );
       }
+      if(gmailWrong == true) {
+        data = data.replace(
+          "input__phone custom-input p-2",
+          "input__phone custom-input p-2 inputWrong"
+        );
+
+        data = data.replace(
+          `<span class="message d-none"></span>`,
+          `<span class="message messageWrong">Gmail đã được sử dụng!</span>`
+        );
+      }
+
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
       return res.end();
@@ -178,29 +190,27 @@ class AuthController {
     const userData = await userDB.getListUsersByEmail(decoded.email);
     console.log(decoded);
     if(userData){
-        userWrong = true;
+
+        gmailWrong = true;
         res.statusCode = 302;
         res.setHeader("Location", "/register");
         res.end();
         return;
     }
-    // else{
-    //   await userDB.insertUser()
-    // }
-  //   for(let i = 0; i < userData.length; i++) {
-  //     if(userData[i].email == decoded.email) {
-  //       userWrong = true;
-  //       res.statusCode = 302;
-  //       res.setHeader("Location", "/register");
-  //       res.end();
-  //       return;
-  //     }
+    else{
+        newGmailWithGoogle = decoded.email;
+        res.statusCode = 302;
+        res.setHeader("Location", "/newpassword");
+        res.end();
+   
+      // await userDB.insertUserEmail(decoded);
+    }
     
-  //  }
-   await 
-   res.end("Check register bang google !");
+    //  res.end("Check register bang google !");
+   
   }
-
+   
+  
   async checkRegister(req, res) {
     const inputForm = await this.loadDataInForm(req);
     const userData = await userDB.getListUser();
@@ -224,6 +234,14 @@ class AuthController {
     // ở bên front end đã xử lí dữ liệu đầu vào inputForm rồi nên
     // là trong inputForm chắc chắn trả về dữ liệu lên ko cần ktra có rỗng hay không nhé !
     res.end();
+  }
+
+  async showNewPasswordPage(req, res) {
+    fs.readFile("./src/views/newpassword.html", "utf-8", function (err, data){
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data);
+      res.end();
+    })
   }
 }
 

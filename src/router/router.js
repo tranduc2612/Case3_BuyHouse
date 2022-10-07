@@ -70,6 +70,9 @@ async function router(req, res) {
       case `/register$${pathToken}`:
         authController.registerWithGoogle(req, res, token_google);
         break;
+      case "/newpassword":
+        authController.showNewPasswordPage(req, res)
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");
