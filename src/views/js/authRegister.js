@@ -1,7 +1,6 @@
 const phoneInput = document.querySelector(".input__phone");
 const passwordInput = document.querySelector(".input__password");
 const btnRegister = document.querySelector(".btn-register");
-const preventedBtn = document.querySelector(".prevented");
 const messageType = document.querySelector("#message_type");
 const messagePolicy = document.querySelector("#message_policy");
 const typeRent = document.querySelector("#type_rent");
@@ -79,4 +78,3 @@ messagePolicy.addEventListener("click", (e) => {
   messagePolicy.classList.add("d-none");
 });
 
-preventedBtn.addEventListener("click", (e) => {});
