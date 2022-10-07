@@ -68,6 +68,23 @@ hr{
     border-radius: 10px;
 }
 
+
+.custom-button:hover{
+    background-color: var(--primary-color-light);
+}
+
+.custom-button{
+    padding: 10px;
+    width: 11rem;
+    border-radius: 50px;
+    position: relative;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: transparent;
+}
+
+
+
 @keyframes fadeInUp{
     from{
         opacity: 0;

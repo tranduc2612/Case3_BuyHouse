@@ -96,39 +96,43 @@ class AuthController {
   }
 
   async loginWithGoogle(req, res, token) {
-    const decoded = jwt.decode(token);
-    const userData = await userDB.getListUser();
-    let newData = [];
-    for (let i = 0; i < userData.length; i++) {
-      if (userData[i].email == decoded.email) {
-        newData = [
-          userData[i].userId,
-          userData[i].nameUser
-            ? userData[i].nameUser
-            : (userData[i].nameUser = decoded.name),
-          userData[i].address,
-          userData[i].phone,
-          userData[i].password,
-          userData[i].email,
-          userData[i].cccd,
-          +userData[i].typeDK.toString("hex"),
-          userData[i].dateDK,
-          decoded.picture,
-          true,
-        ];
-        gmailWrong = false;
-        session.writeCookieAndSession(req, res, newData);
-        return;
+    try {
+      const decoded = jwt.decode(token);
+      const userData = await userDB.getListUser();
+      let newData = [];
+      for (let i = 0; i < userData.length; i++) {
+        if (userData[i].email == decoded.email) {
+          newData = [
+            userData[i].userId,
+            userData[i].nameUser
+              ? userData[i].nameUser
+              : (userData[i].nameUser = decoded.name),
+            userData[i].address,
+            userData[i].phone,
+            userData[i].password,
+            userData[i].email,
+            userData[i].cccd,
+            +userData[i].typeDK.toString("hex"),
+            userData[i].dateDK,
+            decoded.picture,
+            true,
+          ];
+          gmailWrong = false;
+          session.writeCookieAndSession(req, res, newData);
+          return;
+        }
       }
+      gmailWrong = true;
+      res.statusCode = 302;
+      res.setHeader("Location", "/login");
+      res.end();
+    } catch (error) {
+      console.log(error.message);
     }
-    gmailWrong = true;
-    res.statusCode = 302;
-    res.setHeader("Location", "/login");
-    res.end();
   }
 
   async showInfoUser(req, res) {
-    let isLogin = session.checkingSession(req, res);
+    let isLogin = session.checkingSession(req);
     if (isLogin) {
       fs.readFile("./src/views/infouser.html", "utf-8", async (err, data) => {
         if (err) {
