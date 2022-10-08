@@ -1,0 +1,202 @@
+.slider{
+    display: flex;
+    margin: auto;
+}
+
+.slider__container{
+    margin:auto;
+    width:80%;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#prevBtn,#nextBtn{
+    position: absolute;
+    padding:15px;
+    top:40%;
+    border-radius: 50%;
+    border: 0.4px solid var(--gray-light);
+    opacity: 60%;
+    transform: scale(0.7);
+    background-color: #fbfbfd;
+    transition: all 0.3s ease-in-out;
+}
+
+
+#nextBtn{
+    right: 5%;
+}
+
+#nextBtn:hover{
+    transform: scale(1);
+    opacity: 100%;
+}
+
+#prevBtn:hover{
+    opacity: 100%;
+    transform: scale(1);
+}
+
+#prevBtn{
+    left: 5%;
+}
+
+#prevBtn:hover .prevBtn-icon{
+    color:var(--primary-color);
+}
+
+#nextBtn:hover .nextBtn-icon{
+    color:var(--primary-color);
+}
+
+
+/* list__house */
+
+.card__house{
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+
+.card__house:hover{
+    transform: scale(1.1);
+    background-color: var(--primary-color-hover);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+.card__house:hover .card-title{
+    color: var(--primary-color);
+}
+
+.card-text-price{
+    color:var(--primary-color);
+    font-weight: bold;
+}
+
+.card-text-date{
+    color:#b1b3b5;
+}
+
+.form__filter{
+    color:#f5f7f9;
+    width: 100%;
+}
+
+.form-custom{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 30px 30px 30px 20px;
+}
+
+.input__price{
+    margin-top:50px
+}
+
+.input__price-text{
+    color:#333;
+}
+
+.display__price{
+    color:#333;
+}
+
+input[type=range].input__price-range {
+    width: 100%;
+    margin: 6.15px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+  }
+  input[type=range].input__price-range:focus {
+    outline: none;
+  }
+  input[type=range].input__price-range::-webkit-slider-runnable-track {
+    background: rgba(255, 147, 98, 0.5);
+    border: 0;
+    border-radius: 19.3px;
+    width: 100%;
+    height: 9.7px;
+    cursor: pointer;
+  }
+  input[type=range].input__price-range::-webkit-slider-thumb {
+    margin-top: -6.15px;
+    width: 25px;
+    height: 22px;
+    background: #ff641e;
+    border: 6.5px solid rgba(37, 177, 188, 0);
+    border-radius: 11px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  input[type=range].input__price-range:focus::-webkit-slider-runnable-track {
+    background: #ffba9a;
+  }
+  input[type=range].input__price-range::-moz-range-track {
+    background: rgba(255, 147, 98, 0.5);
+    border: 0;
+    border-radius: 19.3px;
+    width: 100%;
+    height: 9.7px;
+    cursor: pointer;
+  }
+  input[type=range].input__price-range::-moz-range-thumb {
+    width: 25px;
+    height: 22px;
+    background: #ff641e;
+    border: 6.5px solid rgba(37, 177, 188, 0);
+    border-radius: 11px;
+    cursor: pointer;
+  }
+  input[type=range].input__price-range::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 6.15px 0;
+    color: transparent;
+    width: 100%;
+    height: 9.7px;
+    cursor: pointer;
+  }
+  input[type=range].input__price-range::-ms-fill-lower {
+    background: #ff6c2a;
+    border: 0;
+    border-radius: 38.6px;
+  }
+  input[type=range].input__price-range::-ms-fill-upper {
+    background: rgba(255, 147, 98, 0.5);
+    border: 0;
+    border-radius: 38.6px;
+  }
+  input[type=range].input__price-range::-ms-thumb {
+    width: 25px;
+    height: 22px;
+    background: #ff641e;
+    border: 6.5px solid rgba(37, 177, 188, 0);
+    border-radius: 11px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  input[type=range].input__price-range:focus::-ms-fill-lower {
+    background: rgba(255, 147, 98, 0.5);
+  }
+  input[type=range].input__price-range:focus::-ms-fill-upper {
+    background: #ffba9a;
+  }
+  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+  how to remove the virtical space around the range input in IE*/
+  @supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type=range].input__price-range {
+      margin: 0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+  }
+
+
+
+
+
+
+  
