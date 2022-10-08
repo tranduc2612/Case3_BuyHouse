@@ -53,27 +53,4 @@ img {
     color:var(--primary-color);
 }
 
-.card__house{
-    cursor: pointer;
-    transition: all 0.3s linear;
-}
 
-.card__house:hover{
-    transform: scale(1.1);
-    background-color: var(--primary-color-hover);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-
-.card__house:hover .card-title{
-    color: var(--primary-color);
-}
-
-.card-text-price{
-    color:var(--primary-color);
-    font-weight: bold;
-}
-
-.card-text-date{
-    color:#b1b3b5;
-}
