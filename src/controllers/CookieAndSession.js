@@ -72,6 +72,18 @@ class CookieAndSession {
       }
     }
 
+    console.log(session[7]);
+    if (session[7] == 1) {
+      data = data.replace(
+        '<i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin',
+        '<i class="fa-solid fa-list"></i> Xem bài đăng'
+      );
+
+      data = data.replace(
+        'a class="button__post text-center" href="/create-post"',
+        'a class="button__post text-center" href="/category"'
+      );
+    }
     data = data.replace(
       "navbar-nav nav-info-user d-none",
       "navbar-nav nav-info-user"

@@ -77,6 +77,17 @@ function router(req, res) {
       case `/register$${pathToken}`:
         authController.registerWithGoogle(req, res, token_google);
         break;
+      case "/user-info":
+        break;
+      case "/category":
+        siteController.showCategoryPage(req, res);
+        break;
+      case "/detail-post":
+        siteController.showDetailPost(req, res);
+        break;
+      case "/create-post":
+        siteController.showCreatePost(req, res);
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");
