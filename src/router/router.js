@@ -78,8 +78,17 @@ async function router(req, res) {
           authController.registerNewPassword(req, res,token_google);
         }
         break;
-      case "/success":
-        
+      case "/user-info":
+        break;
+      case "/category":
+        siteController.showCategoryPage(req, res);
+        break;
+      case "/detail-post":
+        siteController.showDetailPost(req, res);
+        break;
+      case "/create-post":
+        siteController.showCreatePost(req, res);
+
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });

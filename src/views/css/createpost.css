@@ -1,0 +1,36 @@
+.form-cutom{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 60%;
+    margin:0 auto
+}
+
+.form__input{
+    width:70%;
+}
+
+.form__input:focus{
+    outline: none
+}
+
+.title__create-post{
+    color: var(--primary-color);
+}
+
+.form__input-phone::-webkit-outer-spin-button,
+.form__input-phone::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.form__input-phone[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form__price::after{
+    content:"VNĐ";
+    position: absolute;
+    color: color;
+    right: 0;
+    margin-right:25px;
+}

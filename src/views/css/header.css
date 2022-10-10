@@ -57,13 +57,21 @@
     background-color:var(--primary-color-light);
 }
 
-.custom-text{
-    left: 5%;
-}
+
 
 .img__user{
     border-radius: 50%;
     width:20px; 
     height:20px;
     transform:translateY(-5px);
+}
+
+#nav__direction::after{
+    content: "";
+    height: 60%;
+    width: 1px;
+    top: 20%;
+    left: 41%;
+    background-color: var(--gray-light);
+    position: absolute;
 }
