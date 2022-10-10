@@ -12,8 +12,8 @@ create table tUser(
     adminId int,
     nameUser  varchar(20),
     address varchar(50),
-    phone varchar(20) not null,
-    passwordUR varchar(20) not null,
+    phone varchar(20),
+    passwordUR varchar(20),
     email varchar(70),
     cccd varchar(20),
     typeDK bit,
@@ -39,13 +39,14 @@ insert tAdmin(accountAdmin,passwordAdmin) values
 -- 1 la chu
 -- 0 la thue
 
+
 insert tUser(email,phone,passwordUR,typeDK) values
-('linh@gmail.com','0862861396','linh123',1),
-('minhanh@gamil.com','0978363413','minhanh123',0);
+('linhninh2@gmail.com','0862861396','linh123',0);
 insert tUser(email,phone,passwordUR,typeDK) values('mintduc2612@gmail.com','0367218700','duc123',1);
-delete from tUser
-where email = 'linhninh2@gmail.com';
 select * from tUser;
+drop table tUser;
+truncate table tUser;
+
 
 
 

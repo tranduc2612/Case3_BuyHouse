@@ -71,7 +71,15 @@ async function router(req, res) {
         authController.registerWithGoogle(req, res, token_google);
         break;
       case "/newpassword":
-        authController.showNewPasswordPage(req, res)
+        if (req.method == "GET"){
+          authController.showNewPasswordPage(req, res);
+        }
+        if (req.method == "POST") {
+          authController.registerNewPassword(req, res,token_google);
+        }
+        break;
+      case "/success":
+        
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });

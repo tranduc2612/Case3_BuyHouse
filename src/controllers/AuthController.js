@@ -5,7 +5,7 @@ const session = require("./CookieAndSession");
 const jwt = require("jsonwebtoken");
 let userWrong = false;
 let gmailWrong = false;
-let newGmailWithGoogle ="";
+
 class AuthController {
   async showLoginPage(req, res) {
     fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
@@ -187,10 +187,12 @@ class AuthController {
 
   async registerWithGoogle(req, res, token) {
     const decoded = jwt.decode(token);
-    const userData = await userDB.getListUsersByEmail(decoded.email);
+    const userData = await userDB.getListUsersByEmail(decoded);
     console.log(decoded);
-    if(userData){
-
+    
+    // console.log(decoded);
+    // console.log(userData);
+    if(userData.length){
         gmailWrong = true;
         res.statusCode = 302;
         res.setHeader("Location", "/register");
@@ -198,24 +200,39 @@ class AuthController {
         return;
     }
     else{
-        newGmailWithGoogle = decoded.email;
-        res.statusCode = 302;
-        res.setHeader("Location", "/newpassword");
-        res.end();
-   
+        // newGmailWithGoogle = decoded.email;
+      gmailWrong = false;
+      session.writeSessionGG(req,res,decoded.email);
+      // res.statusCode = 302;
+      //   res.setHeader("Location", "/newpassword");
+      //   res.end();
       // await userDB.insertUserEmail(decoded);
-    }
-    
-    //  res.end("Check register bang google !");
-   
+    } 
   }
-   
-  
+
+
+
+  async registerNewPassword(req, res){
+    let registerGG ={};
+    let emailGG = session.checkingSession(req);
+    const inputForm = await this.loadDataInForm(req);
+    console.log(inputForm)
+    registerGG = {email: emailGG, password: inputForm.password, type: inputForm.type};
+    console.log(emailGG);
+    console.log(registerGG);
+   await userDB.insertUserEmail(registerGG);
+    session.deleteSession(req);
+   res.statusCode = 302;
+        res.setHeader("Location", "/login");
+        res.end();
+
+  }
+
   async checkRegister(req, res) {
     const inputForm = await this.loadDataInForm(req);
     const userData = await userDB.getListUser();
     
-    console.log(inputForm);
+    // console.log(inputForm);
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
         // số điện thoại đã tồn tại
@@ -242,6 +259,7 @@ class AuthController {
       res.write(data);
       res.end();
     })
+
   }
 }
 

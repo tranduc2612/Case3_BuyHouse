@@ -13,8 +13,8 @@ class Users {
       });
   }
 
-  async getListUsersByEmail(email){
-    let sql = `select * from tUser where email = ${email}`;
+  async getListUsersByEmail(data){
+    let sql = `select phone,passwordUR from tUser where email = '${data.email}'`;
     return await db
       .runMySQL(sql)
       .then((results) => {
@@ -24,20 +24,6 @@ class Users {
         console.log(err.message);
       });
   }
-
-  async getListUsersByPhone(phone){
-    let sql = `select * from tUser where phone = ${phone}`;
-    return await db
-      .runMySQL(sql)
-      .then((results) => {
-        return results;
-      })
-      .catch((err) => {
-        throw err;
-      });
-  }
-
-  
 
   async insertUser(data) {
     let sql = `insert into tUser(phone,passwordUR) values ('${data.phone}','${data.password}')`;
@@ -52,7 +38,7 @@ class Users {
   }
 
   async insertUserEmail(data) {
-    let sql = `insert into tUser(email,phone,passwordUR) values ('${data.email}','${data.phone}','${data.password}')`;
+    let sql = `insert into tUser(email,passwordUR,typeDK) values ('${data.email}','${data.password}',${data.type})`;
     return await db
       .runMySQL(sql)
       .then((results) => {
