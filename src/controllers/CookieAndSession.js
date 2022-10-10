@@ -26,6 +26,38 @@ class CookieAndSession {
     );
   }
 
+  async writeSessionGG(req, res, emailGG){
+    let sessionName = Date.now();
+    fs.writeFile(
+      "src/token/" + sessionName + ".txt",
+      JSON.stringify(emailGG),
+      (err) => {
+        if (err) {
+          console.log(err.message);
+        }
+        res.setHeader(
+          "Set-Cookie",
+          cookie.serialize("key", JSON.stringify(sessionName), {
+            httpOnly: true,
+            maxAge: 60 * 60 * 24 * 7, // 1 week
+          })
+        );
+        res.statusCode = 302;
+        res.setHeader("Location", "/newpassword");
+        res.end();
+      }
+    );
+  }
+
+  checkingSessionGG(req) {
+    let cookies = req.headers.cookie
+      ? cookie.parse(req.headers.cookie).google
+      : "";
+    let tokenData = fs.existsSync("src/token/" + cookies + ".txt")
+      ? JSON.parse(fs.readFileSync("src/token/" + cookies + ".txt", "utf-8"))
+      : false;
+    return tokenData;
+  }
   checkingSession(req) {
     let cookies = req.headers.cookie
       ? cookie.parse(req.headers.cookie).key

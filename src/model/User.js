@@ -13,8 +13,8 @@ class Users {
       });
   }
 
-  async insertUser(data) {
-    let sql = "select * from tUser";
+  async getListUsersByEmail(data){
+    let sql = `select phone,passwordUR from tUser where email = '${data.email}'`;
     return await db
       .runMySQL(sql)
       .then((results) => {
@@ -24,6 +24,33 @@ class Users {
         console.log(err.message);
       });
   }
+
+  async insertUser(data) {
+    let sql = `insert into tUser(phone,passwordUR) values ('${data.phone}','${data.password}')`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async insertUserEmail(data) {
+    let sql = `insert into tUser(email,passwordUR,typeDK) values ('${data.email}','${data.password}',${data.type})`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+
+
 }
 
 module.exports = new Users();
