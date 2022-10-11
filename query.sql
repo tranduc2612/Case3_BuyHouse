@@ -1,4 +1,5 @@
 create database BuyHouse;
+
 use BuyHouse;
 
 create table tAdmin(
@@ -18,6 +19,7 @@ create table tUser(
     cccd varchar(20),
     typeDK bit,
     dateDK date,
+    gender varchar(20),
     constraint foreign key (adminId) references tAdmin(adminId)
 );
 
@@ -40,14 +42,14 @@ insert tAdmin(accountAdmin,passwordAdmin) values
 -- 0 la thue
 
 
-insert tUser(email,phone,passwordUR,typeDK) values
-('linhninh2@gmail.com','0862861396','linh123',0);
-insert tUser(email,phone,passwordUR,typeDK) values('mintduc2612@gmail.com','0367218700','duc123',1);
+insert tUser(email,phone,passwordUR,typeDK,gender) values
+('linhninh2@gmail.com','0862861396','linh123',0,'nu');
+insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) 
+values('mintduc2612@gmail.com','0367218700','duc123',1,'nam','Phường Cẩm Sơn,thành phố Cẩm Phả,tỉnh Quảng Ninh','022202002528','Trần Minh Đức');
 select * from tUser;
 drop table tUser;
 truncate table tUser;
-
-
+where userId = 1;
 
 
 

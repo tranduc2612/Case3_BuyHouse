@@ -26,7 +26,7 @@ class CookieAndSession {
     );
   }
 
-  async writeSessionGG(req, res, emailGG){
+  async writeSessionGG(req, res, emailGG) {
     let sessionName = Date.now();
     fs.writeFile(
       "src/token/" + sessionName + ".txt",
@@ -37,7 +37,7 @@ class CookieAndSession {
         }
         res.setHeader(
           "Set-Cookie",
-          cookie.serialize("key", JSON.stringify(sessionName), {
+          cookie.serialize("google", JSON.stringify(sessionName), {
             httpOnly: true,
             maxAge: 60 * 60 * 24 * 7, // 1 week
           })
@@ -58,6 +58,22 @@ class CookieAndSession {
       : false;
     return tokenData;
   }
+
+  overrideSession(req, data) {
+    let cookies = req.headers.cookie
+      ? cookie.parse(req.headers.cookie).key
+      : "";
+    fs.writeFile(
+      "src/token/" + cookies + ".txt",
+      JSON.stringify(data),
+      (err) => {
+        if (err) {
+          console.log(err.message);
+        }
+      }
+    );
+  }
+
   checkingSession(req) {
     let cookies = req.headers.cookie
       ? cookie.parse(req.headers.cookie).key
@@ -75,6 +91,13 @@ class CookieAndSession {
     await fs.unlinkSync("src/token/" + cookies + ".txt");
   }
 
+  async deleteSessionGG(req) {
+    let cookies = req.headers.cookie
+      ? cookie.parse(req.headers.cookie).google
+      : "";
+    await fs.unlinkSync("src/token/" + cookies + ".txt");
+  }
+
   async changeFontEnd(data, session) {
     data = data.replace(
       "navbar-nav nav-info-login",
@@ -87,11 +110,11 @@ class CookieAndSession {
       data = data.replace("{user-name-sidebar}", session[1]);
       data = data.replace(
         `<i class="fa-sharp fa-solid fa-circle-user fs-5"></i>`,
-        `<img class="img__user" src="${session[9]}" alt="user_img">`
+        `<img class="img__user" src="${session[10]}" alt="user_img">`
       );
       data = data.replace(
         `class="side__bar-img" src="https://muaban.net/images/account/avatar-default.png"`,
-        `class="side__bar-img" src="${session[9]}" style="border-radius:50%;"`
+        `class="side__bar-img" src="${session[10]}" style="border-radius:50%;"`
       );
     } else {
       // dang nhap bang tai khoan trong database
@@ -103,8 +126,6 @@ class CookieAndSession {
         data = data.replace("{user-name-sidebar}", session[1]);
       }
     }
-
-    console.log(session[7]);
     if (session[7] == 1) {
       data = data.replace(
         '<i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin',
