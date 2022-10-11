@@ -51,7 +51,12 @@ async function router(req, res) {
         }
         break;
       case "/info-user":
-        authController.showInfoUser(req, res);
+        if (req.method == "GET") {
+          authController.showInfoUser(req, res);
+        }
+        if (req.method == "POST") {
+          authController.updateInfo(req, res, token_google);
+        }
         break;
       case "/log-out":
         authController.logOutUser(req, res);
@@ -71,14 +76,12 @@ async function router(req, res) {
         authController.registerWithGoogle(req, res, token_google);
         break;
       case "/newpassword":
-        if (req.method == "GET"){
+        if (req.method == "GET") {
           authController.showNewPasswordPage(req, res);
         }
         if (req.method == "POST") {
-          authController.registerNewPassword(req, res,token_google);
+          authController.registerNewPassword(req, res, token_google);
         }
-        break;
-      case "/user-info":
         break;
       case "/category":
         siteController.showCategoryPage(req, res);
@@ -88,7 +91,6 @@ async function router(req, res) {
         break;
       case "/create-post":
         siteController.showCreatePost(req, res);
-
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });

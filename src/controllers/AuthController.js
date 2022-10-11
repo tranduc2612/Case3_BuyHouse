@@ -59,6 +59,9 @@ class AuthController {
           userData[i].cccd,
           +userData[i].typeDK.toString("hex"),
           userData[i].dateDK,
+          userData[i].gender,
+          "",
+          userData.passwordUR,
           false,
         ];
         userWrong = false;
@@ -114,7 +117,9 @@ class AuthController {
             userData[i].cccd,
             +userData[i].typeDK.toString("hex"),
             userData[i].dateDK,
+            userData[i].gender,
             decoded.picture,
+            userData.passwordUR,
             true,
           ];
           gmailWrong = false;
@@ -140,6 +145,48 @@ class AuthController {
         }
         let newData = await session.changeFontEnd(data, isLogin);
         data = data.replace(data, newData);
+        data = data.replace(
+          `<input class="custom-input input__value input__name" type="text" name="name" value="Trần Minh Đức" disabled>`,
+          `<input class="custom-input input__value input__name" type="text" name="name" value="${
+            isLogin[1] ? isLogin[1] : "Cần được cập nhật"
+          }" disabled>`
+        );
+        if (isLogin[9] == "nam") {
+          data = data.replace(
+            '<option value="nam">Nam</option>',
+            '<option value="nam" selected>Nam</option>'
+          );
+        } else if (isLogin[9] == "nu") {
+          data = data.replace(
+            '<option value="nu">Nữ</option>',
+            '<option value="nu" selected>Nữ</option>'
+          );
+        } else if (isLogin[9] == "gioitinhkhac") {
+          data = data.replace(
+            '<option value="gioitinhkhac">giới tính khác</option>',
+            '<option value="gioitinhkhac" selected>giới tính khác</option>'
+          );
+        }
+        if (isLogin[2]) {
+          data = data.replace(
+            '<input class="custom-input input__value input__date" type="text" name="addressBorn" value="Cần cập nhật" disabled>',
+            `<input class="custom-input input__value input__date" type="text" name="addressBorn" value="${isLogin[2]}" disabled>`
+          );
+        }
+
+        if (isLogin[6]) {
+          data = data.replace(
+            '<input class="custom-input input__value input__identifier" type="text" name="identifier" value="##########" disabled>',
+            `<input class="custom-input input__value input__identifier" type="text" name="identifier" value="${isLogin[6]}" disabled>`
+          );
+        }
+
+        if (isLogin[5]) {
+          data = data.replace(
+            '<input class="custom-input input__value input__email" type="text" name="email" value="Cần Được cập nhât" disabled>',
+            `<input class="custom-input input__value input__email" type="text" name="email" value="${isLogin[5]}" disabled>`
+          );
+        }
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
         return res.end();
@@ -151,10 +198,70 @@ class AuthController {
     }
   }
 
+  async updateInfo(req, res, token) {
+    const decoded = jwt.decode(token);
+    const userData = await userDB.getListUser();
+    const inputForm = await this.loadDataInForm(req);
+    const idUser = await session.checkingSession(req)[0];
+    let strQuery = "update tUser set ";
+    let currentData = [
+      userData[idUser - 1].userId,
+      userData[idUser - 1].nameUser,
+      userData[idUser - 1].address,
+      userData[idUser - 1].phone,
+      userData[idUser - 1].password,
+      userData[idUser - 1].email,
+      userData[idUser - 1].cccd,
+      +userData[idUser - 1].typeDK.toString("hex"),
+      userData[idUser - 1].dateDK,
+      userData[idUser - 1].gender,
+      decoded ? decoded.picture : "",
+      userData.passwordUR,
+      false,
+    ];
+    if (inputForm.gender) {
+      strQuery += `,gender = '${inputForm.gender}'`;
+      currentData[9] = inputForm.gender;
+    }
+
+    if (inputForm.name) {
+      strQuery += `,nameUser = '${inputForm.name}'`;
+      currentData[1] = inputForm.name;
+    }
+    if (inputForm.phone) {
+      strQuery += `,phone = '${inputForm.phone}'`;
+      currentData[3] = inputForm.phone;
+    }
+    if (inputForm.email) {
+      strQuery += `,email = '${inputForm.email}'`;
+      currentData[5] = inputForm.email;
+    }
+
+    if (inputForm.addressBorn) {
+      strQuery += `,address = '${inputForm.addressBorn}'`;
+      currentData[2] = inputForm.addressBorn;
+    }
+
+    if (inputForm.identifier) {
+      strQuery += `,cccd = '${inputForm.identifier}'`;
+      currentData[6] = inputForm.identifier;
+    }
+    strQuery += ` where userId = ${idUser};`;
+    strQuery = strQuery.replace("set ,", "set ");
+    session.overrideSession(req, currentData);
+    userDB.updateUser(strQuery);
+    res.statusCode = 302;
+    res.setHeader("Location", "/info-user");
+    res.end();
+  }
+
   async showRegisterPage(req, res) {
     fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
       if (err) {
         console.log(err.message);
+      }
+      if (session.checkingSessionGG(req)) {
+        session.deleteSessionGG(req);
       }
       if (userWrong == true) {
         data = data.replace(
@@ -167,7 +274,7 @@ class AuthController {
           `<span class="message messageWrong">Số điện thoại đã tồn tại !</span>`
         );
       }
-      if(gmailWrong == true) {
+      if (gmailWrong == true) {
         data = data.replace(
           "input__phone custom-input p-2",
           "input__phone custom-input p-2 inputWrong"
@@ -188,50 +295,37 @@ class AuthController {
   async registerWithGoogle(req, res, token) {
     const decoded = jwt.decode(token);
     const userData = await userDB.getListUsersByEmail(decoded);
-    console.log(decoded);
-    
-    // console.log(decoded);
-    // console.log(userData);
-    if(userData.length){
-        gmailWrong = true;
-        res.statusCode = 302;
-        res.setHeader("Location", "/register");
-        res.end();
-        return;
-    }
-    else{
-        // newGmailWithGoogle = decoded.email;
+    if (userData.length) {
+      gmailWrong = true;
+      res.statusCode = 302;
+      res.setHeader("Location", "/register");
+      res.end();
+    } else {
       gmailWrong = false;
-      session.writeSessionGG(req,res,decoded.email);
-      // res.statusCode = 302;
-      //   res.setHeader("Location", "/newpassword");
-      //   res.end();
-      // await userDB.insertUserEmail(decoded);
-    } 
+      session.writeSessionGG(req, res, decoded.email);
+    }
   }
 
-
-
-  async registerNewPassword(req, res){
-    let registerGG ={};
-    let emailGG = session.checkingSession(req);
+  async registerNewPassword(req, res) {
+    let registerGG = {};
+    let emailGG = session.checkingSessionGG(req);
     const inputForm = await this.loadDataInForm(req);
-    console.log(inputForm)
-    registerGG = {email: emailGG, password: inputForm.password, type: inputForm.type};
-    console.log(emailGG);
-    console.log(registerGG);
-   await userDB.insertUserEmail(registerGG);
-    session.deleteSession(req);
-   res.statusCode = 302;
-        res.setHeader("Location", "/login");
-        res.end();
-
+    registerGG = {
+      email: emailGG,
+      password: inputForm.password,
+      type: inputForm.type,
+    };
+    await userDB.insertUserEmail(registerGG);
+    session.deleteSessionGG(req);
+    res.statusCode = 302;
+    res.setHeader("Location", "/login");
+    res.end();
   }
 
   async checkRegister(req, res) {
     const inputForm = await this.loadDataInForm(req);
     const userData = await userDB.getListUser();
-    
+
     // console.log(inputForm);
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
@@ -254,12 +348,23 @@ class AuthController {
   }
 
   async showNewPasswordPage(req, res) {
-    fs.readFile("./src/views/newpassword.html", "utf-8", function (err, data){
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(data);
+    let emailGG = session.checkingSessionGG(req);
+    if (emailGG) {
+      fs.readFile(
+        "./src/views/newpassword.html",
+        "utf-8",
+        function (err, data) {
+          res.writeHead(200, { "Content-Type": "text/html" });
+          res.write(data);
+          res.end();
+          return;
+        }
+      );
+    } else {
+      res.statusCode = 302;
+      res.setHeader("Location", "/login");
       res.end();
-    })
-
+    }
   }
 }
 

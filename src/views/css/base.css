@@ -70,7 +70,9 @@ hr{
 }
 
 
-
+.bg-white{
+    background-color:#fff;
+}
 
 .custom-button:hover{
     background-color: var(--primary-color-light);
