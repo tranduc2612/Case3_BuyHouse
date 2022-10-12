@@ -13,7 +13,7 @@ class Users {
       });
   }
 
-  async getListUsersByEmail(data){
+  async getListUsersByEmail(data) {
     let sql = `select phone,passwordUR from tUser where email = '${data.email}'`;
     return await db
       .runMySQL(sql)
@@ -49,8 +49,17 @@ class Users {
       });
   }
 
-
-
+  async updateUser(stringQuery) {
+    let sql = stringQuery;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 }
 
 module.exports = new Users();

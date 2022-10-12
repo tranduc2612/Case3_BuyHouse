@@ -1,4 +1,5 @@
 create database BuyHouse;
+
 use BuyHouse;
 
 create table tAdmin(
@@ -18,6 +19,7 @@ create table tUser(
     cccd varchar(20),
     typeDK bit,
     dateDK date,
+    gender varchar(20),
     constraint foreign key (adminId) references tAdmin(adminId)
 );
 alter table tUser
@@ -39,6 +41,7 @@ insert tAdmin(accountAdmin,passwordAdmin) values
 ('admin','admin');
 -- 1 la chu
 -- 0 la thue
+
 
 
 insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
@@ -66,6 +69,7 @@ Phòng trong 42m², hiên 21m², sân trước 27m².
 Phù hợp kinh doanh siêu thị, dạy học, kho hàng, nhiều loại hình khác...'),
 (2,'2018-12-11','Tân Chánh Hiệp - Quận 12 - TPHCM',25000000,'https://cloud.muaban.net/images/2022/09/28/052/0f1f573e89594bc49e03e4557baf7ab0.jpg','Cho thuê mặt bằng mặt tiền 146 Nguyễn Ảnh Thủ, P.Tân Chánh Hiệp, Q12
 Ngang 7x12m, giá 25 triệu')
+
 
 
 

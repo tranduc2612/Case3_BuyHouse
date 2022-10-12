@@ -5,7 +5,7 @@ const postHouse = require('../model/PostHouse');
 
 class SiteController {
   async showHomePage(req, res) {
-    let isLogin = session.checkingSession(req, res);
+    let isLogin = session.checkingSession(req);
     fs.readFile("./src/views/home.html", "utf-8", async (err, data) => {
       if (err) {
         console.log(err.message);
@@ -13,6 +13,10 @@ class SiteController {
       if (isLogin) {
         let newData = await session.changeFontEnd(data, isLogin);
         data = data.replace(data, newData);
+      }
+      
+      if (session.checkingSessionGG(req)) {
+        session.deleteSessionGG(req);
       }
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
