@@ -139,3 +139,4 @@ values(2,'https://cloud.muaban.net/images/2022/10/03/594/627f903d015d4e2c870d10c
 select title, cost, datePost, url from Post
 join I
 
+
