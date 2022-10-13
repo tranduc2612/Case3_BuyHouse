@@ -167,10 +167,11 @@ class AuthController {
             '<option value="gioitinhkhac" selected>giới tính khác</option>'
           );
         }
+
         if (isLogin[2]) {
           data = data.replace(
-            '<input class="custom-input input__value input__date" type="text" name="addressBorn" value="Cần cập nhật" disabled>',
-            `<input class="custom-input input__value input__date" type="text" name="addressBorn" value="${isLogin[2]}" disabled>`
+            '<input class="custom-input input__value input__address" type="text" name="addressBorn" value="Cần cập nhật" disabled>',
+            `<input class="custom-input input__value input__address" type="text" name="addressBorn" value="${isLogin[2]}" disabled>`
           );
         }
 
