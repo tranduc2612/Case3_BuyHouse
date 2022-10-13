@@ -77,8 +77,21 @@
             <div class="col-8">
                 <form method="post" action="/noitify">
                     <div class="post__detail d-flex flex-column align-center">
-                        <div class="wrap-img m-auto">
-                            <img src="https://cloud.muaban.net/images/2022/09/27/139/9b2bca3b78d74544b95074f81fdff19b.jpg" alt="#" width="100%" height="500px">
+                        <div class="wrap-img position-relative" style="width: 100%;height: 500px;" data-carousel>
+                          <button class="post__btn-slider prev position-absolute" data-carousel-button="prev"><i class="fa-solid fa-chevron-left"></i></button>
+                          <button class="post__btn-slider next position-absolute" data-carousel-button="next"><i class="fa-solid fa-chevron-right"></i></button>
+                            <ul data-slides>
+                              <li class="post__slider position-absolute" data-active>
+                                <img src="https://cloud.muaban.net/images/2022/09/27/139/9b2bca3b78d74544b95074f81fdff19b.jpg" alt="#" width="100%" height="500px">
+                              </li>
+                              <li class="post__slider position-absolute">
+                                <img src="https://cloud.muaban.net/images/2022/09/21/363/c81ec0974c944ee6b82716aa1056b7e2.jpg" alt="#" width="100%" height="500px">
+                              </li>
+                              <li class="post__slider position-absolute">
+                                <img src="https://cloud.muaban.net/images/2022/09/22/299/2e0ded8f30bf4c0b8deb9c6c9f15209d.jpg" alt="#" width="100%" height="500px">
+                              </li>
+                            </ul>
+                            
                         </div>
                         <h4 class="post__title mt-4">BánLô 62.3m LKề Khu Tên Lửa-Hỗ Trợ Vay NgânHàng 70%+Tặng GPXD 20 Triệu</h4>
                         <h2 class="post__price mt-2">3 tỉ 410 triệu</h2>

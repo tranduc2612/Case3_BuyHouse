@@ -15,24 +15,21 @@
     background-color:#d3eef7;
 }
 
-.post__detail{
-    position:relative;
-}
-
 .wrap-img::after{
     content: "";
     position: absolute;
     width: 1px;
-    height: 60%;
+    height: 100%;
     right: 0;
     background-color: #eeeff1;
 }
+
 
 .wrap-img::before{
     content: "";
     position: absolute;
     width: 1px;
-    height: 60%;
+    height: 100%;
     left: 0;
     background-color: #eeeff1;
 }
@@ -55,4 +52,46 @@
 .button__info:hover{
     background-color: #ecf6fe;
     color: #0f79d5;
+}
+
+/* slider */
+
+.post__slider{
+    opacity: 0;
+    inset:0;
+    left:20%;
+    right:20%;
+    transition: all 0.5s ease-in-out;
+}
+
+.post__slider > img{
+    object-fit: contain;
+}
+
+.post__slider[data-active]{
+    opacity: 1;
+}
+
+.post__btn-slider{
+    top:50%;
+    transform: translateY(-50%);
+    border-radius:50%;
+    padding:10px;
+    border:transparent;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+}
+
+.post__btn-slider:hover{
+    transform: scale(1.5);
+    background-color: #fff;
+    border:1px solid var(--primary-color-hover);
+}
+
+.post__btn-slider.prev{
+    left:1rem;
+}
+
+.post__btn-slider.next{
+    right:1rem;
 }
