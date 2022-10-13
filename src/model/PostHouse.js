@@ -2,7 +2,7 @@ const db = require('./DBConnect');
 
 class PostHouse{
     async getListPost(){
-        let sql = "select  title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by title";
+        let sql = "select postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by title";
         return await db
       .runMySQL(sql)
       .then((results) => {
