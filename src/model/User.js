@@ -60,6 +60,18 @@ class Users {
         throw err;
       });
   }
+
+  // async updatePassword(sql){
+  //   let sql = stringQuery;
+  //   return await db
+  //     .runMySQL(sql)
+  //     .then((results) => {
+  //       return results;
+  //     })
+  //     .catch((err) => {
+  //       throw err;
+  //     });
+  // }
 }
 
 module.exports = new Users();
