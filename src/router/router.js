@@ -83,6 +83,9 @@ async function router(req, res) {
           authController.registerNewPassword(req, res, token_google);
         }
         break;
+      case "/changepassword":
+        
+        break;
       case "/category":
         siteController.showCategoryPage(req, res);
         break;
