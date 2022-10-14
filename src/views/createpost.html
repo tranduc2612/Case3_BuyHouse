@@ -96,10 +96,11 @@
               <input class="form__input" type="" name="form__input-address" value="" placeholder="Địa chỉ">       
             </div>
 
-            <div class="form__URL d-flex justify-content-between align-items-center mb-4">
+            <div class="form__URL d-flex justify-content-between align-items-center mb-3">
               <label for="form__input-URL">URL img</label>       
-              <input class="form__input" type="" name="form__input-URL" value="" placeholder="URL điền vào cách nhau 1 dấu phẩy duy nhất"> 
+              <input class="form__input input_url" type="" name="form__input-URL" value="" placeholder="URL điền vào cách nhau 1 dấu phẩy duy nhất"> 
             </div>
+            <span id="message_url" class="message messageWrong mt-1 mb-4 position-relative d-none">Phải điền url !</span>
 
             <div class="form__descriptions d-flex justify-content-between align-items-center mb-4">
               <label for="form__input-description">Mô tả</label>       
@@ -263,9 +264,6 @@
     <script>
       const inputLat = document.getElementById('lat');
       const inputLng = document.getElementById('lng');
-      const policy = document.querySelector("#check_policy");
-      const btnPost = document.querySelector(".btn__post");
-      const messagePolicy = document.querySelector("#message_policy");
       function myMap() {
           const mapProp= {
           center:new google.maps.LatLng(10.771783,106.586605),
@@ -298,14 +296,9 @@
         }
       }
 
-      btnPost.addEventListener('click',e=>{
-        if (!policy.checked) {
-           messagePolicy.classList.remove("d-none");
-           e.preventDefault();
-        }
-      })
-
+      
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPndaft2HpRlI9HeuB_0b-fsO3zaxV1Ok&callback=myMap"></script>
+      <script src="./js/createPost.js"></script>
 </body>
 </html>

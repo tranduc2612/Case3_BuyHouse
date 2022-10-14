@@ -1,4 +1,4 @@
-const db = require('./DBConnect');
+const db = require("./DBConnect");
 
 class PostHouse{
     async getListPost(){
@@ -11,8 +11,6 @@ class PostHouse{
       .catch((err) => {
         throw err;
       });
-    }
-
-
+  }
 }
 module.exports = new PostHouse();

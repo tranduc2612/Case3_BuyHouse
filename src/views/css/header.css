@@ -54,6 +54,7 @@
 }
 
 .button__post:hover{
+    color:#fff;
     background-color:var(--primary-color-light);
 }
 
