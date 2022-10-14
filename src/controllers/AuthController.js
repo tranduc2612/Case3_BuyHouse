@@ -3,16 +3,20 @@ const qs = require("qs");
 const userDB = require("../model/User");
 const session = require("./CookieAndSession");
 const jwt = require("jsonwebtoken");
-let userWrong = false;
-let gmailWrong = false;
 
 class AuthController {
+  userWrong;
+  gmailWrong;
+  constructor() {
+    this.userWrong = false;
+    this.gmailWrong = false;
+  }
   async showLoginPage(req, res) {
-    fs.readFile("./src/views/login.html", "utf-8", function (err, data) {
+    fs.readFile("./src/views/login.html", "utf-8", (err, data) => {
       if (err) {
         console.log(err.message);
       }
-      if (userWrong == true) {
+      if (this.userWrong == true) {
         data = data.replace(
           "input__phone custom-input p-2",
           "input__phone custom-input p-2 inputWrong"
@@ -22,8 +26,9 @@ class AuthController {
           `<span class="message d-none"></span>`,
           `<span class="message messageWrong">Số điện thoại sai hoặc không tồn tại !</span>`
         );
+        this.userWrong = false;
       }
-      if (gmailWrong == true) {
+      if (this.gmailWrong == true) {
         data = data.replace(
           "input__phone custom-input p-2",
           "input__phone custom-input p-2 inputWrong"
@@ -33,6 +38,7 @@ class AuthController {
           `<span class="message d-none"></span>`,
           `<span class="message messageWrong">Gmail này chưa được đăng kí !</span>`
         );
+        this.gmailWrong = false;
       }
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
@@ -64,12 +70,12 @@ class AuthController {
           userData.passwordUR,
           false,
         ];
-        userWrong = false;
+        this.userWrong = false;
         session.writeCookieAndSession(req, res, newData);
         return;
       }
     }
-    userWrong = true;
+    this.userWrong = true;
     res.statusCode = 302;
     res.setHeader("Location", "/login");
     res.end();
@@ -257,14 +263,14 @@ class AuthController {
   }
 
   async showRegisterPage(req, res) {
-    fs.readFile("./src/views/register.html", "utf-8", function (err, data) {
+    fs.readFile("./src/views/register.html", "utf-8", (err, data) => {
       if (err) {
         console.log(err.message);
       }
       if (session.checkingSessionGG(req)) {
         session.deleteSessionGG(req);
       }
-      if (userWrong == true) {
+      if (this.userWrong == true) {
         data = data.replace(
           "input__phone custom-input p-2",
           "input__phone custom-input p-2 inputWrong"
@@ -274,8 +280,9 @@ class AuthController {
           `<span class="message d-none"></span>`,
           `<span class="message messageWrong">Số điện thoại đã tồn tại !</span>`
         );
+        this.userWrong = false;
       }
-      if (gmailWrong == true) {
+      if (this.gmailWrong == true) {
         data = data.replace(
           "input__phone custom-input p-2",
           "input__phone custom-input p-2 inputWrong"
@@ -285,6 +292,7 @@ class AuthController {
           `<span class="message d-none"></span>`,
           `<span class="message messageWrong">Gmail đã được sử dụng!</span>`
         );
+        this.gmailWrong = false;
       }
 
       res.writeHead(200, { "Content-Type": "text/html" });
@@ -331,7 +339,7 @@ class AuthController {
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
         // số điện thoại đã tồn tại
-        userWrong = true;
+        this.userWrong = true;
         res.statusCode = 302;
         res.setHeader("Location", "/register");
         res.end();
@@ -340,7 +348,7 @@ class AuthController {
       // còn lại thì gọi db và insert dữ liệu vào thôi !!!
     }
     await userDB.insertUser(inputForm);
-    userWrong = false;
+    this.userWrong = false;
     res.statusCode = 302;
     res.setHeader("Location", "/login");
     // ở bên front end đã xử lí dữ liệu đầu vào inputForm rồi nên

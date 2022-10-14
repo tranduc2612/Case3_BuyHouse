@@ -78,7 +78,7 @@ insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
 ('mintduc2612@gmail.com','0367218700','duc123',1,'nam','Phường Cẩm Sơn,thành phố Cẩm Phả,tỉnh Quảng Ninh','022202002528','Trần Minh Đức'),
 ('Minhanh190202@gmail.com','0978363413','minhanh123',1,'nam','Huyện Gia Lâm,thành phố Hà Nội','001302011234','Trần Minh Anh');
 
-
+select * from Post;
 insert Post(title,userId,datePost,address,lat,lng,cost,statusHouse,descriptionPost)
 values ('Cho thuê nhà ở Láng Hạ, Đống Đa',2,'2022-10-10','Láng Hạ - Đống Đa - Hà Nội','21.016748','105.810718',14000000,'cho thuê','Cho thuê nhà tại phố Hoàng Ngọc Phách, Láng Hạ, quận Đống Đa, Hà Nội 
 - Nhà tầng 1 mặt phố, diện tích 32m2.
@@ -114,6 +114,7 @@ values
 ('Cho thuê mặt bằng, mặt tiền tại Quận 12 ',2,'2018-12-11','Tân Chánh Hiệp - Quận 12 - TPHCM','10.874773','106.622543',25000000,'cho thuê','Cho thuê mặt bằng, mặt tiền 146 Nguyễn Ảnh Thủ, P.Tân Chánh Hiệp, Q12
 Ngang 7x12m, giá 25 triệu');
 
+
 insert Image(postId, url)
 values(1,'https://cloud.muaban.net/images/2022/09/15/525/e2895ab6d9994a4596e41638be0e0f58.jpg'),
 (1,'https://cloud.muaban.net/images/2022/09/15/524/d9a2de32df9d49669f7771f865111d03.jpg'),
@@ -135,8 +136,6 @@ values(2,'https://cloud.muaban.net/images/2022/10/03/594/627f903d015d4e2c870d10c
 (5,'https://cloud.muaban.net/images/2022/09/29/236/3f4feb0461e348779f15a57aee1c680d.jpg'),
 (5,'https://cloud.muaban.net/images/2022/09/29/237/de55134ba6974bfea8848191984ce0c3.jpg');
 
-
-select title, cost, datePost, url from Post
-join I
+select * from Post join Image on Post.postId = Image.postId group by Post.postId
 
 

@@ -126,7 +126,7 @@ class CookieAndSession {
         data = data.replace("{user-name-sidebar}", session[1]);
       }
     }
-    if (session[7] == 1) {
+    if (session[7] == 0) {
       data = data.replace(
         '<i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin',
         '<i class="fa-solid fa-list"></i> Xem bài đăng'
