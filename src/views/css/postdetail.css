@@ -95,3 +95,7 @@
 .post__btn-slider.next{
     right:1rem;
 }
+
+.status__house{
+    color: var(--gray-light);
+}

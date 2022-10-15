@@ -3,6 +3,7 @@ const fs = require("fs");
 require("dotenv").config();
 const siteController = require("../controllers/SiteController");
 const authController = require("../controllers/AuthController");
+const postController = require("../controllers/PostController");
 const PATH = process.env.USER;
 const jwt = require("jsonwebtoken");
 
@@ -83,20 +84,21 @@ async function router(req, res) {
           authController.registerNewPassword(req, res, token_google);
         }
         break;
-      case "/change-password":
-        if(req.method == "GET")
-          siteController.showChangePassword(req, res);
-        if(req.method == "POST")
-          authController.updatePassword(req, res, token);
+      case "/changepassword":
         break;
       case "/category":
-        siteController.showCategoryPage(req, res);
+        postController.showCategoryPage(req, res);
         break;
       case "/detail-post":
-        siteController.showDetailPost(req, res);
+        postController.showDetailPost(req, res);
         break;
       case "/create-post":
-        siteController.showCreatePost(req, res);
+        if (req.method == "GET") {
+          postController.showCreatePost(req, res);
+        }
+        if (req.method == "POST") {
+          postController.createPost(req, res);
+        }
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
