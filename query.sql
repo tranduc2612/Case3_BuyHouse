@@ -1,5 +1,5 @@
 create database BuyHouse;
-drop database BuyHouse;
+
 use BuyHouse;
 
 create table tAdmin(
@@ -57,16 +57,16 @@ create table Noti(
     constraint foreign key(postId) references Post(postId)
 );
 create table tComment(
+	idComment int auto_increment not null primary key,
 	content text,
     dateComment date,
     userId int,
     postId int,
-    constraint primary key(userId,postId),
     constraint foreign key(userId) references tUser(userId),
     constraint foreign key(postId) references Post(postId)
-    
 );
 
+drop table tComment;
 
 insert tAdmin(accountAdmin,passwordAdmin) values
 ('admin','admin');
@@ -154,6 +154,13 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
 select * from Image;
 
+select * from tUser;
+
+drop table tComment;
+select * from tComment;
+insert tComment(userId,postId,content,dateComment) values (2,1,'Ui nhà này đẹp thế !','2022-10-16');
+insert tComment(userId,postId,content,dateComment) values (1,1,'Cầu xin đấy nhà tan nát ! Chán không có gì để nói','2022-10-16');
+insert tComment(userId,postId,content,dateComment) values (3,1,'Tóm lại nhà này là đủ sống, đủ để thở và làm những việc mà mình có thể làm hoặc không hoặc có hoặc là cả hai huhuuuuu ! bực quá đi àaaaaaaaa','2022-10-16');
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
 

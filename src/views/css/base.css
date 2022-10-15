@@ -152,3 +152,39 @@ hr{
         transform: scale(1);
     }
 }
+
+@keyframes pop {
+    0%{
+        transform: translateY(0);
+    }
+    30%{
+        transform: translateY(-10%);
+    }
+    50%{
+        transform: translateY(-20%);
+    }
+    80%{
+        transform: translateY(-10%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes popActive {
+    0%{
+        transform: translateY(0);
+    }
+    30%{
+        transform: translateY(-20%);
+    }
+    50%{
+        transform: translateY(-40%);
+    }
+    80%{
+        transform: translateY(-20%);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

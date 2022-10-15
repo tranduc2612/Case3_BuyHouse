@@ -107,6 +107,15 @@ class PostController {
         // update info post host
         data = data.replace(`{phone-host}`, dataDetailPost[0].phone);
         data = data.replace("{name-admin-post}", dataDetailPost[0].nameUser);
+
+        // show comment post
+        data = data.replace(
+          `<form class="comments__form" action="/comment" method="POST">`,
+          `<form class="comments__form" action="/comment?idPost=${idPost}&&idUser=${isLogin[0]}" method="POST">`
+        );
+        const dataComment = await this.showCommentList(idPost, data, req);
+        data = data.replace(data, dataComment);
+
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
         return res.end();
@@ -161,6 +170,53 @@ class PostController {
       res.write(data);
       return res.end();
     });
+  }
+
+  async showCommentList(idPost, data, req) {
+    const strQuery = `select tUser.userId,nameUser,content,dateComment from tComment join tUser on tComment.userId = tUser.userId where tComment.postId = ${idPost} order by dateComment desc`;
+    const listCommentDB = await postHouse.getListComment(strQuery);
+    const currentUserData = await session.checkingSession(req);
+    const idCurrentUser = currentUserData[0];
+    const nameCurrentUser = currentUserData[1];
+    data = data.replace("{name-current-user}", nameCurrentUser);
+    let htmlListComment = "";
+    listCommentDB.forEach((e) => {
+      htmlListComment += `<li class="list__comments-item d-flex align-items-center mt-3">
+      <img src="https://muaban.net/images/account/avatar-default.png" alt="" style="border-radius: 50%;" width="5%" height="5%">
+      <div class="list__comments-info ms-3">
+        <div class="list__comments-name mb-2">${e.nameUser} ${
+        e.userId == idCurrentUser ? "(Bạn)" : ""
+      }</div>
+        <div class="list__comments-content">${e.content}</div>
+      </div>
+    </li>
+    <div class="date__time-comment mb-3 d-flex align-items-center justify-content-between">
+    <span>
+    ${e.dateComment.toISOString().slice(0, 10)}
+    </span>  
+                        <form action="/delete-comment" method="post">
+                          <button class="btn__delete-comment ${
+                            e.userId == idCurrentUser ? "" : "d-none"
+                          } type="submit">Xoa</button>
+                        </form>
+                      </div>`;
+    });
+
+    data = data.replace("{list-comment}", htmlListComment);
+
+    return data;
+  }
+
+  async commentAction(req, res) {
+    const urlData = url.parse(req.url, true).query;
+    const formInput = await this.loadDataInForm(req);
+    const currentTime = new Date();
+    const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}`;
+    const strQuery = `insert tComment(userId,postId,content,dateComment) values (${urlData.idUser},${urlData.idPost},'${formInput.commentText}','${queryTime}');`;
+    await postHouse.insertCommentDB(strQuery);
+    res.statusCode = 302;
+    res.setHeader("Location", `/detail-post?${urlData.idPost}`);
+    res.end();
   }
 }
 

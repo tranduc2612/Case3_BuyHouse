@@ -14,6 +14,30 @@ class PostHouse {
       });
   }
 
+  async insertCommentDB(query) {
+    let sql = query;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async getListComment(query) {
+    let sql = query;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   async getDataPost(query) {
     let sql = query;
     return await db
