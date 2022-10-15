@@ -3,6 +3,7 @@ const fs = require("fs");
 require("dotenv").config();
 const siteController = require("../controllers/SiteController");
 const authController = require("../controllers/AuthController");
+const postController = require("../controllers/PostController");
 const PATH = process.env.USER;
 const jwt = require("jsonwebtoken");
 
@@ -84,7 +85,6 @@ async function router(req, res) {
         }
         break;
       case "/changepassword":
-        
         break;
       case "/category":
         siteController.showCategoryPage(req, res);
@@ -93,7 +93,12 @@ async function router(req, res) {
         siteController.showDetailPost(req, res);
         break;
       case "/create-post":
-        siteController.showCreatePost(req, res);
+        if (req.method == "GET") {
+          postController.showCreatePost(req, res);
+        }
+        if (req.method == "POST") {
+          postController.createPost(req, res);
+        }
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
