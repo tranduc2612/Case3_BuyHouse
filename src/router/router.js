@@ -87,10 +87,10 @@ async function router(req, res) {
       case "/changepassword":
         break;
       case "/category":
-        siteController.showCategoryPage(req, res);
+        postController.showCategoryPage(req, res);
         break;
       case "/detail-post":
-        siteController.showDetailPost(req, res);
+        postController.showDetailPost(req, res);
         break;
       case "/create-post":
         if (req.method == "GET") {
