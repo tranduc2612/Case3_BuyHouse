@@ -154,13 +154,13 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
 
 
-select  * from Image;
+select  * from tUser;
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
 
-update tUser 
-set passwordUR = 'Linh123'
-where userId = 1
+-- update tUser 
+-- set phone = '0978363413'
+-- where userId = 3
 
 
 

@@ -227,12 +227,15 @@ class AuthController {
       false,
     ];
     if (inputForm.gender) {
+      
       strQuery += `,gender = '${inputForm.gender}'`;
+      
       currentData[9] = inputForm.gender;
     }
 
     if (inputForm.name) {
       strQuery += `,nameUser = '${inputForm.name}'`;
+     
       currentData[1] = inputForm.name;
     }
     if (inputForm.phone) {
@@ -255,11 +258,47 @@ class AuthController {
     }
     strQuery += ` where userId = ${idUser};`;
     strQuery = strQuery.replace("set ,", "set ");
+    
     session.overrideSession(req, currentData);
     userDB.updateUser(strQuery);
     res.statusCode = 302;
     res.setHeader("Location", "/info-user");
     res.end();
+  }
+
+  async updatePassword(req,res,token){
+    const decoded = jwt.decode(token);
+    const userData = await userDB.getListUser();
+    const inputForm = await this.loadDataInForm(req);
+    const idUser = await session.checkingSession(req)[0];
+    // let strQuery = "update tUser set ";
+    console.log(inputForm.password);
+    console.log(currentData);
+    let currentData = [
+      userData[idUser - 1].userId,
+      userData[idUser - 1].nameUser,
+      userData[idUser - 1].address,
+      userData[idUser - 1].phone,
+      userData[idUser - 1].password,
+      userData[idUser - 1].email,
+      userData[idUser - 1].cccd,
+      +userData[idUser - 1].typeDK.toString("hex"),
+      userData[idUser - 1].dateDK,
+      userData[idUser - 1].gender,
+      decoded ? decoded.picture : "",
+      userData.passwordUR,
+      false,
+    ];
+    // if(inputForm.phone){
+    //   strQuery += `phone = ${inputForm.phone} where userId = ${idUser}`;
+    // }
+    
+    // session.overrideSession(req, currentData);
+    // userDB.updatePassword(strQuery);
+    // res.statusCode = 302;
+    // res.setHeader("Location", "/info-user");
+    res.end("change password");
+
   }
 
   async showRegisterPage(req, res) {

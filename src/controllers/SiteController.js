@@ -105,6 +105,27 @@ class SiteController {
       res.end();
     }
   }
+
+  async showChangePassword(req, res){
+    let isLogin = session.checkingSession(req, res);
+    if (isLogin) {
+      fs.readFile("./src/views/changepassword.html", "utf-8", async (err, data) => {
+        if (err) {
+          console.log(err.message);
+        }
+        let newData = await session.changeFontEnd(data, isLogin);
+        data = data.replace(data, newData);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(data);
+        return res.end();
+      });
+    } else {
+      res.statusCode = 302;
+      res.setHeader("Location", "/change-password");
+      res.end();
+    }
+  }
 }
+
 
 module.exports = new SiteController();
