@@ -100,6 +100,9 @@ async function router(req, res) {
           postController.createPost(req, res);
         }
         break;
+      case "/comment":
+        postController.commentAction(req, res);
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");
