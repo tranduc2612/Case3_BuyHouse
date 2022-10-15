@@ -37,7 +37,9 @@ class SiteController {
       let postLists = await postHouse.getListPost();
       postLists.forEach((e) => {
         html += `<div class="col-4">
-        <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post/${e.postId}">
+        <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post/${
+          e.postId
+        }">
           <div class="card__img" style="width: 100%;
           height: 160px;
           background-image: url('${e.url}');
@@ -86,24 +88,20 @@ class SiteController {
     }
   }
 
-  async showCreatePost(req, res) {
-    let isLogin = session.checkingSession(req, res);
-    if (isLogin) {
-      fs.readFile("./src/views/createpost.html", "utf-8", async (err, data) => {
-        if (err) {
-          console.log(err.message);
-        }
-        let newData = await session.changeFontEnd(data, isLogin);
-        data = data.replace(data, newData);
-        res.writeHead(200, { "Content-Type": "text/html" });
-        res.write(data);
-        return res.end();
+  async loadDataInForm(req) {
+    let data = "";
+    return new Promise((resolve, reject) => {
+      req.on("data", (chunks) => {
+        data += chunks;
       });
-    } else {
-      res.statusCode = 302;
-      res.setHeader("Location", "/login");
-      res.end();
-    }
+      req.on("end", () => {
+        data = qs.parse(data);
+        resolve(data);
+      });
+      req.on("error", (err) => {
+        reject(err);
+      });
+    });
   }
 }
 
