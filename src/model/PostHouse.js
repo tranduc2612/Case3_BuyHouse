@@ -26,6 +26,18 @@ class PostHouse {
       });
   }
 
+  async deleteComment(id) {
+    let sql = `delete from tComment where idComment = ${id}`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   async getListComment(query) {
     let sql = query;
     return await db
@@ -40,6 +52,30 @@ class PostHouse {
 
   async getDataPost(query) {
     let sql = query;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async insertImgData(idPost, url) {
+    let sql = `insert Image(postId, url) values(${idPost},'${url}')`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async getNumberPostDB() {
+    let sql = `select count(postId) as SoLuongPost from Post`;
     return await db
       .runMySQL(sql)
       .then((results) => {

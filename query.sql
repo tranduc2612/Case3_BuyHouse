@@ -155,7 +155,7 @@ values
 select * from Image;
 
 select * from tUser;
-
+select * from Post;
 drop table tComment;
 select * from tComment;
 insert tComment(userId,postId,content,dateComment) values (2,1,'Ui nhà này đẹp thế !','2022-10-16');
@@ -163,6 +163,10 @@ insert tComment(userId,postId,content,dateComment) values (1,1,'Cầu xin đấy
 insert tComment(userId,postId,content,dateComment) values (3,1,'Tóm lại nhà này là đủ sống, đủ để thở và làm những việc mà mình có thể làm hoặc không hoặc có hoặc là cả hai huhuuuuu ! bực quá đi àaaaaaaaa','2022-10-16');
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
+
+select count(postId) as SoLuongPost from Post;
+
+select * from Post;
 
 update tUser 
 set passwordUR = 'Linh123'

@@ -101,7 +101,10 @@ async function router(req, res) {
         }
         break;
       case "/comment":
-        postController.commentAction(req, res);
+        postController.addComment(req, res);
+        break;
+      case "/delete-comment":
+        postController.deleteComment(req, res);
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
