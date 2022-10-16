@@ -172,8 +172,6 @@ select distinct Post.postId, title, cost, datePost,address, url from Post join I
 
 select count(postId) as SoLuongPost from Post;
 
-select * from tComment;
+select * from tUser;
 
-update tUser 
-set passwordUR = 'Linh123'
-where userId = 1
+
