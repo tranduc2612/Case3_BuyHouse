@@ -218,6 +218,7 @@ class AuthController {
     const inputForm = await this.loadDataInForm(req);
     const idUser = await session.checkingSession(req)[0];
     let strQuery = "update tUser set ";
+    
     let currentData = [
       userData[idUser - 1].userId,
       userData[idUser - 1].nameUser,
@@ -233,6 +234,7 @@ class AuthController {
       userData.passwordUR,
       false,
     ];
+    console.log(currentData)
     if (inputForm.gender) {
       
       strQuery += `,gender = '${inputForm.gender}'`;
@@ -270,13 +272,23 @@ class AuthController {
     userDB.updateUser(strQuery);
     res.statusCode = 302;
     res.setHeader("Location", "/info-user");
+    
     res.end();
   }
 
   async updateNewPassword(req,res){
     const inputForm = await this.loadDataInForm(req);
-    console.log(inputForm.password)
-    // res.end("change password");
+    const idUser = await session.checkingSession(req)[0];
+    let strQuery = "update tUser set ";
+    // console.log(userData);
+    if(inputForm.password){
+      strQuery += `passwordUR="${inputForm.password}" where userId=${idUser}`;
+      // console.log(strQuery);
+    }
+    userDB.updateUser(strQuery);
+    res.statusCode = 302;
+    res.setHeader("Location", "/info-user");
+    res.end();
   }
 
   async showRegisterPage(req, res) {
