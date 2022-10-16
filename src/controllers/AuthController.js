@@ -234,12 +234,15 @@ class AuthController {
       false,
     ];
     if (inputForm.gender) {
+      
       strQuery += `,gender = '${inputForm.gender}'`;
+      
       currentData[9] = inputForm.gender;
     }
 
     if (inputForm.name) {
       strQuery += `,nameUser = '${inputForm.name}'`;
+     
       currentData[1] = inputForm.name;
     }
     if (inputForm.phone) {
@@ -262,11 +265,18 @@ class AuthController {
     }
     strQuery += ` where userId = ${idUser};`;
     strQuery = strQuery.replace("set ,", "set ");
+    
     session.overrideSession(req, currentData);
     userDB.updateUser(strQuery);
     res.statusCode = 302;
     res.setHeader("Location", "/info-user");
     res.end();
+  }
+
+  async updateNewPassword(req,res){
+    const inputForm = await this.loadDataInForm(req);
+    console.log(inputForm.password)
+    // res.end("change password");
   }
 
   async showRegisterPage(req, res) {
@@ -379,6 +389,26 @@ class AuthController {
     } else {
       res.statusCode = 302;
       res.setHeader("Location", "/login");
+      res.end();
+    }
+  }
+
+  async showChangePassword(req, res) {
+    let isLogin = session.checkingSession(req, res);
+    if (isLogin) {
+      fs.readFile("./src/views/changepassword.html", "utf-8", async (err, data) => {
+        if (err) {
+          console.log(err.message);
+        }
+        let newData = await session.changeFontEnd(data, isLogin);
+        data = data.replace(data, newData);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(data);
+        return res.end();
+      });
+    } else {
+      res.statusCode = 302;
+      res.setHeader("Location", "/info-user");
       res.end();
     }
   }

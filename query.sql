@@ -35,9 +35,12 @@ create table Post(
     title text,
     lat double,
     lng double,
-    statusHouse varchar(50),
+    statusHouse varchar(50), -- con trong(cho thue), da thue
     constraint foreign key(userId) references tUser(userId)
 );
+alter table Post
+add idUserRent int; -- ai dang thue
+
 
 create table Image(
 	url text,
@@ -48,14 +51,17 @@ create table Image(
 
 -- notification
 create table Noti(
-	statusNoti varchar(50),
+	statusNoti varchar(50), -- cho duyet(huy trong vong 24h ke tu khi muon thue-khach), da duyet, chot deal 
     dateNoti date,
-    userId int,
+    userId int, -- chu nha
     postId int,
     constraint primary key(userId,postId),
     constraint foreign key(userId) references tUser(userId),
     constraint foreign key(postId) references Post(postId)
 );
+alter table Noti
+add idUserRent int not null; 
+
 create table tComment(
 	idComment int auto_increment not null primary key,
 	content text,
@@ -66,19 +72,19 @@ create table tComment(
     constraint foreign key(postId) references Post(postId)
 );
 
-drop table tComment;
+
 
 insert tAdmin(accountAdmin,passwordAdmin) values
 ('admin','admin');
 -- 1 la chu
 -- 0 la thue
-select * from tUser;
+
 insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
 ('linhninh2@gmail.com','0862861396','linh123',0,'nu','Huyện Đông Anh,thành phố Hà Nội','001302011253','Trần Mỹ Linh'),
 ('mintduc2612@gmail.com','0367218700','duc123',1,'nam','Phường Cẩm Sơn,thành phố Cẩm Phả,tỉnh Quảng Ninh','022202002528','Trần Minh Đức'),
 ('Minhanh190202@gmail.com','0978363413','minhanh123',1,'nam','Huyện Gia Lâm,thành phố Hà Nội','001302011234','Trần Minh Anh');
 
-select * from Post;
+
 
 insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
 values ('Cho thuê nhà ở Láng Hạ, Đống Đa',2,'2022-10-10','Láng Hạ - Đống Đa - Hà Nội','21.016748','105.810718',14000000,'cho thuê','Cho thuê nhà tại phố Hoàng Ngọc Phách, Láng Hạ, quận Đống Đa, Hà Nội 
@@ -152,7 +158,7 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/223/d340b4a7b5ff4b6d87ad6ee2e94b55d3.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/d83ce7f74ccd4ac6aa7347d1c899cd9b.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
-select * from Image;
+select * from tUser;
 
 select * from tUser;
 select * from Post;
@@ -166,7 +172,7 @@ select distinct Post.postId, title, cost, datePost,address, url from Post join I
 
 select count(postId) as SoLuongPost from Post;
 
-select * from Post;
+select * from tComment;
 
 update tUser 
 set passwordUR = 'Linh123'

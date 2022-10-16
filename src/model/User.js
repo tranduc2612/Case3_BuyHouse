@@ -25,6 +25,7 @@ class Users {
       });
   }
 
+ 
   async insertUser(data) {
     let sql = `insert into tUser(phone,passwordUR) values ('${data.phone}','${data.password}')`;
     return await db
@@ -61,17 +62,17 @@ class Users {
       });
   }
 
-  // async updatePassword(sql){
-  //   let sql = stringQuery;
-  //   return await db
-  //     .runMySQL(sql)
-  //     .then((results) => {
-  //       return results;
-  //     })
-  //     .catch((err) => {
-  //       throw err;
-  //     });
-  // }
+  async updatePassword(stringQuery){
+  let sql = stringQuery;  
+  return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
 }
 
 module.exports = new Users();
