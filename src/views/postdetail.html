@@ -140,9 +140,12 @@
                           <i class="fa-solid fa-paper-plane fs-2"></i>
                         </button>
                       </li>
+
                       <!-- Đây mới là list comment đáp vào BE để render ra -->
-                      {list-comment}
-                      
+                        {list-comment}
+
+
+
                       <!-- <li class="list__comments-item d-flex align-items-center mt-3">
                         <img src="https://muaban.net/images/account/avatar-default.png" alt="" style="border-radius: 50%;" width="5%" height="5%">
                         <div class="list__comments-info ms-3">
@@ -150,14 +153,11 @@
                           <div class="list__comments-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta sunt delectus debitis consequatur qui dolore iusto maiores vel laborum veniam est quisquam, ex, quos, minima placeat facere enim autem fuga.</div>
                         </div>
                       </li>
-                      <div class="date__time-comment mb-3 d-flex justify-content-between">2022-10-16
-                        <form action="/delete-comment" method="post">
-                          <button class="btn__delete-comment d-none" type="submit">Xoa</button>
-                        </form>
+                      <div class="date__time-comment mb-3 d-flex justify-content-between">
+                        2022-10-16
+                        <a class="btn__delete-comment" href="/delete-comment?idComment=18&&idPost=1">Xoa</a>
                       </div> -->
                     </ul>
-
-                    
                   </form>
                 </div>
                 

@@ -194,18 +194,15 @@ class PostController {
         <div class="list__comments-content">${e.content}</div>
       </div>
     </li>
-    <div class="date__time-comment mb-3 d-flex align-items-center justify-content-between">
-    <span>
+    <div class="date__time-comment mb-3 d-flex justify-content-between">
     ${e.dateComment.toISOString().slice(0, 10)}
-    </span>  
-                        <form action="/delete-comment?idComment=${
-                          e.idComment
-                        }&&idPost=${idPost}" method="post">
-                          <button class="btn__delete-comment ${
-                            e.userId == idCurrentUser ? "" : "d-none"
-                          } type="submit">Xoa</button>
-                        </form>
-                      </div>`;
+    <a class="btn__delete-comment ${
+      e.userId == idCurrentUser ? "" : "d-none"
+    } " href="/delete-comment?idComment=${
+        e.idComment
+      }&&idPost=${idPost}" style="color:#333;">Xoa</a>
+</div>
+    `;
     });
 
     data = data.replace("{list-comment}", htmlListComment);

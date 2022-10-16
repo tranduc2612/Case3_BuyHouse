@@ -8,8 +8,6 @@ const inputGender = document.querySelector(".input__gender");
 const inputAddress = document.querySelector(".input__address");
 const inputIdentifier = document.querySelector(".input__identifier");
 
-let prevPhone;
-let prevEmail;
 let prevName;
 let prevGender;
 let prevAddress;
@@ -24,12 +22,6 @@ let currentIdentifier;
 for (let i = 0; i < btnEdit.length; i++) {
   btnEdit[i].addEventListener("click", (e) => {
     console.log(inputForm[i].name);
-    if (inputForm[i].name == "phone") {
-      prevPhone = inputForm[i].value;
-    }
-    if (inputForm[i].name == "email") {
-      prevEmail = inputForm[i].value;
-    }
     if (inputForm[i].name == "name") {
       prevName = inputForm[i].value;
     }
@@ -53,14 +45,6 @@ for (let i = 0; i < btnEdit.length; i++) {
   });
 }
 
-inputPhone.addEventListener("change", (e) => {
-  currentPhone = e.target.value;
-});
-
-inputEmail.addEventListener("change", (e) => {
-  currentEmail = e.target.value;
-});
-
 inputName.addEventListener("change", (e) => {
   currentName = e.target.value;
 });
@@ -79,8 +63,6 @@ inputIdentifier.addEventListener("change", (e) => {
 
 btnUpdate.addEventListener("click", (e) => {
   if (
-    currentPhone == prevPhone &&
-    currentEmail == prevEmail &&
     currentName == prevName &&
     currentIdentifier == prevIdentifier &&
     currentAddress == prevAddress &&

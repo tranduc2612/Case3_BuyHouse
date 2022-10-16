@@ -190,15 +190,15 @@ class AuthController {
 
         if (isLogin[5]) {
           data = data.replace(
-            '<input class="custom-input input__value input__email" type="text" name="email" value="Cần Được cập nhât" disabled>',
-            `<input class="custom-input input__value input__email" type="text" name="email" value="${isLogin[5]}" disabled>`
+            '<input class="custom-input input__email" type="text" name="email" value="Cần Được cập nhât" disabled>',
+            `<input class="custom-input input__email" type="text" name="email" value="${isLogin[5]}" disabled>`
           );
         }
 
         if (isLogin[3]) {
           data = data.replace(
-            '<input class="custom-input input__value input__phone" type="text" name="phone" value="" disabled>',
-            `<input class="custom-input input__value input__phone" type="text" name="phone" value="${isLogin[3]}" disabled>`
+            '<input class="custom-input input__phone" type="text" name="phone" value="" disabled>',
+            `<input class="custom-input input__phone" type="text" name="phone" value="${isLogin[3]}" disabled>`
           );
         }
         res.writeHead(200, { "Content-Type": "text/html" });
@@ -241,14 +241,6 @@ class AuthController {
     if (inputForm.name) {
       strQuery += `,nameUser = '${inputForm.name}'`;
       currentData[1] = inputForm.name;
-    }
-    if (inputForm.phone) {
-      strQuery += `,phone = '${inputForm.phone}'`;
-      currentData[3] = inputForm.phone;
-    }
-    if (inputForm.email) {
-      strQuery += `,email = '${inputForm.email}'`;
-      currentData[5] = inputForm.email;
     }
 
     if (inputForm.addressBorn) {
