@@ -194,7 +194,22 @@ input[type=range].input__price-range {
     }
   }
 
+  .input__price-icon{
+    top:30%;
+    right: 10px;
+    color: #333;
+  }
 
+  .input__price-detail::-webkit-outer-spin-button,
+.input__price-detail::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input__price-detail[type=number] {
+  -moz-appearance: textfield;
+}
 
 
 

@@ -140,7 +140,7 @@ class PostController {
       let html = "";
       let postLists = await postHouse.getListPost();
       postLists.forEach((e) => {
-        html += `<div class="col-4">
+        html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           e.postId
         }">
