@@ -152,7 +152,7 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/223/d340b4a7b5ff4b6d87ad6ee2e94b55d3.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/d83ce7f74ccd4ac6aa7347d1c899cd9b.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
-select * from Image;
+select * from tUser;
 
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;

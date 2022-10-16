@@ -273,39 +273,10 @@ class AuthController {
     res.end();
   }
 
-  async updatePassword(req,res,token){
-    const decoded = jwt.decode(token);
-    const userData = await userDB.getListUser();
-    const inputForm = await this.loadDataInForm(req);
-    const idUser = await session.checkingSession(req)[0];
-    // let strQuery = "update tUser set ";
-    console.log(inputForm.password);
-    console.log(currentData);
-    let currentData = [
-      userData[idUser - 1].userId,
-      userData[idUser - 1].nameUser,
-      userData[idUser - 1].address,
-      userData[idUser - 1].phone,
-      userData[idUser - 1].password,
-      userData[idUser - 1].email,
-      userData[idUser - 1].cccd,
-      +userData[idUser - 1].typeDK.toString("hex"),
-      userData[idUser - 1].dateDK,
-      userData[idUser - 1].gender,
-      decoded ? decoded.picture : "",
-      userData.passwordUR,
-      false,
-    ];
-    // if(inputForm.phone){
-    //   strQuery += `phone = ${inputForm.phone} where userId = ${idUser}`;
-    // }
-    
-    // session.overrideSession(req, currentData);
-    // userDB.updatePassword(strQuery);
-    // res.statusCode = 302;
-    // res.setHeader("Location", "/info-user");
+  async updateNewPassword(req,res){
+    const inputForm = this.loadDataInForm(req);
+    console.log(inputForm)
     res.end("change password");
-
   }
 
   async showRegisterPage(req, res) {
@@ -418,6 +389,26 @@ class AuthController {
     } else {
       res.statusCode = 302;
       res.setHeader("Location", "/login");
+      res.end();
+    }
+  }
+
+  async showChangePassword(req, res) {
+    let isLogin = session.checkingSession(req, res);
+    if (isLogin) {
+      fs.readFile("./src/views/changepassword.html", "utf-8", async (err, data) => {
+        if (err) {
+          console.log(err.message);
+        }
+        let newData = await session.changeFontEnd(data, isLogin);
+        data = data.replace(data, newData);
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(data);
+        return res.end();
+      });
+    } else {
+      res.statusCode = 302;
+      res.setHeader("Location", "/info-user");
       res.end();
     }
   }

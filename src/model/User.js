@@ -63,7 +63,6 @@ class Users {
   }
 
   async updatePassword(stringQuery){
-  //  let sql = `update tUser set phone = '${data.phone}' where userId = ${data.userId}`;
   let sql = stringQuery;  
   return await db
       .runMySQL(sql)

@@ -85,6 +85,12 @@ async function router(req, res) {
         }
         break;
       case "/changepassword":
+        if(req.method == "GET"){
+          authController.showChangePassword(req, res);
+        }
+        if(req.method == "POST"){
+          authController.updateNewPassword(req, res);
+        }
         break;
       case "/category":
         postController.showCategoryPage(req, res);
