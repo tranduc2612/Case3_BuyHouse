@@ -47,9 +47,14 @@ class PostController {
     formInput.inputURL = formInput.inputURL.split(",");
     const currentTime = new Date();
     const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}`;
-    const strQuery = `insert Post(title,userId,datePost,address,lat,lng,cost,statusHouse,descriptionPost)
+    const strQuery = `insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
     values('${formInput.inputTitle}',${idUser},'${queryTime}','${formInput.inputAddress}','${formInput.lat}','${formInput.lng}',${formInput.inputPrice},'cho thuê','${formInput.inputAddress}');`;
+    const numbPost = await postHouse.getNumberPostDB();
+    const newIdPost = Number(numbPost[0].SoLuongPost) + 1;
     await postHouse.createPost(strQuery);
+    formInput.inputURL.forEach(async (e) => {
+      await postHouse.insertImgData(newIdPost, e);
+    });
     res.statusCode = 302;
     res.setHeader("Location", "/category");
     res.end();
@@ -63,7 +68,6 @@ class PostController {
     const dataDetailPost = await postHouse.getDataPost(strPostQuery);
     const listImgDetail = await postHouse.getDataPost(strImgPostQuery);
     let htmlImg = "";
-    console.log(listImgDetail);
     if (isLogin) {
       fs.readFile("./src/views/postdetail.html", "utf-8", async (err, data) => {
         if (err) {
@@ -107,6 +111,15 @@ class PostController {
         // update info post host
         data = data.replace(`{phone-host}`, dataDetailPost[0].phone);
         data = data.replace("{name-admin-post}", dataDetailPost[0].nameUser);
+
+        // show comment post
+        data = data.replace(
+          `<form class="comments__form" action="/comment" method="POST">`,
+          `<form class="comments__form" action="/comment?idPost=${idPost}&&idUser=${isLogin[0]}" method="POST">`
+        );
+        const dataComment = await this.showCommentList(idPost, data, req);
+        data = data.replace(data, dataComment);
+
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
         return res.end();
@@ -131,7 +144,7 @@ class PostController {
       let html = "";
       let postLists = await postHouse.getListPost();
       postLists.forEach((e) => {
-        html += `<div class="col-4">
+        html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           e.postId
         }">
@@ -161,6 +174,65 @@ class PostController {
       res.write(data);
       return res.end();
     });
+  }
+
+  async showCommentList(idPost, data, req) {
+    const strQuery = `select idComment,tUser.userId,nameUser,content,dateComment from tComment join tUser on tComment.userId = tUser.userId where tComment.postId = ${idPost} order by dateComment desc`;
+    const listCommentDB = await postHouse.getListComment(strQuery);
+    const currentUserData = await session.checkingSession(req);
+    const idCurrentUser = currentUserData[0];
+    const nameCurrentUser = currentUserData[1];
+    data = data.replace("{name-current-user}", nameCurrentUser);
+    let htmlListComment = "";
+    listCommentDB.forEach((e) => {
+      htmlListComment += `<li class="list__comments-item d-flex align-items-center mt-3">
+      <img src="https://muaban.net/images/account/avatar-default.png" alt="" style="border-radius: 50%;" width="5%" height="5%">
+      <div class="list__comments-info ms-3">
+        <div class="list__comments-name mb-2">${e.nameUser} ${
+        e.userId == idCurrentUser ? "(Bạn)" : ""
+      }</div>
+        <div class="list__comments-content">${e.content}</div>
+      </div>
+    </li>
+    <div class="date__time-comment mb-3 d-flex align-items-center justify-content-between">
+    <span>
+    ${e.dateComment.toISOString().slice(0, 10)}
+    </span>  
+                        <form action="/delete-comment?idComment=${
+                          e.idComment
+                        }&&idPost=${idPost}" method="post">
+                          <button class="btn__delete-comment ${
+                            e.userId == idCurrentUser ? "" : "d-none"
+                          } type="submit">Xoa</button>
+                        </form>
+                      </div>`;
+    });
+
+    data = data.replace("{list-comment}", htmlListComment);
+
+    return data;
+  }
+
+  async addComment(req, res) {
+    const urlData = url.parse(req.url, true).query;
+    const formInput = await this.loadDataInForm(req);
+    const currentTime = new Date();
+    const queryTime = `${currentTime.getFullYear()}-${
+      currentTime.getMonth() + 1
+    }-${currentTime.getDate() + 1}`;
+    const strQuery = `insert tComment(userId,postId,content,dateComment) values (${urlData.idUser},${urlData.idPost},'${formInput.commentText}','${queryTime}');`;
+    await postHouse.insertCommentDB(strQuery);
+    res.statusCode = 302;
+    res.setHeader("Location", `/detail-post?${urlData.idPost}`);
+    res.end();
+  }
+
+  async deleteComment(req, res) {
+    const urlData = url.parse(req.url, true).query;
+    await postHouse.deleteComment(urlData.idComment);
+    res.statusCode = 302;
+    res.setHeader("Location", `/detail-post?${urlData.idPost}`);
+    res.end();
   }
 }
 

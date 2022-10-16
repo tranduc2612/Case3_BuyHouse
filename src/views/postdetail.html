@@ -91,7 +91,7 @@
                         <h4 class="post__title mt-4">{post-detail-title}</h4>
                         <div class="status-and-price">
                           <h2 class="post__price mt-2">{post-detail-price}</h2>
-                          <span class="status__house fs-3"><i class="fa-solid fa-bookmark me-2" style="color:#333"></i>{post-detail-status}</span>
+                          <span class="status__house fs-5"><i class="fa-solid fa-bookmark me-2" style="color:#333"></i>{post-detail-status}</span>
                         </div>
                         <span class="text__location"><i class="fa-solid fa-location-dot me-2 mb-2"></i>{post-detail-address}</span>
                         <div class="description">
@@ -109,7 +109,58 @@
                     <img class="me-2" src="https://muaban.net/images/icon/24/shield-confirmed.svg" alt="">
                     <p class="mb-0"><span class="notices__number" style="color:green; font-weight: bold;">Mã tin 64692102 </span>này đã được duyệt đăng. Nếu bạn gặp vấn đề, vui lòng báo vi phạm hoặc liên hệ tổng đài 19006868 để được trợ giúp.</p>
                 </div>
-                <hr>
+                
+                <div class="comment__form mt-3">
+                  <div class="row">
+                      <div class="emotion__heart col-6 fs-5 pt-3 pb-3" id="heart__active">
+                        <div class="wrap__emotion-heart d-flex align-items-center justify-content-center">
+                          <i class="heart fa-solid fa-heart me-2 fs-3"></i>
+                          <span class="like me-1">Like</span>
+                          <span class="numb">18</span>
+                        </div>
+                      </div>
+
+                      <div class="emotion__comment col-6 fs-5 pt-3 pb-3">
+                        <div class="d-flex align-items-center justify-content-center position-relative">
+                          <i class="fa-solid fa-comment me-2 fs-3 comment"></i>
+                          <span>Bình luận</span>
+                        </div>
+                      </div>
+                    </div>
+                  <form class="comments__form" action="/comment" method="POST">
+                    <ul class="list__comments p-0">
+                      <!-- Đây là input đăng nhập không đáp vào Back-end -->
+                      <li class="list__comments-item d-flex align-items-center mt-5 mb-3">
+                        <img src="https://muaban.net/images/account/avatar-default.png" alt="" style="border-radius: 50%;" width="5%" height="5%">
+                        <div class="list__comments-user ms-3">
+                          <div class="list__comments-name mb-2">{name-current-user} (Bạn)</div>
+                          <textarea class="input__comment" type="text" name="commentText" name="commentContent" value="" placeholder="Viết bình luận..." rows="2"></textarea>
+                        </div>
+                        <button class="btn__comment position-relative" type="submit">
+                          <i class="fa-solid fa-paper-plane fs-3"></i>
+                        </button>
+                      </li>
+                      <!-- Đây mới là list comment đáp vào BE để render ra -->
+                      {list-comment}
+                      
+                      <!-- <li class="list__comments-item d-flex align-items-center mt-3">
+                        <img src="https://muaban.net/images/account/avatar-default.png" alt="" style="border-radius: 50%;" width="5%" height="5%">
+                        <div class="list__comments-info ms-3">
+                          <div class="list__comments-name mb-2">{name-user-comment}</div>
+                          <div class="list__comments-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta sunt delectus debitis consequatur qui dolore iusto maiores vel laborum veniam est quisquam, ex, quos, minima placeat facere enim autem fuga.</div>
+                        </div>
+                      </li>
+                      <div class="date__time-comment mb-3 d-flex justify-content-between">2022-10-16
+                        <form action="/delete-comment" method="post">
+                          <button class="btn__delete-comment d-none" type="submit">Xoa</button>
+                        </form>
+                      </div> -->
+                    </ul>
+
+                    
+                  </form>
+                </div>
+                
             </div>
             <div class="col-4">
                 <div class="side__bar-contact-host">
@@ -130,6 +181,8 @@
             </div>
         </div>
     </div>
+
+    
 
 
     <footer class="footer mt-5">

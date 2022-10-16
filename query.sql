@@ -1,5 +1,5 @@
 create database BuyHouse;
-drop database BuyHouse;
+
 use BuyHouse;
 
 create table tAdmin(
@@ -35,9 +35,12 @@ create table Post(
     title text,
     lat double,
     lng double,
-    statusHouse varchar(50),
+    statusHouse varchar(50), -- con trong(cho thue), da thue
     constraint foreign key(userId) references tUser(userId)
 );
+alter table Post
+add idUserRent int; -- ai dang thue
+
 
 create table Image(
 	url text,
@@ -48,37 +51,40 @@ create table Image(
 
 -- notification
 create table Noti(
-	statusNoti varchar(50),
+	statusNoti varchar(50), -- cho duyet(huy trong vong 24h ke tu khi muon thue-khach), da duyet, chot deal 
     dateNoti date,
-    userId int,
+    userId int, -- chu nha
     postId int,
     constraint primary key(userId,postId),
     constraint foreign key(userId) references tUser(userId),
     constraint foreign key(postId) references Post(postId)
 );
+alter table Noti
+add idUserRent int not null; 
+
 create table tComment(
+	idComment int auto_increment not null primary key,
 	content text,
     dateComment date,
     userId int,
     postId int,
-    constraint primary key(userId,postId),
     constraint foreign key(userId) references tUser(userId),
     constraint foreign key(postId) references Post(postId)
-    
 );
+
 
 
 insert tAdmin(accountAdmin,passwordAdmin) values
 ('admin','admin');
 -- 1 la chu
 -- 0 la thue
-select * from tUser;
+
 insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
 ('linhninh2@gmail.com','0862861396','linh123',0,'nu','Huyện Đông Anh,thành phố Hà Nội','001302011253','Trần Mỹ Linh'),
 ('mintduc2612@gmail.com','0367218700','duc123',1,'nam','Phường Cẩm Sơn,thành phố Cẩm Phả,tỉnh Quảng Ninh','022202002528','Trần Minh Đức'),
 ('Minhanh190202@gmail.com','0978363413','minhanh123',1,'nam','Huyện Gia Lâm,thành phố Hà Nội','001302011234','Trần Minh Anh');
 
-select * from Post;
+
 
 insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
 values ('Cho thuê nhà ở Láng Hạ, Đống Đa',2,'2022-10-10','Láng Hạ - Đống Đa - Hà Nội','21.016748','105.810718',14000000,'cho thuê','Cho thuê nhà tại phố Hoàng Ngọc Phách, Láng Hạ, quận Đống Đa, Hà Nội 
@@ -154,8 +160,19 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
 select * from tUser;
 
+select * from tUser;
+select * from Post;
+drop table tComment;
+select * from tComment;
+insert tComment(userId,postId,content,dateComment) values (2,1,'Ui nhà này đẹp thế !','2022-10-16');
+insert tComment(userId,postId,content,dateComment) values (1,1,'Cầu xin đấy nhà tan nát ! Chán không có gì để nói','2022-10-16');
+insert tComment(userId,postId,content,dateComment) values (3,1,'Tóm lại nhà này là đủ sống, đủ để thở và làm những việc mà mình có thể làm hoặc không hoặc có hoặc là cả hai huhuuuuu ! bực quá đi àaaaaaaaa','2022-10-16');
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
+
+select count(postId) as SoLuongPost from Post;
+
+select * from tComment;
 
 update tUser 
 set passwordUR = 'Linh123'

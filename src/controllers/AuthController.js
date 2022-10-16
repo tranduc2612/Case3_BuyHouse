@@ -274,9 +274,9 @@ class AuthController {
   }
 
   async updateNewPassword(req,res){
-    const inputForm = this.loadDataInForm(req);
-    console.log(inputForm)
-    res.end("change password");
+    const inputForm = await this.loadDataInForm(req);
+    console.log(inputForm.password)
+    // res.end("change password");
   }
 
   async showRegisterPage(req, res) {
