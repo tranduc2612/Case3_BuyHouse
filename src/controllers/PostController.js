@@ -47,9 +47,14 @@ class PostController {
     formInput.inputURL = formInput.inputURL.split(",");
     const currentTime = new Date();
     const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}`;
-    const strQuery = `insert Post(title,userId,datePost,address,lat,lng,cost,statusHouse,descriptionPost)
+    const strQuery = `insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
     values('${formInput.inputTitle}',${idUser},'${queryTime}','${formInput.inputAddress}','${formInput.lat}','${formInput.lng}',${formInput.inputPrice},'cho thuê','${formInput.inputAddress}');`;
+    const numbPost = await postHouse.getNumberPostDB();
+    const newIdPost = Number(numbPost[0].SoLuongPost) + 1;
     await postHouse.createPost(strQuery);
+    formInput.inputURL.forEach(async (e) => {
+      await postHouse.insertImgData(newIdPost, e);
+    });
     res.statusCode = 302;
     res.setHeader("Location", "/category");
     res.end();
@@ -63,7 +68,6 @@ class PostController {
     const dataDetailPost = await postHouse.getDataPost(strPostQuery);
     const listImgDetail = await postHouse.getDataPost(strImgPostQuery);
     let htmlImg = "";
-    console.log(listImgDetail);
     if (isLogin) {
       fs.readFile("./src/views/postdetail.html", "utf-8", async (err, data) => {
         if (err) {
@@ -173,7 +177,7 @@ class PostController {
   }
 
   async showCommentList(idPost, data, req) {
-    const strQuery = `select tUser.userId,nameUser,content,dateComment from tComment join tUser on tComment.userId = tUser.userId where tComment.postId = ${idPost} order by dateComment desc`;
+    const strQuery = `select idComment,tUser.userId,nameUser,content,dateComment from tComment join tUser on tComment.userId = tUser.userId where tComment.postId = ${idPost} order by dateComment desc`;
     const listCommentDB = await postHouse.getListComment(strQuery);
     const currentUserData = await session.checkingSession(req);
     const idCurrentUser = currentUserData[0];
@@ -194,7 +198,9 @@ class PostController {
     <span>
     ${e.dateComment.toISOString().slice(0, 10)}
     </span>  
-                        <form action="/delete-comment" method="post">
+                        <form action="/delete-comment?idComment=${
+                          e.idComment
+                        }&&idPost=${idPost}" method="post">
                           <button class="btn__delete-comment ${
                             e.userId == idCurrentUser ? "" : "d-none"
                           } type="submit">Xoa</button>
@@ -207,13 +213,23 @@ class PostController {
     return data;
   }
 
-  async commentAction(req, res) {
+  async addComment(req, res) {
     const urlData = url.parse(req.url, true).query;
     const formInput = await this.loadDataInForm(req);
     const currentTime = new Date();
-    const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}`;
+    const queryTime = `${currentTime.getFullYear()}-${
+      currentTime.getMonth() + 1
+    }-${currentTime.getDate() + 1}`;
     const strQuery = `insert tComment(userId,postId,content,dateComment) values (${urlData.idUser},${urlData.idPost},'${formInput.commentText}','${queryTime}');`;
     await postHouse.insertCommentDB(strQuery);
+    res.statusCode = 302;
+    res.setHeader("Location", `/detail-post?${urlData.idPost}`);
+    res.end();
+  }
+
+  async deleteComment(req, res) {
+    const urlData = url.parse(req.url, true).query;
+    await postHouse.deleteComment(urlData.idComment);
     res.statusCode = 302;
     res.setHeader("Location", `/detail-post?${urlData.idPost}`);
     res.end();
