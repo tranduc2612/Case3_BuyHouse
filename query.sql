@@ -51,16 +51,17 @@ create table Image(
 
 -- notification
 create table Noti(
+	idNoti int auto_increment not null primary key,
 	statusNoti varchar(50), -- cho duyet(huy trong vong 24h ke tu khi muon thue-khach), da duyet, chot deal 
     dateNoti date,
-    userId int, -- chu nha
     postId int,
-    constraint primary key(userId,postId),
-    constraint foreign key(userId) references tUser(userId),
+	idUserRent int not null,
     constraint foreign key(postId) references Post(postId)
 );
-alter table Noti
-add idUserRent int not null; 
+
+drop table Noti;
+
+
 
 create table tComment(
 	idComment int auto_increment not null primary key,
@@ -84,7 +85,8 @@ insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
 ('mintduc2612@gmail.com','0367218700','duc123',1,'nam','Phường Cẩm Sơn,thành phố Cẩm Phả,tỉnh Quảng Ninh','022202002528','Trần Minh Đức'),
 ('Minhanh190202@gmail.com','0978363413','minhanh123',1,'nam','Huyện Gia Lâm,thành phố Hà Nội','001302011234','Trần Minh Anh');
 
-
+insert tUser(email,phone,passwordUR,typeDK,gender,address,cccd,nameUser) values
+('rioasenzo2612@gmail.com','0367724758','rioa',0,'nam','Dân tổ hà thành','12341212442','Người thuê nhà');
 
 insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
 values ('Cho thuê nhà ở Láng Hạ, Đống Đa',2,'2022-10-10','Láng Hạ - Đống Đa - Hà Nội','21.016748','105.810718',14000000,'cho thuê','Cho thuê nhà tại phố Hoàng Ngọc Phách, Láng Hạ, quận Đống Đa, Hà Nội 
@@ -158,15 +160,16 @@ values
 (9,'https://cloud.muaban.net/images/2022/10/13/223/d340b4a7b5ff4b6d87ad6ee2e94b55d3.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/d83ce7f74ccd4ac6aa7347d1c899cd9b.jpg'),
 (9,'https://cloud.muaban.net/images/2022/10/13/221/f4383989522641319595007811d75af5.jpg');
-select * from tUser;
 
-select * from tUser;
-select * from Post;
-drop table tComment;
-select * from tComment;
 insert tComment(userId,postId,content,dateComment) values (2,1,'Ui nhà này đẹp thế !','2022-10-16');
 insert tComment(userId,postId,content,dateComment) values (1,1,'Cầu xin đấy nhà tan nát ! Chán không có gì để nói','2022-10-16');
 insert tComment(userId,postId,content,dateComment) values (3,1,'Tóm lại nhà này là đủ sống, đủ để thở và làm những việc mà mình có thể làm hoặc không hoặc có hoặc là cả hai huhuuuuu ! bực quá đi àaaaaaaaa','2022-10-16');
+
+insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đang chờ chốt deal','2022-10-17',4,1);
+insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đang chờ chốt deal','2022-10-17',5,4);
+insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đã hủy','2022-10-14',6,1);
+insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đã hủy','2022-10-17',1,4);
+insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Chốt deal thành công','2022-10-17',8,4);
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
 
@@ -174,6 +177,21 @@ select count(postId) as SoLuongPost from Post;
 
 select * from tComment;
 
+select * from tUser;
+select * from Image;
+select * from Post;
+select * from Noti;
+select statusNoti, dateNoti,Post.userId,Noti.idUserRent,Post.postId, addressPost, cost, title, statusHouse,url,tUser.nameUser from Noti
+join Post on Post.postId = Noti.postId
+join Image on Image.postId = Post.postId
+join tUser on tUser.userId = Post.userId
+group by idNoti;
+
+
 update tUser 
 set passwordUR = 'Linh123'
-where userId = 1
+where userId = 1;
+
+update Noti
+set statusNoti = 'Đã hủy'
+where userId = 2 and postId = 3 and idUserRent = 1
