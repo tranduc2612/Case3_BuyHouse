@@ -175,7 +175,7 @@ select distinct Post.postId, title, cost, datePost,address, url from Post join I
 
 select count(postId) as SoLuongPost from Post;
 
-select * from tComment;
+select * from Post;
 
 select * from tUser;
 select * from Image;
@@ -195,3 +195,4 @@ where userId = 1;
 update Noti
 set statusNoti = 'Đã hủy'
 where userId = 2 and postId = 3 and idUserRent = 1
+
