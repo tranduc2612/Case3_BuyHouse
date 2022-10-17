@@ -85,10 +85,10 @@ async function router(req, res) {
         }
         break;
       case "/changepassword":
-        if(req.method == "GET"){
+        if (req.method == "GET") {
           authController.showChangePassword(req, res);
         }
-        if(req.method == "POST"){
+        if (req.method == "POST") {
           authController.updateNewPassword(req, res);
         }
         break;
@@ -116,6 +116,9 @@ async function router(req, res) {
         break;
       case "/delete-comment":
         postController.deleteComment(req, res);
+        break;
+      case "/notification":
+        authController.showNotification(req, res);
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
