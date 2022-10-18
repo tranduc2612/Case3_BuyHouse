@@ -356,6 +356,12 @@ class AuthController {
     const userData = await userDB.getListUser();
 
     // console.log(inputForm);
+    let data = {
+      phone : inputForm.phone,
+      password: inputForm.password,
+      type: inputForm.type
+    };
+    console.log(data);
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
         // số điện thoại đã tồn tại
@@ -367,7 +373,8 @@ class AuthController {
       }
       // còn lại thì gọi db và insert dữ liệu vào thôi !!!
     }
-    await userDB.insertUser(inputForm);
+
+    await userDB.insertUserPhone(data);
     this.userWrong = false;
     res.statusCode = 302;
     res.setHeader("Location", "/login");

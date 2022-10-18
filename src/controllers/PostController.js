@@ -143,7 +143,7 @@ class PostController {
       }
       let html = "";
       let postLists = await postHouse.getListPost();
-      console.log(postLists)
+      
       // for(let i = 0; i < postLists.length; i++){
       //   console.log(postLists[i].datePost.getMonth() );
       // }
@@ -167,7 +167,7 @@ class PostController {
           <span class="card-text-address">${e.addressPost} </span>
             <span class="card-text-price">${e.cost} đ</span>
             <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()
-              }-${e.datePost.getMonth()}-${e.datePost.getDate()}</span>
+              }-${e.datePost.getMonth()+1}-${e.datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
@@ -241,13 +241,14 @@ class PostController {
     const inputForm = await this.loadDataInForm(req);
     const postData = await postHouse.getListPost();
     let html ='';
+    // console.log(inputForm.status + " hohi");
     for(let i = 0; i < postData.length; i++){
-      if((postData[i].addressPost).includes(inputForm.province) && 
-         (postData[i].statusHouse).includes(inputForm.status) && 
-         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) &&
+      if((postData[i].addressPost).includes(inputForm.province) ||
+         (postData[i].statusHouse).includes(inputForm.status) ||
+         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) ||
          (postData[i].cost <= inputForm.price))
       {
-          
+          // console.log((postData[i].statusHouse).includes(inputForm.status));
         html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           postData[i].postId
@@ -265,9 +266,8 @@ class PostController {
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${postData[i].addressPost} </span>
             <span class="card-text-price">${postData[i].cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost
-              .toISOString()
-              .slice(0, 10)}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost.getFullYear()
+              }-${postData[i].datePost.getMonth()+1}-${postData[i].datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
@@ -289,7 +289,9 @@ class PostController {
       res.write(data);
       return res.end();
     })
+  // res.end("hi");
   }
+  
 }
 
 module.exports = new PostController();

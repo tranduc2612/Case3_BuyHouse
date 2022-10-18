@@ -59,7 +59,7 @@ create table Noti(
     constraint foreign key(postId) references Post(postId)
 );
 
-drop table Noti;
+
 
 
 
