@@ -121,6 +121,18 @@ async function router(req, res) {
           houseController.buyHouse(req, res);
         }
         break;
+      case "/accept-req":
+        houseController.acceptReq(req, res);
+        break;
+      case "/deny-req":
+        houseController.denyReq(req, res);
+        break;
+      case "/accept-deal":
+        houseController.acceptDeal(req, res);
+        break;
+      case "/check-in":
+        houseController.checkInHouse(req, res);
+        break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write("<h1>No found page !</h1>");

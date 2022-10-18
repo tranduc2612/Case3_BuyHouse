@@ -60,8 +60,6 @@ create table Noti(
     constraint foreign key(postId) references Post(postId)
 );
 
-drop table Noti;
-
 
 
 create table tComment(
@@ -172,6 +170,10 @@ insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đã h�
 insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đã hủy','2022-10-17',1,4,'Người thuê nhà');
 insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Chốt deal thành công','2022-10-17',8,4,'Người thuê nhà');
 
+select * from Noti;
+drop table Noti;
+
+update Noti set statusNoti = 'Đang chờ chốt deal' where idNoti = 1;
 
 -- Đang chờ duyệt
 -- Đang chờ chốt deal
