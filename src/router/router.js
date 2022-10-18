@@ -94,7 +94,12 @@ async function router(req, res) {
         }
         break;
       case "/category":
-        postController.showCategoryPage(req, res);
+        if(req.method == "GET"){
+           postController.showCategoryPage(req, res);
+        }
+        if(req.method == "POST"){
+          postController.searchingPost(req, res);
+        }
         break;
       case "/detail-post":
         postController.showDetailPost(req, res);
