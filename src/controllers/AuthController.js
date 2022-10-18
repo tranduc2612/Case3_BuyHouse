@@ -354,6 +354,12 @@ class AuthController {
     const userData = await userDB.getListUser();
 
     // console.log(inputForm);
+    let data = {
+      phone : inputForm.phone,
+      password: inputForm.password,
+      type: inputForm.type
+    };
+    console.log(data);
     for (let i = 0; i < userData.length; i++) {
       if (userData[i].phone == inputForm.phone) {
         // số điện thoại đã tồn tại
@@ -365,7 +371,8 @@ class AuthController {
       }
       // còn lại thì gọi db và insert dữ liệu vào thôi !!!
     }
-    await userDB.insertUser(inputForm);
+
+    await userDB.insertUserPhone(data);
     this.userWrong = false;
     res.statusCode = 302;
     res.setHeader("Location", "/login");
@@ -429,7 +436,7 @@ class AuthController {
     } else {
       strQuery += ` where Noti.idUserRent = ${isLogin[0]} `;
     }
-    strQuery += "group by idNoti order by dateNoti desc";
+    strQuery += "group by idNoti order by dateNoti desc, idNoti desc";
     const dataNoitice = await userDB.getNotification(strQuery);
     let html = "";
     console.log();
@@ -471,7 +478,7 @@ class AuthController {
                         }</span>
                         <div class="noitice__status wrapper mt-3 d-flex justify-content-between">
                             <span class="noitice__status">${e.statusNoti}</span>
-                            <span class="noitice__time me-4"><i class="fa-solid fa-clock me-2"></i>${e.dateNoti.getDate()}/${e.dateNoti.getMonth()}/${e.dateNoti.getFullYear()}</span>
+                            <span class="noitice__time me-4"><i class="fa-solid fa-clock me-2"></i>${e.dateNoti.getDate()}/${e.dateNoti.getMonth()+1}/${e.dateNoti.getFullYear()}</span>
                         </div>
                     </div>
                 </div>

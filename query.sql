@@ -62,6 +62,7 @@ create table Noti(
 
 
 
+
 create table tComment(
 	idComment int auto_increment not null primary key,
 	content text,
@@ -179,6 +180,7 @@ update Noti set statusNoti = 'Đang chờ chốt deal' where idNoti = 1;
 -- Đang chờ chốt deal
 -- Chốt deal thành công
 -- Đã hủy
+-- Đã trả phòng
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
 
