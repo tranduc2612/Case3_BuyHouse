@@ -218,7 +218,7 @@ class AuthController {
     const inputForm = await this.loadDataInForm(req);
     const idUser = await session.checkingSession(req)[0];
     let strQuery = "update tUser set ";
-    
+
     let currentData = [
       userData[idUser - 1].userId,
       userData[idUser - 1].nameUser,
@@ -263,7 +263,7 @@ class AuthController {
     userDB.updateUser(strQuery);
     res.statusCode = 302;
     res.setHeader("Location", "/info-user");
-    
+
     res.end();
   }
 
@@ -422,7 +422,7 @@ class AuthController {
 
   async showNotification(req, res) {
     let isLogin = session.checkingSession(req, res);
-    let strQuery = `select statusNoti, dateNoti,Post.userId,Noti.idUserRent,Post.postId, addressPost, cost, title, statusHouse,url,tUser.nameUser from Noti
+    let strQuery = `select statusNoti, dateNoti,Post.userId,Noti.idUserRent,Post.postId, addressPost, cost, title, statusHouse,url,tUser.nameUser,nameUserRent from Noti
     join Post on Post.postId = Noti.postId
     join Image on Image.postId = Post.postId
     join tUser on tUser.userId = Post.userId`;
@@ -431,10 +431,11 @@ class AuthController {
     } else {
       strQuery += ` where Noti.idUserRent = ${isLogin[0]} `;
     }
-    strQuery += "group by idNoti";
+    strQuery += "group by idNoti order by dateNoti desc";
     const dataNoitice = await userDB.getNotification(strQuery);
     console.log(dataNoitice);
 
+    let idUserRent = [];
     let html = "";
     console.log();
     if (isLogin) {
@@ -447,6 +448,10 @@ class AuthController {
           }
           let newData = await session.changeFontEnd(data, isLogin);
           dataNoitice.forEach((e) => {
+            // let nameUserRent = await userDB.getNotification(
+            //   `select nameUser from tUser where userId = ${e.idUserRent}`
+            // );
+            idUserRent.push(e.idUserRent);
             html += `<li class="noitice__item mt-3 position-relative">
             <a class="noitice__link d-flex align-items-center" href="/detail-post?${
               e.postId
@@ -457,6 +462,9 @@ class AuthController {
                         <h5 class="noitice__title">${e.title}</h5>
                         <span class="noitice__price fs-5">${e.cost}</span>
                         <span>${e.nameUser}</span>
+                        <span>${
+                            isLogin[7] == 0 ? e.nameUser : e.nameUserRent
+                        }</span>
                         <div class="noitice__status wrapper mt-3 d-flex justify-content-between">
                             <span class="noitice__status">${e.statusNoti}</span>
                             <span class="noitice__time me-4"><i class="fa-solid fa-clock me-2"></i>${e.dateNoti.getDate()}/${e.dateNoti.getMonth()}/${e.dateNoti.getFullYear()}</span>
@@ -480,12 +488,14 @@ class AuthController {
                       ? "d-none"
                       : ""
                   }" href="#" style="top:${
-              isLogin[0] == 0 ? "40%" : "60%"
+              isLogin[7] == 0 ? "40%" : "60%"
             };width:113px">Hủy yêu cầu</a>
               
 
                 <span class="direct__button-deal ${
-                  e.statusNoti == "Đang chờ chốt deal" ? "" : "d-none"
+                  e.statusNoti == "Đang chờ chốt deal" && isLogin[7] == 1
+                    ? ""
+                    : "d-none"
                 }">
                   <a class="btn btn-success position-absolute end-0 me-4" href="#" style="top:20%;width:113px">Chốt deal</a>
                   <a class="btn  btn-danger position-absolute end-0 me-4" href="#" style="top:60%;width:113px">Hủy Deal</a>
@@ -495,6 +505,8 @@ class AuthController {
         </li>`;
             console.log(e.statusNoti);
           });
+
+          console.log(html);
           data = data.replace(data, newData);
           data = data.replace("{list-noitice}", html);
           res.writeHead(200, { "Content-Type": "text/html" });

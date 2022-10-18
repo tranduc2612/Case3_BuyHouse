@@ -108,6 +108,15 @@ class PostController {
           `center:new google.maps.LatLng(10.771783,106.586605)`,
           `center:new google.maps.LatLng(${dataDetailPost[0].lat},${dataDetailPost[0].lng})`
         );
+
+        data = data.replace(
+          `action="/buy-house"`,
+          `action="/buy-house?idPost=${idPost}"`
+        );
+        data = data.replace(
+          `action="/buy-house"`,
+          `action="/buy-house?idPost=${idPost}"`
+        );
         // update info post host
         data = data.replace(`{phone-host}`, dataDetailPost[0].phone);
         data = data.replace("{name-admin-post}", dataDetailPost[0].nameUser);
@@ -143,12 +152,7 @@ class PostController {
       }
       let html = "";
       let postLists = await postHouse.getListPost();
-      console.log(postLists)
-      // for(let i = 0; i < postLists.length; i++){
-      //   console.log(postLists[i].datePost.getMonth() );
-      // }
       postLists.forEach((e) => {
-        // console.log("for e: ",e.datePost.getMonth());
         html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           e.postId
@@ -166,8 +170,9 @@ class PostController {
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${e.addressPost} </span>
             <span class="card-text-price">${e.cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()
-              }-${e.datePost.getMonth()}-${e.datePost.getDate()}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost
+              .toISOString()
+              .slice(0, 10)}</span>
           </div>
         </a>
       </div>`;
@@ -234,61 +239,6 @@ class PostController {
     res.statusCode = 302;
     res.setHeader("Location", `/detail-post?${urlData.idPost}`);
     res.end();
-  }
-
-  async searchingPost(req, res) {
-    let isLogin = session.checkingSession(req, res);
-    const inputForm = await this.loadDataInForm(req);
-    const postData = await postHouse.getListPost();
-    let html ='';
-    for(let i = 0; i < postData.length; i++){
-      if((postData[i].addressPost).includes(inputForm.province) && 
-         (postData[i].statusHouse).includes(inputForm.status) && 
-         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) &&
-         (postData[i].cost <= inputForm.price))
-      {
-          
-        html += `<div class="col-4" data-aos="fade-up">
-        <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
-          postData[i].postId
-        }">
-          <div class="card__img" style="width: 100%;
-          height: 160px;
-          background-image: url('${postData[i].url}');
-          background-size: cover;
-          border-radius: 10px;
-          background-repeat: no-repeat;
-          background-position: center;
-          ">
-          </div>
-          <h5 class="card-title mt-2" style="color: #333;">${postData[i].title}</h5>
-          <div class="card__body d-flex flex-column">
-          <span class="card-text-address">${postData[i].addressPost} </span>
-            <span class="card-text-price">${postData[i].cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost
-              .toISOString()
-              .slice(0, 10)}</span>
-          </div>
-        </a>
-      </div>`;
-      }
-      // console.log(inputForm.time.toISOString().slice(0, 10));
-
-    }
-  
-    fs.readFile("./src/views/categorypost.html", "utf-8", async (err, data) =>{
-      if(err) {
-        console.log(err);
-      }
-      if (isLogin) {
-        let newData = await session.changeFontEnd(data, isLogin);
-        data = data.replace(data, newData);
-      }
-      data = data.replace("{PostHouse-Lists}", html);
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(data);
-      return res.end();
-    })
   }
 }
 

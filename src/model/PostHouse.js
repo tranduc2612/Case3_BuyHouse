@@ -3,7 +3,7 @@ const db = require("./DBConnect");
 class PostHouse {
   async getListPost() {
     let sql =
-      "select Post.postId, title, cost, datePost,addressPost, url, statusHouse from Post join Image on Image.postId = Post.postId group by Post.postId";
+      "select Post.postId, title, cost, datePost,addressPost, url from Post join Image on Image.postId = Post.postId group by Post.postId";
     return await db
       .runMySQL(sql)
       .then((results) => {
@@ -88,6 +88,18 @@ class PostHouse {
 
   async createPost(strQuery) {
     let sql = strQuery;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async addNoitice(data) {
+    let sql = `insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đang chờ duyệt','${data.date}',${data.idPost},${data.idUserRent},'${data.nameUserRent}');`;
     return await db
       .runMySQL(sql)
       .then((results) => {
