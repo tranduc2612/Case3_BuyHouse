@@ -47,7 +47,7 @@ class PostController {
     const idUser = session.checkingSession(req)[0];
     formInput.inputURL = formInput.inputURL.split(",");
     const currentTime = new Date();
-    const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()}-${currentTime.getDate()}`;
+    const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()+1}-${currentTime.getDate()}`;
     const strQuery = `insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
     values('${formInput.inputTitle}',${idUser},'${queryTime}','${formInput.inputAddress}','${formInput.lat}','${formInput.lng}',${formInput.inputPrice},'cho thuê','${formInput.inputAddress}');`;
     const numbPost = await postHouse.getNumberPostDB();
@@ -176,7 +176,7 @@ class PostController {
       }
       let html = "";
       let postLists = await postHouse.getListPost();
-      console.log(postLists)
+      // console.log(postLists)
       // for(let i = 0; i < postLists.length; i++){
       //   console.log(postLists[i].datePost.getMonth() );
       // }
@@ -199,7 +199,7 @@ class PostController {
           <span class="card-text-address">${e.addressPost} </span>
             <span class="card-text-price">${e.cost} đ</span>
             <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()
-              }-${e.datePost.getMonth()}-${e.datePost.getDate()}</span>
+              }-${e.datePost.getMonth()+1}-${e.datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
@@ -237,7 +237,7 @@ class PostController {
     } " href="/delete-comment?idComment=${
         e.idComment
       }&&idPost=${idPost}" style="color:#333;">Xoa</a>
-</div>
+    </div>
     `;
     });
 
@@ -274,9 +274,9 @@ class PostController {
     const postData = await postHouse.getListPost();
     let html ='';
     for(let i = 0; i < postData.length; i++){
-      if((postData[i].addressPost).includes(inputForm.province) && 
-         (postData[i].statusHouse).includes(inputForm.status) && 
-         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) &&
+      if((postData[i].addressPost).includes(inputForm.province) ||
+         (postData[i].statusHouse).includes(inputForm.status) ||
+         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) ||
          (postData[i].cost <= inputForm.price))
       {
           
@@ -297,9 +297,8 @@ class PostController {
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${postData[i].addressPost} </span>
             <span class="card-text-price">${postData[i].cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost
-              .toISOString()
-              .slice(0, 10)}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost.getFullYear()
+            }-${postData[i].datePost.getMonth()+1}-${postData[i].datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
