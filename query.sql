@@ -56,9 +56,9 @@ create table Noti(
     dateNoti date,
     postId int,
 	idUserRent int not null,
+    nameUserRent varchar(20) not null,
     constraint foreign key(postId) references Post(postId)
 );
-
 
 
 
@@ -165,17 +165,27 @@ insert tComment(userId,postId,content,dateComment) values (2,1,'Ui nhà này đ�
 insert tComment(userId,postId,content,dateComment) values (1,1,'Cầu xin đấy nhà tan nát ! Chán không có gì để nói','2022-10-16');
 insert tComment(userId,postId,content,dateComment) values (3,1,'Tóm lại nhà này là đủ sống, đủ để thở và làm những việc mà mình có thể làm hoặc không hoặc có hoặc là cả hai huhuuuuu ! bực quá đi àaaaaaaaa','2022-10-16');
 
-insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đang chờ chốt deal','2022-10-17',4,1);
-insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đang chờ chốt deal','2022-10-17',5,4);
-insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đã hủy','2022-10-14',6,1);
-insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Đã hủy','2022-10-17',1,4);
-insert Noti(statusNoti,dateNoti,postId,idUserRent) values('Chốt deal thành công','2022-10-17',8,4);
+insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đang chờ chốt deal','2022-10-17',4,1,'Trần Mỹ Linh');
+insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đang chờ duyệt','2022-10-17',5,4,'Người thuê nhà');
+insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đã hủy','2022-10-14',6,1,'Trần Mỹ Linh');
+insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đã hủy','2022-10-17',1,4,'Người thuê nhà');
+insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Chốt deal thành công','2022-10-17',8,4,'Người thuê nhà');
+
+select * from Noti;
+drop table Noti;
+
+update Noti set statusNoti = 'Đang chờ chốt deal' where idNoti = 1;
+
+-- Đang chờ duyệt
+-- Đang chờ chốt deal
+-- Chốt deal thành công
+-- Đã hủy
 
 select distinct Post.postId, title, cost, datePost,address, url from Post join Image on Image.postId = Post.postId group by Post.postId;
 
 select count(postId) as SoLuongPost from Post;
 
-select * from Post;
+select * from tComment;
 
 select * from tUser;
 select * from Image;
@@ -195,4 +205,3 @@ where userId = 1;
 update Noti
 set statusNoti = 'Đã hủy'
 where userId = 2 and postId = 3 and idUserRent = 1
-

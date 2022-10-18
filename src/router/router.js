@@ -4,6 +4,7 @@ require("dotenv").config();
 const siteController = require("../controllers/SiteController");
 const authController = require("../controllers/AuthController");
 const postController = require("../controllers/PostController");
+const houseController = require("../controllers/HouseController");
 const PATH = process.env.USER;
 const jwt = require("jsonwebtoken");
 
@@ -84,7 +85,7 @@ async function router(req, res) {
           authController.registerNewPassword(req, res, token_google);
         }
         break;
-      case "/changepassword":
+      case "/change-password":
         if (req.method == "GET") {
           authController.showChangePassword(req, res);
         }
@@ -93,12 +94,7 @@ async function router(req, res) {
         }
         break;
       case "/category":
-        if(req.method == "GET"){
-          postController.showCategoryPage(req, res);
-        }
-        if(req.method == "POST"){
-          postController.searchingPost(req, res);
-        }
+        postController.showCategoryPage(req, res);
         break;
       case "/detail-post":
         postController.showDetailPost(req, res);
@@ -119,6 +115,23 @@ async function router(req, res) {
         break;
       case "/notification":
         authController.showNotification(req, res);
+        break;
+      case "/buy-house":
+        if (req.method === "POST") {
+          houseController.buyHouse(req, res);
+        }
+        break;
+      case "/accept-req":
+        houseController.acceptReq(req, res);
+        break;
+      case "/deny-req":
+        houseController.denyReq(req, res);
+        break;
+      case "/accept-deal":
+        houseController.acceptDeal(req, res);
+        break;
+      case "/check-in":
+        houseController.checkInHouse(req, res);
         break;
       default:
         res.writeHead(200, { "Content-Type": "text/html" });

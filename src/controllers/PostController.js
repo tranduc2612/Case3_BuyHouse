@@ -42,6 +42,7 @@ class PostController {
   }
 
   async createPost(req, res) {
+    // tham khảo của anh Linh về insert copy
     const formInput = await this.loadDataInForm(req);
     const idUser = session.checkingSession(req)[0];
     formInput.inputURL = formInput.inputURL.split(",");
@@ -108,6 +109,15 @@ class PostController {
           `center:new google.maps.LatLng(10.771783,106.586605)`,
           `center:new google.maps.LatLng(${dataDetailPost[0].lat},${dataDetailPost[0].lng})`
         );
+
+        data = data.replace(
+          `action="/buy-house"`,
+          `action="/buy-house?idPost=${idPost}"`
+        );
+        data = data.replace(
+          `action="/buy-house"`,
+          `action="/buy-house?idPost=${idPost}"`
+        );
         // update info post host
         data = data.replace(`{phone-host}`, dataDetailPost[0].phone);
         data = data.replace("{name-admin-post}", dataDetailPost[0].nameUser);
@@ -119,6 +129,29 @@ class PostController {
         );
         const dataComment = await this.showCommentList(idPost, data, req);
         data = data.replace(data, dataComment);
+        if (dataDetailPost[0].statusHouse == "Đã thuê") {
+          data = data.replace(
+            `<button class="btn__toggle-numberphone ms-2" type="submit">Đặt ngay</button>`,
+            `<button class="btn__toggle-numberphone ms-2 d-none" type="submit">Đặt ngay</button>`
+          );
+
+          data = data.replace(
+            `<button class="button__info" type="submit">Bấm để đặt phòng ngay</button>`,
+            `<button class="button__info d-none" type="submit">Bấm để đặt phòng ngay</button>`
+          );
+        }
+
+        if (isLogin[7] == 1) {
+          data = data.replace(
+            `<button class="btn__toggle-numberphone ms-2" type="submit">Đặt ngay</button>`,
+            `<button class="btn__toggle-numberphone ms-2" type="submit" disabled>Đặt ngay</button>`
+          );
+
+          data = data.replace(
+            `<button class="button__info" type="submit">Bấm để đặt phòng ngay</button>`,
+            `<button class="button__info" type="submit" disabled>Bấm để đặt phòng ngay</button>`
+          );
+        }
 
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
@@ -143,12 +176,11 @@ class PostController {
       }
       let html = "";
       let postLists = await postHouse.getListPost();
-      
+      console.log(postLists)
       // for(let i = 0; i < postLists.length; i++){
       //   console.log(postLists[i].datePost.getMonth() );
       // }
       postLists.forEach((e) => {
-        // console.log("for e: ",e.datePost.getMonth());
         html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           e.postId
@@ -167,7 +199,7 @@ class PostController {
           <span class="card-text-address">${e.addressPost} </span>
             <span class="card-text-price">${e.cost} đ</span>
             <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()
-              }-${e.datePost.getMonth()+1}-${e.datePost.getDate()}</span>
+              }-${e.datePost.getMonth()}-${e.datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
@@ -241,14 +273,13 @@ class PostController {
     const inputForm = await this.loadDataInForm(req);
     const postData = await postHouse.getListPost();
     let html ='';
-    // console.log(inputForm.status + " hohi");
     for(let i = 0; i < postData.length; i++){
-      if((postData[i].addressPost).includes(inputForm.province) ||
-         (postData[i].statusHouse).includes(inputForm.status) ||
-         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) ||
+      if((postData[i].addressPost).includes(inputForm.province) && 
+         (postData[i].statusHouse).includes(inputForm.status) && 
+         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) &&
          (postData[i].cost <= inputForm.price))
       {
-          // console.log((postData[i].statusHouse).includes(inputForm.status));
+          
         html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           postData[i].postId
@@ -266,8 +297,9 @@ class PostController {
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${postData[i].addressPost} </span>
             <span class="card-text-price">${postData[i].cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost.getFullYear()
-              }-${postData[i].datePost.getMonth()+1}-${postData[i].datePost.getDate()}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost
+              .toISOString()
+              .slice(0, 10)}</span>
           </div>
         </a>
       </div>`;
@@ -289,9 +321,7 @@ class PostController {
       res.write(data);
       return res.end();
     })
-  // res.end("hi");
   }
-  
 }
 
 module.exports = new PostController();
