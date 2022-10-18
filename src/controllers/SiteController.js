@@ -4,23 +4,28 @@ const postHouse = require("../model/PostHouse");
 
 class SiteController {
   async showHomePage(req, res) {
-    let isLogin = session.checkingSession(req);
-    fs.readFile("./src/views/home.html", "utf-8", async (err, data) => {
-      if (err) {
-        console.log(err.message);
-      }
-      if (isLogin) {
-        let newData = await session.changeFontEnd(data, isLogin);
-        data = data.replace(data, newData);
-      }
+    try {
+      let isLogin = session.checkingSession(req);
+      fs.readFile("./src/views/home.html", "utf-8", async (err, data) => {
+        if (err) {
+          console.log(err.message);
+        }
+        if (isLogin) {
+          let newData = await session.changeFontEnd(data, isLogin);
+          data = data.replace(data, newData);
+        }
 
-      if (session.checkingSessionGG(req)) {
-        session.deleteSessionGG(req);
-      }
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(data);
-      return res.end();
-    });
+        if (session.checkingSessionGG(req)) {
+          session.deleteSessionGG(req);
+        }
+        res.writeHead(200, { "Content-Type": "text/html" });
+        res.write(data);
+        return res.end();
+      });
+    }
+    catch (error) {
+      console.log(error.message);
+    }
   }
 
   async loadDataInForm(req) {
