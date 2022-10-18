@@ -201,6 +201,13 @@ class AuthController {
             `<input class="custom-input input__phone" type="text" name="phone" value="${isLogin[3]}" disabled>`
           );
         }
+
+        if (isLogin[5]) {
+          data = data.replace(
+            '<input class="custom-input input__value input__email" type="text" name="email" value="Cần Được cập nhât" disabled>',
+            `<input class="custom-input input__value input__email" type="text" name="email" value="${isLogin[5]}" disabled>`
+          );
+        }
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);
         return res.end();
@@ -355,9 +362,9 @@ class AuthController {
 
     // console.log(inputForm);
     let data = {
-      phone : inputForm.phone,
+      phone: inputForm.phone,
       password: inputForm.password,
-      type: inputForm.type
+      type: inputForm.type,
     };
     console.log(data);
     for (let i = 0; i < userData.length; i++) {
@@ -478,7 +485,9 @@ class AuthController {
                         }</span>
                         <div class="noitice__status wrapper mt-3 d-flex justify-content-between">
                             <span class="noitice__status">${e.statusNoti}</span>
-                            <span class="noitice__time me-4"><i class="fa-solid fa-clock me-2"></i>${e.dateNoti.getDate()}/${e.dateNoti.getMonth()+1}/${e.dateNoti.getFullYear()}</span>
+                            <span class="noitice__time me-4"><i class="fa-solid fa-clock me-2"></i>${e.dateNoti.getDate()}/${
+              e.dateNoti.getMonth() + 1
+            }/${e.dateNoti.getFullYear()}</span>
                         </div>
                     </div>
                 </div>

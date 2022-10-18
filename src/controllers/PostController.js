@@ -47,7 +47,9 @@ class PostController {
     const idUser = session.checkingSession(req)[0];
     formInput.inputURL = formInput.inputURL.split(",");
     const currentTime = new Date();
-    const queryTime = `${currentTime.getFullYear()}-${currentTime.getMonth()+1}-${currentTime.getDate()}`;
+    const queryTime = `${currentTime.getFullYear()}-${
+      currentTime.getMonth() + 1
+    }-${currentTime.getDate()}`;
     const strQuery = `insert Post(title,userId,datePost,addressPost,lat,lng,cost,statusHouse,descriptionPost)
     values('${formInput.inputTitle}',${idUser},'${queryTime}','${formInput.inputAddress}','${formInput.lat}','${formInput.lng}',${formInput.inputPrice},'cho thuê','${formInput.inputAddress}');`;
     const numbPost = await postHouse.getNumberPostDB();
@@ -198,8 +200,9 @@ class PostController {
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${e.addressPost} </span>
             <span class="card-text-price">${e.cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()
-              }-${e.datePost.getMonth()+1}-${e.datePost.getDate()}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${e.datePost.getFullYear()}-${
+          e.datePost.getMonth() + 1
+        }-${e.datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
@@ -272,14 +275,17 @@ class PostController {
     let isLogin = session.checkingSession(req, res);
     const inputForm = await this.loadDataInForm(req);
     const postData = await postHouse.getListPost();
-    let html ='';
-    for(let i = 0; i < postData.length; i++){
-      if((postData[i].addressPost).includes(inputForm.province) ||
-         (postData[i].statusHouse).includes(inputForm.status) ||
-         (postData[i].datePost.toISOString().slice(0, 10)).includes(inputForm.time) ||
-         (postData[i].cost <= inputForm.price))
-      {
-          
+    let html = "";
+    for (let i = 0; i < postData.length; i++) {
+      if (
+        postData[i].addressPost.includes(inputForm.province) ||
+        postData[i].statusHouse.includes(inputForm.status) ||
+        postData[i].datePost
+          .toISOString()
+          .slice(0, 10)
+          .includes(inputForm.time) ||
+        postData[i].cost <= inputForm.price
+      ) {
         html += `<div class="col-4" data-aos="fade-up">
         <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/detail-post?${
           postData[i].postId
@@ -293,22 +299,26 @@ class PostController {
           background-position: center;
           ">
           </div>
-          <h5 class="card-title mt-2" style="color: #333;">${postData[i].title}</h5>
+          <h5 class="card-title mt-2" style="color: #333;">${
+            postData[i].title
+          }</h5>
           <div class="card__body d-flex flex-column">
           <span class="card-text-address">${postData[i].addressPost} </span>
             <span class="card-text-price">${postData[i].cost} đ</span>
-            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[i].datePost.getFullYear()
-            }-${postData[i].datePost.getMonth()+1}-${postData[i].datePost.getDate()}</span>
+            <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>${postData[
+              i
+            ].datePost.getFullYear()}-${
+          postData[i].datePost.getMonth() + 1
+        }-${postData[i].datePost.getDate()}</span>
           </div>
         </a>
       </div>`;
       }
       // console.log(inputForm.time.toISOString().slice(0, 10));
-
     }
-  
-    fs.readFile("./src/views/categorypost.html", "utf-8", async (err, data) =>{
-      if(err) {
+
+    fs.readFile("./src/views/categorypost.html", "utf-8", async (err, data) => {
+      if (err) {
         console.log(err);
       }
       if (isLogin) {
@@ -319,7 +329,7 @@ class PostController {
       res.writeHead(200, { "Content-Type": "text/html" });
       res.write(data);
       return res.end();
-    })
+    });
   }
 }
 
