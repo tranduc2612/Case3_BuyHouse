@@ -42,6 +42,7 @@ class PostController {
   }
 
   async createPost(req, res) {
+    // tham khảo của anh Linh về insert copy
     const formInput = await this.loadDataInForm(req);
     const idUser = session.checkingSession(req)[0];
     formInput.inputURL = formInput.inputURL.split(",");
@@ -128,6 +129,29 @@ class PostController {
         );
         const dataComment = await this.showCommentList(idPost, data, req);
         data = data.replace(data, dataComment);
+        if (dataDetailPost[0].statusHouse == "Đã thuê") {
+          data = data.replace(
+            `<button class="btn__toggle-numberphone ms-2" type="submit">Đặt ngay</button>`,
+            `<button class="btn__toggle-numberphone ms-2 d-none" type="submit">Đặt ngay</button>`
+          );
+
+          data = data.replace(
+            `<button class="button__info" type="submit">Bấm để đặt phòng ngay</button>`,
+            `<button class="button__info d-none" type="submit">Bấm để đặt phòng ngay</button>`
+          );
+        }
+
+        if (isLogin[7] == 1) {
+          data = data.replace(
+            `<button class="btn__toggle-numberphone ms-2" type="submit">Đặt ngay</button>`,
+            `<button class="btn__toggle-numberphone ms-2" type="submit" disabled>Đặt ngay</button>`
+          );
+
+          data = data.replace(
+            `<button class="button__info" type="submit">Bấm để đặt phòng ngay</button>`,
+            `<button class="button__info" type="submit" disabled>Bấm để đặt phòng ngay</button>`
+          );
+        }
 
         res.writeHead(200, { "Content-Type": "text/html" });
         res.write(data);

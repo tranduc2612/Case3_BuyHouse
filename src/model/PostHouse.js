@@ -86,6 +86,18 @@ class PostHouse {
       });
   }
 
+  async updateStatusPost(idPost, statusPost) {
+    let sql = `update Post set statusHouse = '${statusPost}' where postId = ${idPost};`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   async createPost(strQuery) {
     let sql = strQuery;
     return await db
@@ -100,6 +112,30 @@ class PostHouse {
 
   async addNoitice(data) {
     let sql = `insert Noti(statusNoti,dateNoti,postId,idUserRent,nameUserRent) values('Đang chờ duyệt','${data.date}',${data.idPost},${data.idUserRent},'${data.nameUserRent}');`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async changeStatusNotice(status, idNotice) {
+    let sql = `update Noti set statusNoti = '${status}' where idNoti = ${idNotice};`;
+    return await db
+      .runMySQL(sql)
+      .then((results) => {
+        return results;
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async getNotice(idNotice) {
+    let sql = `select * from Noti where idNoti = '${idNotice}'`;
     return await db
       .runMySQL(sql)
       .then((results) => {
