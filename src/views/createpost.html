@@ -75,7 +75,7 @@
     </header>
 
     <div class="container mt-5">
-        <form class="form-cutom d-flex flex-column" action="/create-post" method="post">
+        <form class="form-cutom d-flex flex-column" action="/create-post" method="post" enctype="multipart/form-data">
             <h3 class="title__create-post">Nhập thông tin đăng bán</h3>
             <div class="form__title d-flex justify-content-between align-items-center mb-4 mt-5">
                 <label for="form__input-title">Tiêu đề bài đăng</label>       
@@ -93,7 +93,7 @@
 
             <div class="form__URL d-flex justify-content-between align-items-center mb-3">
               <label for="form__input-URL">URL img</label>       
-              <input  type="file" name="inputURL" class="form-control-file border" multiple>
+              <input  type="file" name="multipleFiles" class="form-control-file border" multiple>
             </div>
             <span id="message_url" class="message messageWrong mt-1 mb-4 position-relative d-none">Phải điền url !</span>
 
@@ -110,7 +110,7 @@
               <span class="checkbox__policy-text">Tôi đã đọc và đồng ý với <a href="#">quy định</a> của Muaban</span>
             </div>
             <span id="message_policy" class="message messageWrong m-auto mt-1 d-none">Hãy đọc quy định đi !</span>
-            <button class="btn__post custom-button mt-5 align-self-center">
+            <button type="submit" class="btn__post custom-button mt-5 align-self-center">
               Đăng bài
             </button>
         </form>

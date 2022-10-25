@@ -1,12 +1,50 @@
 const url = require("url");
 const fs = require("fs");
 require("dotenv").config();
+const pathConnect = require("path");
+const formidable = require("formidable");
 const siteController = require("../controllers/SiteController");
 const authController = require("../controllers/AuthController");
 const postController = require("../controllers/PostController");
 const houseController = require("../controllers/HouseController");
 const PATH = process.env.USER;
 const jwt = require("jsonwebtoken");
+
+async function upLoadFile(req, res) {
+  const form = formidable({ multiples: true });
+  return new Promise((resolve, reject) => {
+    form.parse(req, async (err, fields, files) => {
+      if (err) {
+        reject(err);
+      }
+      res.writeHead(200, { "Content-Type": "application/json" });
+      const dataImgInput = JSON.parse(
+        JSON.stringify({ fields, files }, null, 2)
+      ).files.multipleFiles;
+      let urlImg = [];
+      dataImgInput.forEach((e) => {
+        let tmpPath = e.filepath;
+        let newPath = pathConnect.join(
+          __dirname,
+          "..",
+          "views",
+          "img",
+          "img_post",
+          e.originalFilename
+        );
+        urlImg.push(newPath);
+        fs.readFile(newPath, (err) => {
+          if (err) {
+            fs.copyFile(tmpPath, newPath, (err) => {
+              if (err) throw err;
+            });
+          }
+        });
+      });
+      resolve(urlImg);
+    });
+  });
+}
 
 async function router(req, res) {
   let parseUrl = url.parse(req.url, true);
@@ -94,10 +132,10 @@ async function router(req, res) {
         }
         break;
       case "/category":
-        if(req.method == "GET"){
-           postController.showCategoryPage(req, res);
+        if (req.method == "GET") {
+          postController.showCategoryPage(req, res);
         }
-        if(req.method == "POST"){
+        if (req.method == "POST") {
           postController.searchingPost(req, res);
         }
         break;
@@ -109,7 +147,8 @@ async function router(req, res) {
           postController.showCreatePost(req, res);
         }
         if (req.method == "POST") {
-          postController.createPost(req, res);
+          const dataImg = await upLoadFile(req, res);
+          postController.createPost(req, res, dataImg);
         }
         break;
       case "/comment":
