@@ -2,7 +2,7 @@ const http = require("http");
 const fs = require("fs");
 const qs = require("qs");
 require("dotenv").config();
-const router = require("./src/Router/Router.js");
+const router = require("./src/router/router.js");
 const PORT = process.env.PORT;
 
 const server = http.createServer(router);
