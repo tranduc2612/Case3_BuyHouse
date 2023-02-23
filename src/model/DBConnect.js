@@ -12,10 +12,10 @@ class DBConnection {
 		// });
 
 		this.connection = mysql.createConnection({
-			host: "containers-us-west-114.railway.app",
-			user: "root",
-			password: "OEjAkBkEI6KCf5SdouDi",
-			database: "railway",
+			host: "bhz3c4c1tjawjdejfh9y-mysql.services.clever-cloud.com",
+			user: "umckebfcypb1wh9q",
+			password: "NTv0jlGwaWMckadgkTLd",
+			database: "bhz3c4c1tjawjdejfh9y",
 			charset: "utf8_general_ci",
 		});
 	}
@@ -26,7 +26,7 @@ class DBConnection {
 				if (err) {
 					reject(err);
 				}
-				console.log("success");
+				// console.log("success");
 				resolve(results);
 			});
 		});
