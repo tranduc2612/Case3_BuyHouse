@@ -1,455 +1,799 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/header.css">
-    <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./css/home.css">
-    <title>Buy House</title>
-</head>
-<body>
-  <header class="header">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="/home">
-            <img src="https://muaban.net/logo/muaban.svg" alt="logo">
-          </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<link rel="stylesheet" href="views/css/base.css" />
+		<link rel="stylesheet" href="views/css/header.css" />
+		<link rel="stylesheet" href="views/css/footer.css" />
+		<link rel="stylesheet" href="views/css/home.css" />
+		<title>Buy House</title>
+	</head>
+	<body>
+		<header class="header">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<a class="navbar-brand" href="/home">
+						<img src="views/img/muaban.svg" alt="logo" />
+					</a>
 
-        <div class="navbar">
-            <ul class="navbar-nav nav-info-login">
-                <li class="nav-item me-3">
-                  <a class="nav-link" href="#">
-                    <i class="fa-solid fa-bell"></i>
-                    <span>Thông báo</span> 
-                  </a>
-                </li>
+					<div class="navbar">
+						<ul class="navbar-nav nav-info-login">
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-bell"></i>
+									<span>Thông báo</span>
+								</a>
+							</li>
 
-                <li class="nav-item me-3">
-                  <a class="nav-link" href="/login">
-                    <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
-                    <span>Đăng nhập</span> 
-                  </a>
-                </li>
+							<li class="nav-item me-3">
+								<a class="nav-link" href="/login">
+									<i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+									<span>Đăng nhập</span>
+								</a>
+							</li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="/register">
-                    <i class="fa-sharp fa-solid fa-circle-user"></i>
-                    <span> Đăng kí</span>
-                  </a>
-                </li>
-              </ul> 
+							<li class="nav-item">
+								<a class="nav-link" href="/register">
+									<i class="fa-sharp fa-solid fa-circle-user"></i>
+									<span> Đăng kí</span>
+								</a>
+							</li>
+						</ul>
 
-              <ul class="navbar-nav nav-info-user d-none">
-                <li class="nav-item me-3">
-                  <a class="nav-link" href="#">
-                    <i class="fa-solid fa-newspaper fs-5"></i>
-                    <span>Quản lí tin</span> 
-                  </a>
-                </li>
-                <li class="nav-item me-3">
-                  <a class="nav-link" href="#">
-                    <i class="fa-solid fa-bell fs-5"></i>
-                    <span>Thông báo</span> 
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/info-user">
-                    <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
-                    <!-- <img class="img__user" src="https://lh3.googleusercontent.com/a-/ACNPEu8PoBua6hpJufAEMia87AQLvuhxGy0pIHryGJqf=s96-c" alt="user_img"> -->
-                    <span>{name-user}</span>
-                  </a>
-                </li>
-              </ul> 
-        </div>
+						<ul class="navbar-nav nav-info-user d-none">
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-newspaper fs-5"></i>
+									<span>Quản lí tin</span>
+								</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-bell fs-5"></i>
+									<span>Thông báo</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/info-user">
+									<i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
+									<!-- <img class="img__user" src="https://lh3.googleusercontent.com/a-/ACNPEu8PoBua6hpJufAEMia87AQLvuhxGy0pIHryGJqf=s96-c" alt="user_img"> -->
+									<span>{name-user}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<div
+						class="collapse navbar-collapse d-flex justify-content-between"
+						id="navbarNavAltMarkup"
+					>
+						<div
+							class="navbar-nav position-relative"
+							id="nav__direction"
+							style="font-weight: 700"
+						>
+							<a class="nav-link" href="/">Trang chủ</a>
+							<a class="nav-link" href="/category">danh sách nhà</a>
+						</div>
 
-        </div>
-    </nav>
-    
-        
+						<form class="d-flex position-relative" action="/" method="post">
+							<input
+								class="input__search"
+								type="search"
+								placeholder="Bạn cần tìm gì ?"
+							/>
+							<button
+								class="button__search position-absolute b-0"
+								type="submit"
+							>
+								<i
+									class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"
+								></i>
+							</button>
+						</form>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-                <div class="navbar-nav position-relative" id="nav__direction" style="font-weight: 700;">
-                  <a class="nav-link" href="/">Trang chủ</a>
-                  <a class="nav-link" href="/category">Danh sách post</a>
-                </div>
+						<a class="button__post text-center" href="/create-post">
+							<i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin
+						</a>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-            <form class="d-flex position-relative" action="/" method="post">
-                <input class="input__search" type="search" placeholder="Bạn cần tìm gì ?" >
-                <button class="button__search position-absolute b-0" type="submit">
-                    <i class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
+		<div class="container position-relative mt-4">
+			<div class="slider__container">
+				<div class="slider">
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img-slider-3.png"
+						id="lastClone"
+						alt=""
+					/>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						alt=""
+					/>
 
-                <a class="button__post text-center" href="/create-post">
-                    <i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin
-                </a>
-              </div>
-            </div>
-        </nav>
-    </header>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img-slider-2.png"
+						alt=""
+					/>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						alt=""
+					/>
 
-    <div class="container position-relative mt-4">
-        <div class="slider__container">
-            <div class="slider">
-                <img class="slider__img" src="./img/img_slider/img-slider-3.png" id="lastClone" alt=""> 
-                <img class="slider__img" src="./img/img_slider/img_slider-1.png" alt=""> 
-    
-                <img class="slider__img" src="./img/img_slider/img-slider-2.png" alt=""> 
-                <img class="slider__img" src="./img/img_slider/img_slider-1.png" alt=""> 
-    
-                <img class="slider__img" src="./img/img_slider/img_slider-1.png" id="firstClone" alt=""> 
-            </div>
-        </div>
-            
-        <button id="prevBtn"><i class="prevBtn-icon fa-sharp fa-solid fa-angle-left"></i></button>
-        <button id="nextBtn"><i class="nextBtn-icon fa-sharp fa-solid fa-angle-right"></i></button>
-    </div>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						id="firstClone"
+						alt=""
+					/>
+				</div>
+			</div>
 
-    <div class="body mt-5">
-        <div class="top5__house container">
-            <hr>  
-          <h4 class="content__title">Top 5 Nhà Thuê nhiều nhất</h4>
-          <div class="row d-flex justify-content-evenly">
-            <div class="col-3">
-              <a href="#" class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:330px; color:#333" data-aos="flip-right">
-                <div class="card__img" style="width: 100%;
-                height: 160px;
-                background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                background-size: cover;
-                border-radius: 10px;
-                background-repeat: no-repeat;
-                background-position: center;
-                ">
-                </div>
-                <h5 class="card-title mt-2">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                <div class="card__body d-flex flex-column">
-                  <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                  <span class="card-text-date" style="color:var(--gray-light)"><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                </div>
-              </a>
-            </div>
+			<button id="prevBtn">
+				<i class="prevBtn-icon fa-sharp fa-solid fa-angle-left"></i>
+			</button>
+			<button id="nextBtn">
+				<i class="nextBtn-icon fa-sharp fa-solid fa-angle-right"></i>
+			</button>
+		</div>
 
-            <div class="col-3">
-              <a href="#" class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:330px; color:#333" data-aos="flip-right">
-                <div class="card__img" style="width: 100%;
-                height: 160px;
-                background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                background-size: cover;
-                border-radius: 10px;
-                background-repeat: no-repeat;
-                background-position: center;
-                ">
-                </div>
-                <h5 class="card-title mt-2">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                <div class="card__body d-flex flex-column">
-                  <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                  <span class="card-text-date" style="color:var(--gray-light)"><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                </div>
-              </a>
-            </div>
-          </div>
+		<div class="body mt-5">
+			<div class="top5__house container">
+				<hr />
+				<h4 class="content__title">Top 5 Nhà Thuê nhiều nhất</h4>
+				<div class="row d-flex justify-content-evenly">
+					<div class="col-3">
+						<a
+							href="#"
+							class="card__house px-3 py-2 d-flex flex-column justify-content-between"
+							style="width: 18rem; height: 330px; color: #333"
+							data-aos="flip-right"
+						>
+							<div
+								class="card__img"
+								style="
+									width: 100%;
+									height: 160px;
+									background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+									background-size: cover;
+									border-radius: 10px;
+									background-repeat: no-repeat;
+									background-position: center;
+								"
+							></div>
+							<h5 class="card-title mt-2">
+								Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5
+								tỷ
+							</h5>
+							<div class="card__body d-flex flex-column">
+								<span class="card-text-price"
+									>200.000.000 đ - 400.000.000 đ</span
+								>
+								<span class="card-text-date" style="color: var(--gray-light)"
+									><i class="fa-solid fa-clock me-1"></i>Hôm nay</span
+								>
+							</div>
+						</a>
+					</div>
 
+					<div class="col-3">
+						<a
+							href="#"
+							class="card__house px-3 py-2 d-flex flex-column justify-content-between"
+							style="width: 18rem; height: 330px; color: #333"
+							data-aos="flip-right"
+						>
+							<div
+								class="card__img"
+								style="
+									width: 100%;
+									height: 160px;
+									background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+									background-size: cover;
+									border-radius: 10px;
+									background-repeat: no-repeat;
+									background-position: center;
+								"
+							></div>
+							<h5 class="card-title mt-2">
+								Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5
+								tỷ
+							</h5>
+							<div class="card__body d-flex flex-column">
+								<span class="card-text-price"
+									>200.000.000 đ - 400.000.000 đ</span
+								>
+								<span class="card-text-date" style="color: var(--gray-light)"
+									><i class="fa-solid fa-clock me-1"></i>Hôm nay</span
+								>
+							</div>
+						</a>
+					</div>
+				</div>
 
-          <div class="row d-flex justify-content-evenly mt-5">
-            <div class="col-3">
-              <a href="#" class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:330px; color:#333" data-aos="flip-right">
-                <div class="card__img" style="width: 100%;
-                height: 160px;
-                background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                background-size: cover;
-                border-radius: 10px;
-                background-repeat: no-repeat;
-                background-position: center;
-                ">
-                </div>
-                <h5 class="card-title mt-2">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                <div class="card__body d-flex flex-column">
-                  <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                  <span class="card-text-date" style="color:var(--gray-light)"><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                </div>
-              </a>
-            </div>
+				<div class="row d-flex justify-content-evenly mt-5">
+					<div class="col-3">
+						<a
+							href="#"
+							class="card__house px-3 py-2 d-flex flex-column justify-content-between"
+							style="width: 18rem; height: 330px; color: #333"
+							data-aos="flip-right"
+						>
+							<div
+								class="card__img"
+								style="
+									width: 100%;
+									height: 160px;
+									background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+									background-size: cover;
+									border-radius: 10px;
+									background-repeat: no-repeat;
+									background-position: center;
+								"
+							></div>
+							<h5 class="card-title mt-2">
+								Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5
+								tỷ
+							</h5>
+							<div class="card__body d-flex flex-column">
+								<span class="card-text-price"
+									>200.000.000 đ - 400.000.000 đ</span
+								>
+								<span class="card-text-date" style="color: var(--gray-light)"
+									><i class="fa-solid fa-clock me-1"></i>Hôm nay</span
+								>
+							</div>
+						</a>
+					</div>
 
-            <div class="col-3">
-              <a href="#" class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:330px; color:#333" data-aos="flip-right">
-                <div class="card__img" style="width: 100%;
-                height: 160px;
-                background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                background-size: cover;
-                border-radius: 10px;
-                background-repeat: no-repeat;
-                background-position: center;
-                ">
-                </div>
-                <h5 class="card-title mt-2">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                <div class="card__body d-flex flex-column">
-                  <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                  <span class="card-text-date" style="color:var(--gray-light)"><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                </div>
-              </a>
-            </div>
+					<div class="col-3">
+						<a
+							href="#"
+							class="card__house px-3 py-2 d-flex flex-column justify-content-between"
+							style="width: 18rem; height: 330px; color: #333"
+							data-aos="flip-right"
+						>
+							<div
+								class="card__img"
+								style="
+									width: 100%;
+									height: 160px;
+									background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+									background-size: cover;
+									border-radius: 10px;
+									background-repeat: no-repeat;
+									background-position: center;
+								"
+							></div>
+							<h5 class="card-title mt-2">
+								Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5
+								tỷ
+							</h5>
+							<div class="card__body d-flex flex-column">
+								<span class="card-text-price"
+									>200.000.000 đ - 400.000.000 đ</span
+								>
+								<span class="card-text-date" style="color: var(--gray-light)"
+									><i class="fa-solid fa-clock me-1"></i>Hôm nay</span
+								>
+							</div>
+						</a>
+					</div>
 
-            <div class="col-3">
-              <a href="#" class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:330px; color:#333" data-aos="flip-right">
-                <div class="card__img" style="width: 100%;
-                height: 160px;
-                background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                background-size: cover;
-                border-radius: 10px;
-                background-repeat: no-repeat;
-                background-position: center;
-                ">
-                </div>
-                <h5 class="card-title mt-2">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                <div class="card__body d-flex flex-column">
-                  <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                  <span class="card-text-date" style="color:var(--gray-light)"><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                </div>
-              </a>
-            </div>
+					<div class="col-3">
+						<a
+							href="#"
+							class="card__house px-3 py-2 d-flex flex-column justify-content-between"
+							style="width: 18rem; height: 330px; color: #333"
+							data-aos="flip-right"
+						>
+							<div
+								class="card__img"
+								style="
+									width: 100%;
+									height: 160px;
+									background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+									background-size: cover;
+									border-radius: 10px;
+									background-repeat: no-repeat;
+									background-position: center;
+								"
+							></div>
+							<h5 class="card-title mt-2">
+								Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5
+								tỷ
+							</h5>
+							<div class="card__body d-flex flex-column">
+								<span class="card-text-price"
+									>200.000.000 đ - 400.000.000 đ</span
+								>
+								<span class="card-text-date" style="color: var(--gray-light)"
+									><i class="fa-solid fa-clock me-1"></i>Hôm nay</span
+								>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
 
-            
-          </div>
-        </div>
+			<div class="container mt-5" data-aos="fade-right">
+				<hr />
+				<h4 class="content__title text-center mb-5">
+					Mua Bán Nhà Đất An Toàn, Hiệu Quả, Tốt Nhất
+				</h4>
+				<p>
+					Thị trường nhà đất diễn ra sôi động, nổi bất nhất là 2 thị trường
+					thành phố lớn
+					<a
+						href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i"
+						style="color: var(--primary-color)"
+						>Hà Nội</a
+					>
+					và TPHCM. Với những sức hút đến từ vị trí địa lý, sự đa dạng của loại
+					hình nhà đất và tiềm năng gia tăng giá trị, việc mua bán nhà đất chính
+					chủ, cho thuê nhà đất toàn quốc luôn thu hút rất nhiều người tham gia.
+					Vậy làm sao để mua bán nhà đất hiệu quả và trở thành nhà đầu tư thông
+					minh? Cùng tham khảo ngay chia sẻ của Muaban.net.
+				</p>
+				<h5>Lý do nào giúp thị trường nhà đất thu hút người mua bán?</h5>
+				<p>
+					Ngành nhà đất đã xuất hiện rất lâu và giá trị của nó vẫn tăng cao cho
+					đến ngày nay. Đây là kênh đầu tư sở hữu tiềm năng gia tăng giá trị và
+					giữ vững giá trị lớn nhất. Sau đây là những lý do giúp thị trường nhà
+					đất luôn thu hút:
+				</p>
+				<b>1. Tiềm năng tăng giá trong tương lai</b>
+				<p>
+					Tiềm năng tăng giá là sự gia tăng giá trị của nhà đất theo thời gian.
+					Với nhà đất, mỗi năm qua đi, mức giá cho các loại hình như nhà ở, đất
+					nền, shophouse,... đều tăng lên. Lý do bởi tình trạng dân số tăng cao,
+					quỹ đất ngày càng hạn hẹp, nhu cầu an cư lạc nghiệp luôn là điều tất
+					yếu. Thế nên khi cầu lớn hơn cung, chắc chắn mức giá sẽ được đẩy lên
+					cao. Chính vì vậy, tình hình mua bán
+					<a href="#" style="color: var(--primary-color)">bất động sản</a> là
+					một chủ đề luôn được quan tâm của các "ông lớn" bất động sản. Bên cạnh
+					đó, sự phát triển của khu vực cũng góp phần không nhỏ trong việc gia
+					tăng giá trị nhà đất . Hiện nay, không chỉ các thành phố lớn mà những
+					tỉnh nhỏ lẻ cũng được đầu tư hệ thống giao thông, cơ sở hạ tầng vững
+					chắc. Những công trình này là điều kiện tất yếu thúc đẩy giá trị nhà
+					đất khu vực.
+				</p>
+				<b>2. Khả năng sinh lời trên chính nhà đất đang sở hữu</b>
+				<p>
+					Nhà đất hiện nay không chỉ phục vụ nhu cầu ở đơn thuần của cá nhân,
+					gia đình. Với nhà đất, bạn hoàn toàn có thể kiếm thêm thu nhập trên
+					chính nhà đất ấy thông qua việc cho thuê, mở cửa hàng. Như vậy, không
+					cần bán đi để sinh lời, mỗi tháng, cho thuê nhà đất vẫn giúp bạn có
+					được một khoản thu nhập thụ động vô cùng hấp dẫn.
+				</p>
+				<b>3. Mua bán nhà đất với đa dạng sự lựa chọn</b>
+				<p>
+					Bạn có thể chọn lựa đầu tư các loại hình nhà đất riêng biệt. Chẳng hạn
+					như: đất nền, đất thổ cư, đất nông nghiệp, nhà phố, biệt thự, chung
+					cư,...Mỗi một loại hình sẽ có những ưu điểm, nhược điểm và tiềm năng
+					sinh lời khác biệt. Với sự đa dạng như thế này, cá nhân, nhà đầu tư sẽ
+					có cho mình những sự chọn lựa phù hợp.
+				</p>
+				<b>4. Thị trường nhà đất ổn định</b>
+				<p>
+					Trong khi thị trường chứng khoán, vàng, ngoại hối thay đổi liên tục
+					tại mỗi thời điểm thì giá nhà đất lại vẫn giữ được phong độ tốt. Thậm
+					chí, trong thời kỳ dịch bệnh đỉnh điểm, một số khu vực thành phố lớn
+					vẫn nhận được sự quan tâm đông đảo của cá nhân, hộ gia đình, nhà đầu
+					tư.
+				</p>
+				<b>5. Lãi suất cao </b>
+				<p>
+					Hiện nay, lãi suất ngân hàng chỉ đạt mức khoảng 7% một năm. Đây không
+					còn là kênh tiết kiệm mang lại lợi nhuận vàng cho khách hàng. Trong
+					khi đó, giá nhà đất leo thang từng ngày với mức lãi suất có thể lên
+					tới 200% năm. Do đó, đây chính là thời điểm vàng để bạn tham gia vào
+					thị trường mua bán nhà đất . Nếu may mắn và có đủ kinh nghiệm, bạn
+					hoàn toàn có thể khiến mảnh đất của mình sinh lời với tốc độ chóng
+					mặt. Trong những năm qua, Mua bán đã nhận định rất nhiều thương vụ mua
+					bán nhà đất thành công (lên đến cả chục nghìn thương vụ mua bán nhà
+					đất) trong tháng qua.
+				</p>
+				<h5>Mua bán nhà đất : Đâu là khu vực nên rót vốn ở thời điểm này?</h5>
+				<p>
+					Nếu có đủ điều kiện, bạn nên tập trung vào nhà đất tại các thành phố
+					lớn và các khu vực lân cận gần nội đô. Lý do bởi đây là những thị
+					trường sở hữu tốc độ phát triển nhanh chóng cùng sự quan tâm lớn mạnh
+					đến từ Chính Quyền địa phương. Ngoài ra, với xu thế chuyển về các vùng
+					ven nội đô, những thị trường như Đồng Nai, Bình Dương, Thái Bình, Hải
+					Phòng,...cũng được không ít nhà đầu tư quan tâm.<br />
+					Nhà đất TP. Hồ Chí Minh: TP Hồ Chí Minh là khu vực có tốc độ phát
+					triển kinh tế mạnh nhất cả nước. Nơi đây được coi là “Hòn Ngọc Viễn
+					Đông” với những lợi thế hoàn hảo đến từ dân cư, kinh tế, văn hoá, vị
+					trí địa lý. TP. Hồ Chí Minh cũng được coi là tâm điểm của khu vực Đông
+					Nam Á khi là đầu mối giao thông nối liền các tỉnh thành miền Đông Nam
+					Bộ. Đồng thời, nơi đây cũng là cửa ngõ quốc tế với hệ thống cảng biển,
+					sân bay lớn nhất cả nước. Trong tương lai, TP.Hồ Chí Minh sẽ tiếp tục
+					vươn mình phát triển ở mọi lĩnh vực. Những lợi thế này là đòn bẩy mạnh
+					mẽ giúp thị trường nhà đất nơi đây luôn nóng.<br />
+					Nhà đất Hà Nội: Là trung tâm đầu não của cả nước, Hà Nội luôn là thành
+					phố văn minh, hiện đại, đáng sống của Việt Nam. Hà Nội tiếp giáp với
+					các tỉnh Thái Nguyên, Vĩnh Phúc, Bắc Giang, Bắc Ninh, Hưng Yên. Với hệ
+					thống mạng lưới giao thông đồng bộ, từ Hà Nội, bạn có thể dễ dàng di
+					chuyển đến các tỉnh thành ngoại đô. Bên cạnh đó, nền kinh tế nơi đây
+					cũng được đánh giá là mũi nhọn của cả nước. Và nhà đất là kênh thu hút
+					được nhiều sự quan tâm. <br />
+					Nhà đất Hải Phòng: Cùng với 2 thành phố lớn, Hải Phòng vẫn đang trên
+					đà tăng trưởng mạnh mẽ. Sự nâng cấp, đổi mới của hạ tầng giao thông là
+					yếu tố lớn nhất giúp nhà đất Hải Phòng đột phá. Gần nhất, tuyến cao
+					tốc Hà Nội – Hải Phòng, Hải Phòng – Quảng Ninh đã đi vào hoạt động,
+					giúp việc di chuyển giữa Hải Phòng và các tỉnh lân cận trở nên dễ
+					dàng. Đây sẽ là đòn bẩy thúc đẩy mạnh cho hoạt động giao thương, liên
+					kết vùng. <br />
+					Nhà đất Đà Nẵng: Được mệnh danh là “thành phố đáng sống nhất Việt
+					Nam”, mỗi năm Đà Nẵng đón không ít dân cư du nhập từ các tỉnh thành
+					khác. Hơn hết, Đà Nẵng luôn hướng đến phát triển toàn diện. Giai đoạn
+					2030 – 2045, thành phố Đà Nẵng định hướng trở thành đô thị loại đặc
+					biệt, là trung tâm tài chính, thương mại, du lịch và logistics của
+					Việt Nam.
+				</p>
+				<h5>Kinh nghiệm cần biết khi mua bán nhà đất</h5>
+				<b>Tìm kiếm nhà đất vị trí đẹp, nơi kinh tế phát triển, dân cư đông</b>
+				<p>
+					Nhà đất ở những vị trí đẹp thường có giá trị cao hơn trong tương lai.
+					Vì thế khi mua nhà đất bạn nên ưu tiên lựa chọn nhà đất ở những khu
+					vực này. Nếu đánh giá được tiềm năng khu vực, bạn có thể mua đất từ
+					sớm với giá cao hơn một chút so với những vị trí khác nhưng lại sinh
+					lời lớn trong tương lai. Nhà xấu ở vị trí đẹp vẫn tốt hơn là một ngôi
+					nhà được xây dựng đầy đủ tiện nghi nhưng lại nằm trong ngõ hẻm.
+				</p>
+				<b
+					>Khảo sát và so sánh thực trạng nhà đất trước khi đưa ra quyết định</b
+				>
+				<p>
+					Nếu bạn đã lựa chọn được khu vực mua nhà đất thì nên đi xem nhiều căn
+					nhà trong khu vực đó trước khi quyết định. Việc tham khảo nhiều căn
+					nhà khác nhau trong cùng một khu giúp bạn đánh giá được mức giá và dễ
+					dàng so sánh thương lượng. <br />
+					Ngoài ra, cũng giúp bạn có nhiều sự lựa chọn và tìm được cho mình nhà
+					đất phù hợp nhất.
+				</p>
+				<b>Tìm hiểu kỹ thông tin về nhà đất sắp mua</b>
+				<p>
+					Để quyết định mua nhà đất trong một khu vực nào đó. Bạn cần tìm hiểu
+					kỹ các thông tin liên quan tới nó. Chẳng hạn như an ninh, vấn đề tiếng
+					ồn hoặc các tiện ích xung quanh. Nhà gần chợ hoặc gần các cửa hàng ăn
+					uống, quán nhậu, quán karaoke thường hay có tiếng ồn. Chúng có thể làm
+					ảnh hưởng tới giấc ngủ hoặc sinh hoạt hàng ngày của bạn. <br />
+					An ninh khu vực đóng vai trò quan trọng khi tìm mua nhà đất. Bạn có
+					thể tìm hiểu thông tin này từ những người hàng xóm sống gần đó.
+				</p>
+				<b>Thường xuyên cập nhật giá nhà đất để mua được nhà đất giá tốt</b>
+				<p>
+					Mua bán nhà đất là việc được tính toán trong một thời gian dài, không
+					phải ngày một ngày hai. Vì thế nếu không cần gấp thì không nên mua nhà
+					đất vào các đợt giá nhà đất tăng cao. Điều đó khiến bạn tốn khá nhiều
+					chi phí. Để mua được nhà đất giá rẻ, hãy liên tục cập nhật các tin tức
+					mỗi ngày.
+				</p>
+				<b>Mua nhà đất của những người cần bán gấp sẽ có giá rẻ hơn</b>
+				<p>
+					Một trong những mẹo nhỏ giúp bạn mua được nhà đất giá rẻ chính là mua
+					từ những người cần bán gấp. Vì khi đó họ đang cần gấp tiền, mức giá
+					bán cho bạn có thể được giảm đi khá nhiều. Chỉ cần bạn khéo léo một
+					chút thì có thể nhanh chóng thương lượng và mua nhà đất giá rẻ dễ
+					dàng.
+				</p>
+				<b>Những lưu ý quan trọng khi mua bán nhà đất ở thời điểm này</b>
+				<ul>
+					<li style="list-style: disc outside">
+						Xem kỹ các tin đăng: Mỗi tin đăng rao bán sẽ được cập nhật thông tin
+						để người mua tham khảo. Tại mỗi tin đăng, bạn cần đọc rõ mô tả của
+						tin đăng. Chẳng hạn như: loại hình, vị trí, hình dáng nhà đất, mức
+						giá, tiện ích xung quanh,...
+					</li>
+					<li style="list-style: disc outside">
+						Liên hệ trực tiếp với người đăng tin để nắm rõ hơn về tình trạng của
+						nhà đất: Tiếp theo, để cập nhật rõ hơn về tình trạng nhà đất, bạn
+						cần liên hệ với người bán. Lúc này, bạn nên hỏi thêm các thông tin
+						như: pháp lý nhà ở, phong thuỷ nhà ở, tình trạng khu vực khi vào mùa
+						mưa, nắng, thời gian xây dựng,...
+					</li>
+					<li style="list-style: disc outside">
+						Đến tận nơi, xem xét trực tiếp tình trạng nhà đất: Đây là một việc
+						vô cùng quan trọng. Bạn nên đến khảo sát nhà đất trực tiếp vào buổi
+						sáng hoặc những thời điểm ánh sáng tốt nhất. Đồng thời hãy đi cùng
+						người có chuyên môn để thẩm định giá nhà đất một cách khách quan và
+						chính xác nhất. Lúc này, ngoài ưu điểm, bạn cần nhìn nhận được những
+						rủi ro, nhược điểm của nhà đất định mua.
+					</li>
+					<li style="list-style: disc outside">
+						Tham khảo thông tin để chắc chắn nhà đất bạn định mua không dính vào
+						diện quy hoạch: Để biết chi tiết, bạn nên tra cứu thông tin từ hàng
+						xóm lân cận. Với những vấn đề liên quan đến pháp lý, bạn nên đến các
+						cơ sở ban ngành địa phương để được cung cấp thông tin chuẩn xác.
+					</li>
+					<li style="list-style: disc outside">
+						Gặp trực tiếp chủ sở hữu nhà đất để thương thảo và làm hợp đồng: Hợp
+						đồng mua bán là giấy tờ vô cùng quan trọng. Trước khi ký kết hợp
+						đồng, hãy đảm bảo rằng nhà đất hoàn toàn đủ điều kiện giao dịch mua
+						bán. Đồng thời người mua cần đọc kỹ những điều khoản trong hợp đồng
+						để đảm bảo quyền lợi cho chính mình. Trong trường hợp cần thiết, bạn
+						nên nhờ đến sự tư vấn của những người có kinh nghiệm trong lĩnh vực
+						này. Từ đó, đảm bảo việc giao dịch được an toàn, mang lại lợi nhuận
+						đảm bảo cho bản thân mình.
+					</li>
+				</ul>
 
-        <div class="container mt-5" data-aos="fade-right">
-          <hr> 
-          <h4 class="content__title text-center mb-5">Mua Bán Nhà Đất An Toàn, Hiệu Quả, Tốt Nhất </h4>
-          <p>Thị trường nhà đất diễn ra sôi động, nổi bất nhất là 2 thị trường thành phố lớn <a href="https://vi.wikipedia.org/wiki/H%C3%A0_N%E1%BB%99i" style="color:var(--primary-color)">Hà Nội</a> và TPHCM. Với những sức hút đến từ vị trí địa lý, sự đa dạng của loại hình nhà đất và tiềm năng gia tăng giá trị, việc mua bán nhà đất chính chủ, cho thuê nhà đất toàn quốc luôn thu hút rất nhiều người tham gia. Vậy làm sao để mua bán nhà đất hiệu quả và trở thành nhà đầu tư thông minh?  Cùng tham khảo ngay chia sẻ của Muaban.net.</p>
-          <h5>Lý do nào giúp thị trường nhà đất thu hút người mua bán?</h5>
-          <p>Ngành nhà đất đã xuất hiện rất lâu và giá trị của nó vẫn tăng cao cho đến ngày nay. Đây là kênh đầu tư sở hữu tiềm năng gia tăng giá trị và giữ vững giá trị lớn nhất. Sau đây là những lý do giúp thị trường nhà đất luôn thu hút:</p>
-          <b>1. Tiềm năng tăng giá trong tương lai</b>
-          <p>Tiềm năng tăng giá là sự gia tăng giá trị của nhà đất theo thời gian. Với nhà đất, mỗi năm qua đi, mức giá cho các loại hình như nhà ở, đất nền, shophouse,... đều tăng lên. Lý do bởi tình trạng dân số tăng cao, quỹ đất ngày càng hạn hẹp, nhu cầu an cư lạc nghiệp luôn là điều tất yếu. Thế nên khi cầu lớn hơn cung, chắc chắn mức giá sẽ được đẩy lên cao. Chính vì vậy, tình hình mua bán <a href="#" style="color:var(--primary-color)">bất động sản</a> là một chủ đề luôn được quan tâm của các "ông lớn" bất động sản.
-            Bên cạnh đó, sự phát triển của khu vực cũng góp phần không nhỏ trong việc gia tăng giá trị nhà đất . Hiện nay, không chỉ các thành phố lớn mà những tỉnh nhỏ lẻ cũng được đầu tư hệ thống giao thông, cơ sở hạ tầng vững chắc. Những công trình này là điều kiện tất yếu thúc đẩy giá trị nhà đất khu vực.  </p>
-          <b>2. Khả năng sinh lời trên chính nhà đất đang sở hữu</b>
-          <p>Nhà đất hiện nay không chỉ phục vụ nhu cầu ở đơn thuần của cá nhân, gia đình. Với nhà đất, bạn hoàn toàn có thể kiếm thêm thu nhập trên chính nhà đất ấy thông qua việc cho thuê, mở cửa hàng. Như vậy, không cần bán đi để sinh lời, mỗi tháng, cho thuê nhà đất vẫn giúp bạn có được một khoản thu nhập thụ động vô cùng hấp dẫn.</p>
-          <b>3. Mua bán nhà đất với đa dạng sự lựa chọn</b>
-          <p>Bạn có thể chọn lựa đầu tư các loại hình nhà đất riêng biệt. Chẳng hạn như: đất nền, đất thổ cư, đất nông nghiệp, nhà phố, biệt thự, chung cư,...Mỗi một loại hình sẽ có những ưu điểm, nhược điểm và tiềm năng sinh lời khác biệt. Với sự đa dạng như thế này, cá nhân, nhà đầu tư sẽ có cho mình những sự chọn lựa phù hợp. </p>
-          <b>4. Thị trường nhà đất ổn định</b>
-          <p>Trong khi thị trường chứng khoán, vàng, ngoại hối thay đổi liên tục tại mỗi thời điểm thì giá nhà đất lại vẫn giữ được phong độ tốt. Thậm chí, trong thời kỳ dịch bệnh đỉnh điểm, một số khu vực thành phố lớn vẫn nhận được sự quan tâm đông đảo của cá nhân, hộ gia đình, nhà đầu tư. </p>
-          <b>5. Lãi suất cao </b>
-          <p>Hiện nay, lãi suất ngân hàng chỉ đạt mức khoảng 7% một năm. Đây không còn là kênh tiết kiệm mang lại lợi nhuận vàng cho khách hàng. Trong khi đó, giá nhà đất leo thang từng ngày với mức lãi suất có thể lên tới 200% năm.
+				<h5 class="mt-3">
+					Tham khảo giá nhà đất tại một số khu vực trên Toàn Quốc
+				</h5>
+				<ul>
+					<li style="list-style: disc outside">
+						Nhà nằm trong ngõ tại 3 quận Trung tâm Hà Nội hiện có giá bán khoảng
+						70 triệu/m2.
+					</li>
+					<li style="list-style: disc outside">
+						Giá đất tại quận Tân Phú của TPHCM hiện cũng đang ở mức 70 đến 80
+						triệu/m2 với những nền đẹp, có vị trí tốt. Chi tiết xem tại mua bán
+						nhà đất TPHCM
+					</li>
+					<li style="list-style: disc outside">
+						Tại Đà Nẵng, giá đất nền đang nằm ở mức 35 triệu/ m2.
+					</li>
+					<li style="list-style: disc outside">
+						Tại Cần Thơ, giá nhà đất trong năm 2022 cũng đang có xu hướng tăng,
+						bạn có thể xem chi tiết tại mua bán nhà đất Cần Thơ
+					</li>
+				</ul>
 
-            Do đó, đây chính là thời điểm vàng để bạn tham gia vào thị trường mua bán nhà đất . Nếu may mắn và có đủ kinh nghiệm, bạn hoàn toàn có thể khiến mảnh đất của mình sinh lời với tốc độ chóng mặt.
-            
-            Trong những năm qua, Mua bán đã nhận định rất nhiều thương vụ mua bán nhà đất thành công (lên đến cả chục nghìn thương vụ mua bán nhà đất) trong tháng qua. </p>
-            <h5>Mua bán nhà đất : Đâu là khu vực nên rót vốn ở thời điểm này?</h5>
-            <p>Nếu có đủ điều kiện, bạn nên tập trung vào nhà đất tại các thành phố lớn và các khu vực lân cận gần nội đô. Lý do bởi đây là những thị trường sở hữu tốc độ phát triển nhanh chóng cùng sự quan tâm lớn mạnh đến từ Chính Quyền địa phương. Ngoài ra, với xu thế chuyển về các vùng ven nội đô, những thị trường như Đồng Nai, Bình Dương, Thái Bình, Hải Phòng,...cũng được không ít nhà đầu tư quan tâm.<br>
-              Nhà đất TP. Hồ Chí Minh: TP Hồ Chí Minh là khu vực có tốc độ phát triển kinh tế mạnh nhất cả nước. Nơi đây được coi là “Hòn Ngọc Viễn Đông” với những lợi thế hoàn hảo đến từ dân cư, kinh tế, văn hoá, vị trí địa lý. TP. Hồ Chí Minh cũng được coi là tâm điểm của khu vực Đông Nam Á khi là đầu mối giao thông nối liền các tỉnh thành miền Đông Nam Bộ. Đồng thời, nơi đây cũng là cửa ngõ quốc tế với hệ thống cảng biển, sân bay lớn nhất cả nước. Trong tương lai, TP.Hồ Chí Minh sẽ tiếp tục vươn mình phát triển ở mọi lĩnh vực. Những lợi thế này là đòn bẩy mạnh mẽ giúp thị trường nhà đất nơi đây luôn nóng.<br> 
-              Nhà đất Hà Nội: Là trung tâm đầu não của cả nước, Hà Nội luôn là thành phố văn minh, hiện đại, đáng sống của Việt Nam. Hà Nội tiếp giáp với các tỉnh Thái Nguyên, Vĩnh Phúc, Bắc Giang, Bắc Ninh, Hưng Yên. Với hệ thống mạng lưới giao thông đồng bộ, từ Hà Nội, bạn có thể dễ dàng di chuyển đến các tỉnh thành ngoại đô. Bên cạnh đó, nền kinh tế nơi đây cũng được đánh giá là mũi nhọn của cả nước. Và nhà đất là kênh thu hút được nhiều sự quan tâm. <br>
-              Nhà đất Hải Phòng: Cùng với 2 thành phố lớn, Hải Phòng vẫn đang trên đà tăng trưởng mạnh mẽ. Sự nâng cấp, đổi mới của hạ tầng giao thông là yếu tố lớn nhất giúp nhà đất Hải Phòng đột phá. Gần nhất, tuyến cao tốc Hà Nội – Hải Phòng, Hải Phòng – Quảng Ninh đã đi vào hoạt động, giúp việc di chuyển giữa Hải Phòng và các tỉnh lân cận trở nên dễ dàng. Đây sẽ là đòn bẩy thúc đẩy mạnh cho hoạt động giao thương, liên kết vùng. <br>
-              Nhà đất Đà Nẵng: Được mệnh danh là “thành phố đáng sống nhất Việt Nam”, mỗi năm Đà Nẵng đón không ít dân cư du nhập từ các tỉnh thành khác. Hơn hết, Đà Nẵng luôn hướng đến phát triển toàn diện. Giai đoạn  2030 – 2045, thành phố Đà Nẵng định hướng trở thành đô thị loại đặc biệt, là trung tâm tài chính, thương mại, du lịch và logistics của Việt Nam. </p>
-            <h5>Kinh nghiệm cần biết khi mua bán nhà đất</h5>
-            <b>Tìm kiếm nhà đất vị trí đẹp, nơi kinh tế phát triển, dân cư đông</b>  
-            <p>Nhà đất ở những vị trí đẹp thường có giá trị cao hơn trong tương lai. Vì thế khi mua nhà đất bạn nên ưu tiên lựa chọn nhà đất ở những khu vực này. Nếu đánh giá được tiềm năng khu vực, bạn có thể mua đất từ sớm với giá cao hơn một chút so với những vị trí khác nhưng lại sinh lời lớn trong tương lai. Nhà xấu ở vị trí đẹp vẫn tốt hơn là một ngôi nhà được xây dựng đầy đủ tiện nghi nhưng lại nằm trong ngõ hẻm. </p>
-            <b>Khảo sát và so sánh thực trạng nhà đất trước khi đưa ra quyết định</b>
-            <p>Nếu bạn đã lựa chọn được khu vực mua nhà đất thì nên đi xem nhiều căn nhà trong khu vực đó trước khi quyết định. Việc tham khảo nhiều căn nhà khác nhau trong cùng một khu giúp bạn đánh giá được mức giá và dễ dàng so sánh thương lượng. <br>
-              Ngoài ra, cũng giúp bạn có nhiều sự lựa chọn và tìm được cho mình nhà đất phù hợp nhất. </p>
-            <b>Tìm hiểu kỹ thông tin về nhà đất sắp mua</b>
-            <p>Để quyết định mua nhà đất trong một khu vực nào đó. Bạn cần tìm hiểu kỹ các thông tin liên quan tới nó. Chẳng hạn như an ninh, vấn đề tiếng ồn hoặc các tiện ích xung quanh. Nhà gần chợ hoặc gần các cửa hàng ăn uống, quán nhậu, quán karaoke thường hay có tiếng ồn. Chúng có thể làm ảnh hưởng tới giấc ngủ hoặc sinh hoạt hàng ngày của bạn. <br>
-              An ninh khu vực đóng vai trò quan trọng khi tìm mua nhà đất. Bạn có thể tìm hiểu thông tin này từ những người hàng xóm sống gần đó. </p>  
-            <b>Thường xuyên cập nhật giá nhà đất để mua được nhà đất giá tốt</b>
-            <p>Mua bán nhà đất là việc được tính toán trong một thời gian dài, không phải ngày một ngày hai. Vì thế nếu không cần gấp thì không nên mua nhà đất vào các đợt giá nhà đất tăng cao. Điều đó khiến bạn tốn khá nhiều chi phí. Để mua được nhà đất giá rẻ, hãy liên tục cập nhật các tin tức mỗi ngày. </p>
-            <b>Mua nhà đất của những người cần bán gấp sẽ có giá rẻ hơn</b>
-            <p>Một trong những mẹo nhỏ giúp bạn mua được nhà đất giá rẻ chính là mua từ những người cần bán gấp. Vì khi đó họ đang cần gấp tiền, mức giá bán cho bạn có thể được giảm đi khá nhiều. Chỉ cần bạn khéo léo một chút thì có thể nhanh chóng thương lượng và mua nhà đất giá rẻ dễ dàng. </p>
-            <b>Những lưu ý quan trọng khi mua bán nhà đất ở thời điểm này</b>  
-            <ul>
-              <li style="list-style:disc outside;">Xem kỹ các tin đăng: Mỗi tin đăng rao bán sẽ được cập nhật thông tin để người mua tham khảo. Tại mỗi tin đăng, bạn cần đọc rõ mô tả của tin đăng. Chẳng hạn như: loại hình, vị trí, hình dáng nhà đất, mức giá, tiện ích xung quanh,...</li>
-              <li style="list-style:disc outside;">Liên hệ trực tiếp với người đăng tin để nắm rõ hơn về tình trạng của nhà đất: Tiếp theo, để cập nhật rõ hơn về tình trạng nhà đất, bạn cần liên hệ với người bán. Lúc này, bạn nên hỏi thêm các thông tin như: pháp lý nhà ở, phong thuỷ nhà ở, tình trạng khu vực khi vào mùa mưa, nắng, thời gian xây dựng,...</li>
-              <li style="list-style:disc outside;">Đến tận nơi, xem xét trực tiếp tình trạng nhà đất: Đây là một việc vô cùng quan trọng. Bạn nên đến khảo sát nhà đất trực tiếp vào buổi sáng hoặc những thời điểm ánh sáng tốt nhất. Đồng thời hãy đi cùng người có chuyên môn để thẩm định giá nhà đất một cách khách quan và chính xác nhất. Lúc này, ngoài ưu điểm, bạn cần nhìn nhận được những rủi ro, nhược điểm của nhà đất định mua.</li>
-              <li style="list-style:disc outside;">Tham khảo thông tin để chắc chắn nhà đất bạn định mua không dính vào diện quy hoạch: Để biết chi tiết, bạn nên tra cứu thông tin từ hàng xóm lân cận. Với những vấn đề liên quan đến pháp lý, bạn nên đến các cơ sở ban ngành địa phương để được cung cấp thông tin chuẩn xác. </li>
-              <li style="list-style:disc outside;">Gặp trực tiếp chủ sở hữu nhà đất để thương thảo và làm hợp đồng: Hợp đồng mua bán là giấy tờ vô cùng quan trọng. Trước khi ký kết hợp đồng, hãy đảm bảo rằng nhà đất hoàn toàn đủ điều kiện giao dịch mua bán. Đồng thời người mua cần đọc kỹ những điều khoản trong hợp đồng để đảm bảo quyền lợi cho chính mình. Trong trường hợp cần thiết, bạn nên nhờ đến sự tư vấn của những người có kinh nghiệm trong lĩnh vực này. Từ đó, đảm bảo việc giao dịch được an toàn, mang lại lợi nhuận đảm bảo cho bản thân mình.</li>
-            </ul>
+				<h5 class="mt-3">Những giấy tờ cần chuẩn bị khi mua bán nhà đất</h5>
+				<p class="m-0">
+					Trước khi tiến hành ký hợp đồng mua bán nhà đất bạn nên đến phòng công
+					chứng để kiểm tra, bao gồm:
+				</p>
+				<ul>
+					<li style="list-style: disc outside">
+						Xác minh thông tin bên chuyển nhượng (bên bán).
+					</li>
+					<li style="list-style: disc outside">Đất có Sổ đỏ hay chưa.</li>
+					<li style="list-style: disc outside">
+						Thửa đất có thuộc quy hoạch hay không.
+					</li>
+					<li style="list-style: disc outside">Đặt cọc khi mua bán đất.</li>
+					<li style="list-style: disc outside">
+						Công chứng hợp đồng chuyển nhượng quyền sử dụng đất.
+					</li>
+				</ul>
+				<p>
+					Hy vọng, những thông tin này sẽ hữu ích đối với bạn. Chúc bạn sớm mua
+					bán nhà đất như ý với giá phải chăng. Để cập nhật các tin tức mới nhất
+					hãy truy cập Muaban.net thường xuyên hơn bạn nhé.
+				</p>
 
-            <h5 class="mt-3">Tham khảo giá nhà đất tại một số khu vực trên Toàn Quốc</h5>
-            <ul>
-              <li style="list-style:disc outside;">Nhà nằm trong ngõ tại 3 quận Trung tâm Hà Nội hiện có giá bán khoảng 70 triệu/m2.</li>
-              <li style="list-style:disc outside;">Giá đất tại quận Tân Phú của TPHCM hiện cũng đang ở mức 70 đến 80 triệu/m2 với những nền đẹp, có vị trí tốt. Chi tiết xem tại mua bán nhà đất TPHCM</li>
-              <li style="list-style:disc outside;">Tại Đà Nẵng, giá đất nền đang nằm ở mức 35 triệu/ m2.</li>
-              <li style="list-style:disc outside;">Tại Cần Thơ, giá nhà đất trong năm 2022 cũng đang có xu hướng tăng, bạn có thể xem chi tiết tại mua bán nhà đất Cần Thơ</li>
-            </ul>
+				<hr />
+				<div class="notices d-flex align-items-center">
+					<img
+						class="me-2"
+						src="https://muaban.net/images/icon/24/shield-confirmed.svg"
+						alt=""
+					/>
+					<p class="mb-0">
+						<span
+							class="notices__number"
+							style="color: green; font-weight: bold"
+							>Mã tin 64692102 </span
+						>này đã được duyệt đăng. Nếu bạn gặp vấn đề, vui lòng báo vi phạm
+						hoặc liên hệ tổng đài 19006868 để được trợ giúp.
+					</p>
+				</div>
+				<hr />
+			</div>
+		</div>
 
-            <h5 class="mt-3">Những giấy tờ cần chuẩn bị khi mua bán nhà đất</h5>
-            <p class="m-0">Trước khi tiến hành ký hợp đồng mua bán nhà đất bạn nên đến phòng công chứng để kiểm tra, bao gồm:</p>
-            <ul>
-              <li style="list-style:disc outside;">Xác minh thông tin bên chuyển nhượng (bên bán).</li>
-              <li style="list-style:disc outside;">Đất có Sổ đỏ hay chưa.</li>
-              <li style="list-style:disc outside;">Thửa đất có thuộc quy hoạch hay không.</li>
-              <li style="list-style:disc outside;">Đặt cọc khi mua bán đất.</li>
-              <li style="list-style:disc outside;">Công chứng hợp đồng chuyển nhượng quyền sử dụng đất.</li>
-            </ul>
-            <p>Hy vọng, những thông tin này sẽ hữu ích đối với bạn. Chúc bạn sớm mua bán nhà đất như ý với giá phải chăng. Để cập nhật các tin tức mới nhất hãy truy cập Muaban.net thường xuyên hơn bạn nhé.</p>
+		<footer class="footer mt-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-4 d-flex flex-column">
+						<img
+							class="mb-3"
+							src="views/img/muaban.svg"
+							alt=""
+							style="width: 40%; height: 40%"
+						/>
+						<span class="mb-3">CÔNG TY CỔ PHẦN MUA BÁN</span>
+						<div class="footer__phone-suporter mb-3">
+							<i class="fa-solid fa-phone"></i>
+							<span>1900 6868</span>
+						</div>
+						<div class="footer__location-suporter mb-3">
+							<span>
+								<b>Trụ sợ chính :</b> Số 28-30 Đường số 2, khu phố Hưng gia 5,
+								phường Tân Phong, Quận 7, TP.Hồ Chí Mibh
+							</span>
+						</div>
+						<div class="footer__email-suporter mb-3">
+							<span> <b>Email: </b><a href="">duc.tran@codegym.com</a> </span>
+						</div>
+						<div class="footer__info">
+							<span>
+								muaban.net có trách nhiệm chuyển tải thông tin. Không chịu bất
+								kỳ trách nhiệm nào từ các tin này.
+								<a href="#">Xem chi tiết điều khoản</a>
+							</span>
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="row">
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Về chúng tôi</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Giới thiệu</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Điều khoản sử dụng</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Quy chế hoạt động</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Mua hàng an toàn</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Liên hệ</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Hỗ trợ mua bán</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Báo giá quảng cáo</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Gói nạp thành viên</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Hỗ trợ đăng tin</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Hướng dẫn thanh toán</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Câu hỏi thường gặp</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Tin tức & Khuyến mãi</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Thông tin mua bán</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Cẩm nang Mua bán</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Môi giới bất động sản</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Giá nhà đất</a>
+									</li>
+								</ul>
+							</div>
 
-            <hr>
-                <div class="notices d-flex align-items-center">
-                    <img class="me-2" src="https://muaban.net/images/icon/24/shield-confirmed.svg" alt="">
-                    <p class="mb-0"><span class="notices__number" style="color:green; font-weight: bold;">Mã tin 64692102 </span>này đã được duyệt đăng. Nếu bạn gặp vấn đề, vui lòng báo vi phạm hoặc liên hệ tổng đài 19006868 để được trợ giúp.</p>
-                </div>
-                <hr>
-        </div>
-        
-    </div>
+							<div class="row mt-5" style="border-top: 1px solid #ccc">
+								<div class="col">
+									<ul
+										class="connection__list d-flex justify-content-between align-items-center mt-4"
+									>
+										<li class="connection__list-item">
+											<img
+												src="https://muaban.net/images/footer/image-qr.png"
+												alt=""
+											/>
+										</li>
 
+										<li class="connection__list-item d-flex flex-column">
+											<a class="mb-2" href="#">
+												<img
+													src="https://muaban.net/images/footer/app-store.png"
+													alt=""
+												/>
+											</a>
+											<a href="#">
+												<img
+													src="https://muaban.net/images/footer/google-play.png"
+													alt=""
+												/>
+											</a>
+										</li>
 
+										<li class="connection__list-item d-flex flex-column">
+											<div class="connection__list-wrap mb-3">
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/fb/fill.svg"
+														alt=""
+													/>
+												</a>
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/zalo/fill.png"
+														alt=""
+													/>
+												</a>
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/youtube/fill.svg"
+														alt=""
+													/>
+												</a>
+											</div>
 
-    
+											<div class="connection__list-wrap">
+												<a href="#">
+													<img
+														src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=123e32a1-48c0-4151-aa3b-3e80b4d96192"
+														alt=""
+													/>
+												</a>
+											</div>
+										</li>
 
+										<li class="connection__list-item">
+											<a href="">
+												<img
+													src="https://muaban.net/images/footer/Layer41.png"
+													alt=""
+												/>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
-
-    <footer class="footer mt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col-4 d-flex flex-column">
-              <img class=" mb-3" src="https://muaban.net/logo/muaban.svg" alt="" style="width:40%;height:40%;">
-              <span class="mb-3">CÔNG TY CỔ PHẦN MUA BÁN</span>
-              <div class="footer__phone-suporter mb-3">
-                <i class="fa-solid fa-phone"></i>
-                <span>1900 6868</span>
-              </div>
-              <div class="footer__location-suporter mb-3">
-                <span>
-                  <b>Trụ sợ chính :</b> Số 28-30 Đường số 2, khu phố Hưng gia 5, phường Tân Phong, Quận 7, TP.Hồ Chí Mibh
-                </span>
-              </div>
-              <div class="footer__email-suporter mb-3">
-                <span>
-                  <b>Email: </b><a href="">duc.tran@codegym.com</a>
-                </span>
-              </div>
-              <div class="footer__info">
-                <span>
-                  muaban.net có trách nhiệm chuyển tải thông tin. Không chịu bất kỳ trách nhiệm nào từ các tin này. <a href="#">Xem chi tiết điều khoản</a>
-                </span>              
-              </div>
-            </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col">
-                  <ul class="footer__list">
-                    <span class="footer__title">Về chúng tôi</span>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Giới thiệu</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Điều khoản sử dụng</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Quy chế hoạt động</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Mua hàng an toàn</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Liên hệ</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <ul class="footer__list">
-                    <span class="footer__title">Hỗ trợ mua bán</span>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Báo giá quảng cáo</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Gói nạp thành viên</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Hỗ trợ đăng tin</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Hướng dẫn thanh toán</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Câu hỏi thường gặp</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Tin tức & Khuyến mãi</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col">
-                  <ul class="footer__list">
-                    <span class="footer__title">Thông tin mua bán</span>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Cẩm nang Mua bán</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Môi giới bất động sản</a>
-                    </li>
-                    <li class="footer__item">
-                      <a class="footer__link" href="">Giá nhà đất</a>
-                    </li>
-                  </ul>
-              </div>
-                
-  
-              <div class="row mt-5" style="border-top:1px solid #ccc">
-                <div class="col">
-                  <ul class="connection__list d-flex justify-content-between align-items-center mt-4">
-                    <li class="connection__list-item">
-                      <img src="https://muaban.net/images/footer/image-qr.png" alt="">
-                    </li>
-  
-                    <li class="connection__list-item d-flex flex-column">
-                      <a class="mb-2" href="#">
-                        <img src="https://muaban.net/images/footer/app-store.png" alt="">
-                      </a>
-                      <a href="#">
-                        <img src="https://muaban.net/images/footer/google-play.png" alt="">
-                      </a>
-                    </li>
-  
-  
-                    <li class="connection__list-item d-flex flex-column">
-                      <div class="connection__list-wrap mb-3">
-                        <a class="me-3 ms-1" href="#">
-                          <img src="https://muaban.net/images/icon/48/social/fb/fill.svg" alt="">
-                        </a>
-                        <a class="me-3 ms-1" href="#">
-                          <img src="https://muaban.net/images/icon/48/social/zalo/fill.png" alt="">
-                        </a>
-                        <a class="me-3 ms-1" href="#">
-                          <img src="https://muaban.net/images/icon/48/social/youtube/fill.svg" alt="">
-                        </a>
-                      </div>
-                      
-                      <div class="connection__list-wrap">
-                        <a href="#">
-                          <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=123e32a1-48c0-4151-aa3b-3e80b4d96192" alt="">
-                        </a>
-                      </div>
-                    </li>
-  
-                    <li class="connection__list-item">
-                      <a href="">
-                        <img src="https://muaban.net/images/footer/Layer41.png" alt="">
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    </footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/87b31eb80c.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/home.js"></script>
-</body>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/87b31eb80c.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script src="views/js/home.js"></script>
+	</body>
 </html>
