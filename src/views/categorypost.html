@@ -1,364 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="views/css/base.css">
-    <link rel="stylesheet" href="views/css/header.css">    
-    <link rel="stylesheet" href="views/css/footer.css">
-    <link rel="stylesheet" href="views/css/category.css">    
-    <title>Buy House</title>
-</head>
-<body>
-    <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <a class="navbar-brand" href="/home">
-                <img src="views/img/muaban.svg" alt="logo">
-              </a>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+		<link rel="stylesheet" href="views/css/base.css" />
+		<link rel="stylesheet" href="views/css/header.css" />
+		<link rel="stylesheet" href="views/css/footer.css" />
+		<link rel="stylesheet" href="views/css/category.css" />
+		<title>Buy House</title>
+	</head>
+	<body>
+		<header class="header">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<a class="navbar-brand" href="/home">
+						<img src="views/img/muaban.svg" alt="logo" />
+					</a>
 
-            <div class="navbar">
-                <ul class="navbar-nav nav-info-login">
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-solid fa-bell"></i>
-                        <span>Thông báo</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-right-to-bracket"></i>
-                        <span>Đăng nhập</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-circle-user"></i>
-                        <span> Đăng kí</span>
-                      </a>
-                    </li>
-                  </ul> 
+					<div class="navbar">
+						<ul class="navbar-nav nav-info-login">
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-bell"></i>
+									<span>Thông báo</span>
+								</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-sharp fa-solid fa-right-to-bracket"></i>
+									<span>Đăng nhập</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<i class="fa-sharp fa-solid fa-circle-user"></i>
+									<span> Đăng kí</span>
+								</a>
+							</li>
+						</ul>
 
-                  <ul class="navbar-nav nav-info-user d-none">
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-solid fa-newspaper fs-5"></i>
-                        <span>Quản lí tin</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item me-3">
-                      <a class="nav-link" href="#">
-                        <i class="fa-solid fa-bell fs-5"></i>
-                        <span>Thông báo</span> 
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">
-                        <i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
-                        <span>{name-user}</span>
-                      </a>
-                    </li>
-                  </ul> 
-            </div>
+						<ul class="navbar-nav nav-info-user d-none">
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-newspaper fs-5"></i>
+									<span>Quản lí tin</span>
+								</a>
+							</li>
+							<li class="nav-item me-3">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-bell fs-5"></i>
+									<span>Thông báo</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<i class="fa-sharp fa-solid fa-circle-user fs-5"></i>
+									<span>{name-user}</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 
-            </div>
-        </nav>
-        
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container">
+					<div
+						class="collapse navbar-collapse d-flex justify-content-between"
+						id="navbarNavAltMarkup"
+					>
+						<div
+							class="navbar-nav position-relative"
+							id="nav__direction"
+							style="font-weight: 700"
+						>
+							<a class="nav-link" href="/">Trang chủ</a>
+							<a class="nav-link" href="/category">danh sách nhà</a>
+						</div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-              <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNavAltMarkup">
-                <div class="navbar-nav position-relative" id="nav__direction" style="font-weight: 700;">
-                  <a class="nav-link" href="/">Trang chủ</a>
-                  <a class="nav-link" href="/category">danh sách nhà</a>
-                </div>
+						<form class="d-flex position-relative" action="#" method="post">
+							<input
+								class="input__search"
+								type="search"
+								placeholder="Bạn cần tìm gì ?"
+							/>
+							<button
+								class="button__search position-absolute b-0"
+								type="submit"
+							>
+								<i
+									class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"
+								></i>
+							</button>
+						</form>
 
-                
+						<a class="button__post text-center" href="/create-post">
+							<i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin
+						</a>
+					</div>
+				</div>
+			</nav>
+		</header>
 
-                <form class="d-flex position-relative" action="#" method="post">
-                    <input class="input__search" type="search" placeholder="Bạn cần tìm gì ?" >
-                    <button class="button__search position-absolute b-0" type="submit">
-                        <i class="button__search-icon fa-sharp fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
+		<div class="container position-relative mt-4">
+			<div class="slider__container">
+				<div class="slider">
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img-slider-3.png"
+						id="lastClone"
+						alt=""
+					/>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						alt=""
+					/>
 
-                <a class="button__post text-center" href="/create-post">
-                  <i class="fa-sharp fa-solid fa-pen-to-square"></i> Đăng tin
-              </a>
-              </div>
-            </div>
-          </nav>
-    </header>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img-slider-2.png"
+						alt=""
+					/>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						alt=""
+					/>
 
-    <div class="container position-relative mt-4">
-        <div class="slider__container">
-            <div class="slider">
-                <img class="slider__img" src="views/img/img_slider/img-slider-3.png" id="lastClone" alt=""> 
-                <img class="slider__img" src="views/img/img_slider/img_slider-1.png" alt=""> 
-    
-                <img class="slider__img" src="views/img/img_slider/img-slider-2.png" alt=""> 
-                <img class="slider__img" src="views/img/img_slider/img_slider-1.png" alt=""> 
-    
-                <img class="slider__img" src="views/img/img_slider/img_slider-1.png" id="firstClone" alt=""> 
-            </div>
-        </div>
-            
-        <button id="prevBtn"><i class="prevBtn-icon fa-sharp fa-solid fa-angle-left"></i></button>
-        <button id="nextBtn"><i class="nextBtn-icon fa-sharp fa-solid fa-angle-right"></i></button>
-    </div>
-    
-    <div class="container mt-4">
-        <hr>
-        <div class="row">
-            <div class="form-custom col-3">
-                <h3 style="color:var(--primary-color);">Lọc bài đăng<i class="ms-3 fa-solid fa-filter" style="color:var(--primary-color-lighter)"></i></h3>
-                <div class="form__filter mt-5">
-            <form class="d-flex flex-column" action="/category" method="post">
-                <select class="form-control" id="province" name="province">
-                    <option value="">Tỉnh / Thành phố</option>
-                    <option value="An Giang">An Giang
-                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu
-                    <option value="Bắc Giang">Bắc Giang
-                    <option value="Bắc Kạn">Bắc Kạn
-                    <option value="Bạc Liêu">Bạc Liêu
-                    <option value="Bắc Ninh">Bắc Ninh
-                    <option value="Bến Tre">Bến Tre
-                    <option value="Bình Định">Bình Định
-                    <option value="Bình Dương">Bình Dương
-                    <option value="Bình Phước">Bình Phước
-                    <option value="Bình Thuận">Bình Thuận
-                    <option value="Bình Thuận">Bình Thuận
-                    <option value="Cà Mau">Cà Mau
-                    <option value="Cao Bằng">Cao Bằng
-                    <option value="Đắk Lắk">Đắk Lắk
-                    <option value="Đắk Nông">Đắk Nông
-                    <option value="Điện Biên">Điện Biên
-                    <option value="Đồng Nai">Đồng Nai
-                    <option value="Đồng Tháp">Đồng Tháp
-                    <option value="Đồng Tháp">Đồng Tháp
-                    <option value="Gia Lai">Gia Lai
-                    <option value="Hà Giang">Hà Giang
-                    <option value="Hà Nam">Hà Nam
-                    <option value="Hà Tĩnh">Hà Tĩnh
-                    <option value="Hải Dương">Hải Dương
-                    <option value="Hậu Giang">Hậu Giang
-                    <option value="Hòa Bình">Hòa Bình
-                    <option value="Hưng Yên">Hưng Yên
-                    <option value="Khánh Hòa">Khánh Hòa
-                    <option value="Kiên Giang">Kiên Giang
-                    <option value="Kon Tum">Kon Tum
-                    <option value="Lai Châu">Lai Châu
-                    <option value="Lâm Đồng">Lâm Đồng
-                    <option value="Lạng Sơn">Lạng Sơn
-                    <option value="Lào Cai">Lào Cai
-                    <option value="Long An">Long An
-                    <option value="Nam Định">Nam Định
-                    <option value="Nghệ An">Nghệ An
-                    <option value="Ninh Bình">Ninh Bình
-                    <option value="Ninh Thuận">Ninh Thuận
-                    <option value="Phú Thọ">Phú Thọ
-                    <option value="Quảng Bình">Quảng Bình
-                    <option value="Quảng Bình">Quảng Bình
-                    <option value="Quảng Ngãi">Quảng Ngãi
-                    <option value="Quảng Ninh">Quảng Ninh
-                    <option value="Quảng Trị">Quảng Trị
-                    <option value="Sóc Trăng">Sóc Trăng
-                    <option value="Sơn La">Sơn La
-                    <option value="Tây Ninh">Tây Ninh
-                    <option value="Thái Bình">Thái Bình
-                    <option value="Thái Nguyên">Thái Nguyên
-                    <option value="Thanh Hóa">Thanh Hóa
-                    <option value="Thừa Thiên Huế">Thừa Thiên Huế
-                    <option value="Tiền Giang">Tiền Giang
-                    <option value="Trà Vinh">Trà Vinh
-                    <option value="Tuyên Quang">Tuyên Quang
-                    <option value="Vĩnh Long">Vĩnh Long
-                    <option value="Vĩnh Phúc">Vĩnh Phúc
-                    <option value="Yên Bái">Yên Bái
-                    <option value="Phú Yên">Phú Yên
-                    <option value="Cần Thơ">Cần Thơ
-                    <option value="Đà Nẵng">Đà Nẵng
-                    <option value="Hải Phòng">Hải Phòng
-                    <option value="Hà Nội">Hà Nội
-                    <option value="TPHCM">TPHCM
-                </select>
-                
-                <select class="form-control mt-4" id="typepost" name="status">
-                    <option value="x">Loại nhà</option>
-                    <option value="Cho thuê">Cho thuê</option>
-                    <option value="Mua bán">Đang thuê</option>
-                </select>
+					<img
+						class="slider__img"
+						src="views/img/img_slider/img_slider-1.png"
+						id="firstClone"
+						alt=""
+					/>
+				</div>
+			</div>
 
-                <div class="form__date mt-1">
-                    <label for="time">Chọn thời gian</label>
-                    <input class="form-control" type="date" value="2022-10-08" name="time"/>
-                </div>
+			<button id="prevBtn">
+				<i class="prevBtn-icon fa-sharp fa-solid fa-angle-left"></i>
+			</button>
+			<button id="nextBtn">
+				<i class="nextBtn-icon fa-sharp fa-solid fa-angle-right"></i>
+			</button>
+		</div>
 
-                <div class="input__price">                              
-                    <label class="input__price-text mt-3" for="price__range">Lựa chọn giá</label>
-                    <input class="input__price-range" type="range" value="0" min="0" max="100000000">
-                    <div class="input__price-detail-form position-relative">
-                      <input class="form-control input__price-detail mt-4" type="number" placeholder="Nhập số cụ thể" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="100000000" disabled>
-                      <i class="input__price-icon fa-solid fa-pen-to-square position-absolute"></i>  
-                    </div>
-                    <span class="noitice__price-detail d-none" style="color:red">Số không hợp lệ !</span>
-                    <div class="input__price-wrap d-flex mt-3 justify-content-between">
-                        <input class="display__price fs-4 me-2" style="color: var(--primary-color); background-color:transparent; border: transparent; outline: none; cursor: context-menu; width:80%" name="price" value="0" readonly>
-                        <span class="fs-4" style="color: var(--primary-color);">VND</span>                        
-                    </div>
-                </div>
-                
+		<div class="container mt-4">
+			<hr />
+			<div class="row">
+				<div class="form-custom col-3">
+					<h3 style="color: var(--primary-color)">
+						Lọc bài đăng<i
+							class="ms-3 fa-solid fa-filter"
+							style="color: var(--primary-color-lighter)"
+						></i>
+					</h3>
+					<div class="form__filter mt-5">
+						<form class="d-flex flex-column" action="/category" method="post">
+							<select class="form-control" id="province" name="province">
+								<option value="">Tỉnh / Thành phố</option>
+								<option value="An Giang">An Giang</option>
+								<option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+								<option value="Bắc Giang">Bắc Giang</option>
+								<option value="Bắc Kạn">Bắc Kạn</option>
+								<option value="Bạc Liêu">Bạc Liêu</option>
+								<option value="Bắc Ninh">Bắc Ninh</option>
+								<option value="Bến Tre">Bến Tre</option>
+								<option value="Bình Định">Bình Định</option>
+								<option value="Bình Dương">Bình Dương</option>
+								<option value="Bình Phước">Bình Phước</option>
+								<option value="Bình Thuận">Bình Thuận</option>
+								<option value="Bình Thuận">Bình Thuận</option>
+								<option value="Cà Mau">Cà Mau</option>
+								<option value="Cao Bằng">Cao Bằng</option>
+								<option value="Đắk Lắk">Đắk Lắk</option>
+								<option value="Đắk Nông">Đắk Nông</option>
+								<option value="Điện Biên">Điện Biên</option>
+								<option value="Đồng Nai">Đồng Nai</option>
+								<option value="Đồng Tháp">Đồng Tháp</option>
+								<option value="Đồng Tháp">Đồng Tháp</option>
+								<option value="Gia Lai">Gia Lai</option>
+								<option value="Hà Giang">Hà Giang</option>
+								<option value="Hà Nam">Hà Nam</option>
+								<option value="Hà Tĩnh">Hà Tĩnh</option>
+								<option value="Hải Dương">Hải Dương</option>
+								<option value="Hậu Giang">Hậu Giang</option>
+								<option value="Hòa Bình">Hòa Bình</option>
+								<option value="Hưng Yên">Hưng Yên</option>
+								<option value="Khánh Hòa">Khánh Hòa</option>
+								<option value="Kiên Giang">Kiên Giang</option>
+								<option value="Kon Tum">Kon Tum</option>
+								<option value="Lai Châu">Lai Châu</option>
+								<option value="Lâm Đồng">Lâm Đồng</option>
+								<option value="Lạng Sơn">Lạng Sơn</option>
+								<option value="Lào Cai">Lào Cai</option>
+								<option value="Long An">Long An</option>
+								<option value="Nam Định">Nam Định</option>
+								<option value="Nghệ An">Nghệ An</option>
+								<option value="Ninh Bình">Ninh Bình</option>
+								<option value="Ninh Thuận">Ninh Thuận</option>
+								<option value="Phú Thọ">Phú Thọ</option>
+								<option value="Quảng Bình">Quảng Bình</option>
+								<option value="Quảng Bình">Quảng Bình</option>
+								<option value="Quảng Ngãi">Quảng Ngãi</option>
+								<option value="Quảng Ninh">Quảng Ninh</option>
+								<option value="Quảng Trị">Quảng Trị</option>
+								<option value="Sóc Trăng">Sóc Trăng</option>
+								<option value="Sơn La">Sơn La</option>
+								<option value="Tây Ninh">Tây Ninh</option>
+								<option value="Thái Bình">Thái Bình</option>
+								<option value="Thái Nguyên">Thái Nguyên</option>
+								<option value="Thanh Hóa">Thanh Hóa</option>
+								<option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+								<option value="Tiền Giang">Tiền Giang</option>
+								<option value="Trà Vinh">Trà Vinh</option>
+								<option value="Tuyên Quang">Tuyên Quang</option>
+								<option value="Vĩnh Long">Vĩnh Long</option>
+								<option value="Vĩnh Phúc">Vĩnh Phúc</option>
+								<option value="Yên Bái">Yên Bái</option>
+								<option value="Phú Yên">Phú Yên</option>
+								<option value="Cần Thơ">Cần Thơ</option>
+								<option value="Đà Nẵng">Đà Nẵng</option>
+								<option value="Hải Phòng">Hải Phòng</option>
+								<option value="Hà Nội">Hà Nội</option>
+								<option value="TPHCM">TPHCM</option>
+							</select>
 
-                <button class="custom-button align-self-center mt-4" type="submit">Tìm kiếm</button>
-            </form>
-        </div>
-            </div>
+							<select class="form-control mt-4" id="typepost" name="status">
+								<option value="x">Loại nhà</option>
+								<option value="Cho thuê">Cho thuê</option>
+								<option value="Mua bán">Đang thuê</option>
+							</select>
 
-          <!-- Post House -->
-            <div class="col-9 mt-5">
-                <div class="row gy-5">
-                  <!-- -->
-                  {PostHouse-Lists}
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
-                
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
+							<div class="form__date mt-1">
+								<label for="time">Chọn thời gian</label>
+								<input
+									class="form-control"
+									type="date"
+									value="2022-10-08"
+									name="time"
+								/>
+							</div>
 
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
+							<div class="input__price">
+								<label class="input__price-text mt-3" for="price__range"
+									>Lựa chọn giá</label
+								>
+								<input
+									class="input__price-range"
+									type="range"
+									value="0"
+									min="0"
+									max="100000000"
+								/>
+								<div class="input__price-detail-form position-relative">
+									<input
+										class="form-control input__price-detail mt-4"
+										type="number"
+										placeholder="Nhập số cụ thể"
+										onkeydown="javascript: return event.keyCode == 69 ? false : true"
+										min="1"
+										max="100000000"
+										disabled
+									/>
+									<i
+										class="input__price-icon fa-solid fa-pen-to-square position-absolute"
+									></i>
+								</div>
+								<span class="noitice__price-detail d-none" style="color: red"
+									>Số không hợp lệ !</span
+								>
+								<div
+									class="input__price-wrap d-flex mt-3 justify-content-between"
+								>
+									<input
+										class="display__price fs-4 me-2"
+										style="
+											color: var(--primary-color);
+											background-color: transparent;
+											border: transparent;
+											outline: none;
+											cursor: context-menu;
+											width: 80%;
+										"
+										name="price"
+										value="0"
+										readonly
+									/>
+									<span class="fs-4" style="color: var(--primary-color)"
+										>VND</span
+									>
+								</div>
+							</div>
 
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
+							<button
+								class="custom-button align-self-center mt-4"
+								type="submit"
+							>
+								Tìm kiếm
+							</button>
+						</form>
+					</div>
+				</div>
 
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
-
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
-
-                    <!-- <div class="col-4">
-                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
-                        <div class="card__img" style="width: 100%;
-                        height: 160px;
-                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
-                        background-size: cover;
-                        border-radius: 10px;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        ">
-                        </div>
-                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
-                        <div class="card__body d-flex flex-column">
-                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
-                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
-                        </div>
-                      </a>
-                    </div> -->
-
-                    <!-- <div class="col-4">
+				<!-- Post House -->
+				<div class="col-9 mt-5">
+					<div class="row gy-5">
+						<!-- -->
+						{PostHouse-Lists}
+						<!-- <div class="col-4">
                       <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
                         <div class="card__img" style="width: 100%;
                         height: 160px;
@@ -377,7 +341,7 @@
                       </a>
                     </div> -->
 
-                    <!-- <div class="col-4">
+						<!-- <div class="col-4">
                       <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
                         <div class="card__img" style="width: 100%;
                         height: 160px;
@@ -395,158 +359,329 @@
                         </div>
                       </a>
                     </div> -->
-                </div>
-            </div>
-        </div>
 
-        
-       
-    </div>
-    <!-- footer -->
-    <footer class="footer mt-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-4 d-flex flex-column">
-            <img class=" mb-3" src="views/img/muaban.svg" alt="" style="width:40%;height:40%;">
-            <span class="mb-3">CÔNG TY CỔ PHẦN MUA BÁN</span>
-            <div class="footer__phone-suporter mb-3">
-              <i class="fa-solid fa-phone"></i>
-              <span>1900 6868</span>
-            </div>
-            <div class="footer__location-suporter mb-3">
-              <span>
-                <b>Trụ sợ chính :</b> Số 28-30 Đường số 2, khu phố Hưng gia 5, phường Tân Phong, Quận 7, TP.Hồ Chí Mibh
-              </span>
-            </div>
-            <div class="footer__email-suporter mb-3">
-              <span>
-                <b>Email: </b><a href="">duc.tran@codegym.com</a>
-              </span>
-            </div>
-            <div class="footer__info">
-              <span>
-                muaban.net có trách nhiệm chuyển tải thông tin. Không chịu bất kỳ trách nhiệm nào từ các tin này. <a href="#">Xem chi tiết điều khoản</a>
-              </span>              
-            </div>
-          </div>
-          <div class="col-8">
-            <div class="row">
-              <div class="col">
-                <ul class="footer__list">
-                  <span class="footer__title">Về chúng tôi</span>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Giới thiệu</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Điều khoản sử dụng</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Quy chế hoạt động</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Mua hàng an toàn</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Liên hệ</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col">
-                <ul class="footer__list">
-                  <span class="footer__title">Hỗ trợ mua bán</span>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Báo giá quảng cáo</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Gói nạp thành viên</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Hỗ trợ đăng tin</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Hướng dẫn thanh toán</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Câu hỏi thường gặp</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Tin tức & Khuyến mãi</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="col">
-                <ul class="footer__list">
-                  <span class="footer__title">Thông tin mua bán</span>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Cẩm nang Mua bán</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Môi giới bất động sản</a>
-                  </li>
-                  <li class="footer__item">
-                    <a class="footer__link" href="">Giá nhà đất</a>
-                  </li>
-                </ul>
-            </div>
-              
-
-            <div class="row mt-5" style="border-top:1px solid #ccc">
-              <div class="col">
-                <ul class="connection__list d-flex justify-content-between align-items-center mt-4">
-                  <li class="connection__list-item">
-                    <img src="https://muaban.net/images/footer/image-qr.png" alt="">
-                  </li>
-
-                  <li class="connection__list-item d-flex flex-column">
-                    <a class="mb-2" href="#">
-                      <img src="https://muaban.net/images/footer/app-store.png" alt="">
-                    </a>
-                    <a href="#">
-                      <img src="https://muaban.net/images/footer/google-play.png" alt="">
-                    </a>
-                  </li>
-
-
-                  <li class="connection__list-item d-flex flex-column">
-                    <div class="connection__list-wrap mb-3">
-                      <a class="me-3 ms-1" href="#">
-                        <img src="https://muaban.net/images/icon/48/social/fb/fill.svg" alt="">
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
                       </a>
-                      <a class="me-3 ms-1" href="#">
-                        <img src="https://muaban.net/images/icon/48/social/zalo/fill.png" alt="">
-                      </a>
-                      <a class="me-3 ms-1" href="#">
-                        <img src="https://muaban.net/images/icon/48/social/youtube/fill.svg" alt="">
-                      </a>
-                    </div>
-                    
-                    <div class="connection__list-wrap">
-                      <a href="#">
-                        <img src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=123e32a1-48c0-4151-aa3b-3e80b4d96192" alt="">
-                      </a>
-                    </div>
-                  </li>
+                    </div> -->
 
-                  <li class="connection__list-item">
-                    <a href="">
-                      <img src="https://muaban.net/images/footer/Layer41.png" alt="">
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/87b31eb80c.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-    <script src="views/js/categoryPost.js"></script>
-</body>
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+
+						<!-- <div class="col-4">
+                      <a class="card__house px-3 py-2 d-flex flex-column justify-content-between" style="width: 18rem; height:350px" data-aos="zoom-out-left" href="/category/">
+                        <div class="card__img" style="width: 100%;
+                        height: 160px;
+                        background-image: url('https://cloud.muaban.net/images/2022/08/17/017/250a3395cd8c4df2bf7c5055a4e790ac.jpg');
+                        background-size: cover;
+                        border-radius: 10px;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        ">
+                        </div>
+                        <h5 class="card-title mt-2" style="color: #333;">Bán căn hộ chung cư 208 Nguyễn Gia Trí, P25, Bình Thạnh, giá 2,5 tỷ</h5>
+                        <div class="card__body d-flex flex-column">
+                          <span class="card-text-price">200.000.000 đ - 400.000.000 đ</span>
+                          <span class="card-text-date "><i class="fa-solid fa-clock me-1"></i>Hôm nay</span>
+                        </div>
+                      </a>
+                    </div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<footer class="footer mt-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-4 d-flex flex-column">
+						<img
+							class="mb-3"
+							src="views/img/muaban.svg"
+							alt=""
+							style="width: 40%; height: 40%"
+						/>
+						<span class="mb-3">CÔNG TY CỔ PHẦN MUA BÁN</span>
+						<div class="footer__phone-suporter mb-3">
+							<i class="fa-solid fa-phone"></i>
+							<span>1900 6868</span>
+						</div>
+						<div class="footer__location-suporter mb-3">
+							<span>
+								<b>Trụ sợ chính :</b> Số 28-30 Đường số 2, khu phố Hưng gia 5,
+								phường Tân Phong, Quận 7, TP.Hồ Chí Mibh
+							</span>
+						</div>
+						<div class="footer__email-suporter mb-3">
+							<span> <b>Email: </b><a href="">duc.tran@codegym.com</a> </span>
+						</div>
+						<div class="footer__info">
+							<span>
+								muaban.net có trách nhiệm chuyển tải thông tin. Không chịu bất
+								kỳ trách nhiệm nào từ các tin này.
+								<a href="#">Xem chi tiết điều khoản</a>
+							</span>
+						</div>
+					</div>
+					<div class="col-8">
+						<div class="row">
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Về chúng tôi</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Giới thiệu</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Điều khoản sử dụng</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Quy chế hoạt động</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Mua hàng an toàn</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Liên hệ</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Hỗ trợ mua bán</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Báo giá quảng cáo</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Gói nạp thành viên</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Hỗ trợ đăng tin</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Hướng dẫn thanh toán</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Câu hỏi thường gặp</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Tin tức & Khuyến mãi</a>
+									</li>
+								</ul>
+							</div>
+							<div class="col">
+								<ul class="footer__list">
+									<span class="footer__title">Thông tin mua bán</span>
+									<li class="footer__item">
+										<a class="footer__link" href="">Cẩm nang Mua bán</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Môi giới bất động sản</a>
+									</li>
+									<li class="footer__item">
+										<a class="footer__link" href="">Giá nhà đất</a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="row mt-5" style="border-top: 1px solid #ccc">
+								<div class="col">
+									<ul
+										class="connection__list d-flex justify-content-between align-items-center mt-4"
+									>
+										<li class="connection__list-item">
+											<img
+												src="https://muaban.net/images/footer/image-qr.png"
+												alt=""
+											/>
+										</li>
+
+										<li class="connection__list-item d-flex flex-column">
+											<a class="mb-2" href="#">
+												<img
+													src="https://muaban.net/images/footer/app-store.png"
+													alt=""
+												/>
+											</a>
+											<a href="#">
+												<img
+													src="https://muaban.net/images/footer/google-play.png"
+													alt=""
+												/>
+											</a>
+										</li>
+
+										<li class="connection__list-item d-flex flex-column">
+											<div class="connection__list-wrap mb-3">
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/fb/fill.svg"
+														alt=""
+													/>
+												</a>
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/zalo/fill.png"
+														alt=""
+													/>
+												</a>
+												<a class="me-3 ms-1" href="#">
+													<img
+														src="https://muaban.net/images/icon/48/social/youtube/fill.svg"
+														alt=""
+													/>
+												</a>
+											</div>
+
+											<div class="connection__list-wrap">
+												<a href="#">
+													<img
+														src="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=123e32a1-48c0-4151-aa3b-3e80b4d96192"
+														alt=""
+													/>
+												</a>
+											</div>
+										</li>
+
+										<li class="connection__list-item">
+											<a href="">
+												<img
+													src="https://muaban.net/images/footer/Layer41.png"
+													alt=""
+												/>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/87b31eb80c.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script>
+			AOS.init();
+		</script>
+		<script src="views/js/categoryPost.js"></script>
+	</body>
 </html>
