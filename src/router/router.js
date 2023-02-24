@@ -25,7 +25,7 @@ async function router(req, res) {
 		eot: "application/vnd.ms-fontobject",
 	};
 	const filesDefences = path.match(
-		/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.webp|/
+		/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.webp/
 	);
 	if (filesDefences) {
 		const extension = mimeTypes[filesDefences[0].toString().split(".")[1]];
