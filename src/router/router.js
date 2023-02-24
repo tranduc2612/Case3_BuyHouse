@@ -23,10 +23,9 @@ async function router(req, res) {
 		woff: "font/woff",
 		woff2: "font/woff2",
 		eot: "application/vnd.ms-fontobject",
-		icon: "icon/favicon",
 	};
 	const filesDefences = path.match(
-		/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.webp|\.favicon.ico/
+		/\.js|\.css|\.png|\.svg|\.jpg|\.ttf|\.woff|\.woff2|\.eot|\.webp|/
 	);
 	if (filesDefences) {
 		const extension = mimeTypes[filesDefences[0].toString().split(".")[1]];
